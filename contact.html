@@ -105,14 +105,16 @@ opacity:0.7;
 margin-top:20px;
 }
 
-/* 🧁 CUPCAKES */
+/* 🧁 CUPCAKES (ONLY MOBILE OPTIMIZED, SAME TIMING) */
 .cupcake{
 position:fixed;
 top:-50px;
-font-size:24px;
+font-size:22px;
 opacity:0.85;
 z-index:999;
+pointer-events:none;
 animation:fall linear forwards;
+will-change: transform;
 }
 
 @keyframes fall{
@@ -125,8 +127,9 @@ opacity:0;
 }
 }
 
-/* 📱 MOBILE */
+/* 📱 MOBILE (ONLY OPTIMIZATION, NO BEHAVIOR CHANGE) */
 @media (max-width:768px){
+
 .container{
 margin:20px;
 padding:20px;
@@ -140,6 +143,11 @@ font-size:28px;
 width:95%;
 font-size:14px;
 }
+
+.cupcake{
+font-size:18px;
+}
+
 }
 
 </style>
@@ -147,7 +155,6 @@ font-size:14px;
 
 <body>
 
-<!-- 🧁 CUPCAKES SYSTEM -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
@@ -167,7 +174,6 @@ c.remove();
 setInterval(createCupcake,650);
 </script>
 
-<!-- 🚀 NAV SMOOTH -->
 <script>
 function goTo(page){
 document.body.classList.add("fade-out");
@@ -177,14 +183,12 @@ window.location.href = page;
 }
 </script>
 
-<!-- NAV -->
 <nav>
 <button onclick="goTo('index.html')">Accueil</button>
 <button onclick="goTo('menu.html')">Menu</button>
 <button onclick="goTo('about.html')">À propos</button>
 </nav>
 
-<!-- CONTACT -->
 <div class="container">
 
 <h1>Contactez-nous</h1>
@@ -214,5 +218,4 @@ World's Savoury — créations maison avec amour et passion 💖
 
 </body>
 </html>
-
 
