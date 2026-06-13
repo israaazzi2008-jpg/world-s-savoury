@@ -2,30 +2,132 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Contact</title>
+<title>Contact - World's Savoury</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:Poppins;
+background:linear-gradient(135deg,#fff0f5,#fffaf5);
+color:#333;
+text-align:center;
+}
+
+/* NAV */
+nav{
+display:flex;
+justify-content:center;
+gap:10px;
+padding:10px;
+background:rgba(255,255,255,0.85);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+}
+
+nav button{
+border:none;
+padding:10px 15px;
+border-radius:20px;
+cursor:pointer;
+background:white;
+font-weight:bold;
+}
+
+/* CONTAINER */
+.container{
+max-width:800px;
+margin:60px auto;
+padding:30px;
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(15px);
+border-radius:25px;
+box-shadow:0 20px 50px rgba(0,0,0,0.1);
+}
+
+/* TITLE */
+h1{
+font-family:"Playfair Display";
+color:#b76e79;
+font-size:40px;
+margin-bottom:10px;
+}
+
+p{
+font-size:16px;
+margin-bottom:25px;
+}
+
+/* BUTTONS */
+.btn{
+display:block;
+width:80%;
+max-width:300px;
+margin:15px auto;
+padding:15px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+font-weight:bold;
+font-size:15px;
+transition:0.3s;
+background:linear-gradient(90deg,#b76e79,#d88a9a);
+color:white;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* SMALL TEXT */
+.small{
+font-size:13px;
+opacity:0.7;
+margin-top:20px;
+}
+</style>
 </head>
 
-<body style="font-family:Poppins;text-align:center;padding:60px;">
+<body>
 
+<!-- NAV -->
 <nav>
 <button onclick="window.location.href='index.html'">Accueil</button>
 <button onclick="window.location.href='menu.html'">Menu</button>
 <button onclick="window.location.href='about.html'">À propos</button>
 </nav>
 
-<h1>Contact</h1>
+<!-- CONTACT -->
+<div class="container">
 
-<button onclick="window.open('https://www.instagram.com/worldssavory?igsh=NWNpNGVsamZxYjc4')">
-Instagram
+<h1>Contactez-nous</h1>
+
+<p>
+Pour commander vos gâteaux personnalisés ou obtenir plus d’informations,
+contactez-nous via nos réseaux sociaux.
+</p>
+
+<button class="btn" onclick="window.open('https://www.instagram.com/worldssavory?igsh=NWNpNGVsamZxYjc4')">
+📸 Instagram
 </button>
 
-<button onclick="window.open('https://www.facebook.com/share/1AEWSZQUeR/?mibextid=wwXIfr')">
-Facebook
+<button class="btn" onclick="window.open('https://www.facebook.com/share/1AEWSZQUeR/?mibextid=wwXIfr')">
+📘 Facebook
 </button>
 
-<button onclick="window.open('https://share.google/Db0AfpQq43n0VyLFz')">
-Localisation
+<button class="btn" onclick="window.open('https://share.google/Db0AfpQq43n0VyLFz')">
+📍 Localisation (Béni Saf)
 </button>
+
+<p class="small">
+World's Savoury — créations maison avec amour et passion 💖
+</p>
+
+</div>
 
 </body>
 </html>
+
