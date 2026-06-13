@@ -24,7 +24,7 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
-/* 🚀 PAGE TRANSITION */
+/* 🚀 PAGE FADE */
 .fade-out{
 opacity:0 !important;
 transition:0.6s ease;
@@ -74,7 +74,16 @@ font-family:"Playfair Display";
 margin:20px;
 }
 
-/* CATEGORIES */
+/* REMARK */
+.remark{
+text-align:center;
+font-size:13px;
+opacity:0.75;
+margin-top:-10px;
+margin-bottom:15px;
+}
+
+/* FILTER MENU */
 .menu{
 display:flex;
 justify-content:center;
@@ -108,31 +117,25 @@ background:rgba(255,255,255,0.85);
 border-radius:20px;
 overflow:hidden;
 box-shadow:0 10px 25px rgba(0,0,0,0.12);
-transition:0.3s ease;
+transition:0.5s ease;
 }
 
-.card:hover{
-transform:translateY(-5px);
+.card.hide{
+opacity:0;
+transform:translateY(20px) scale(0.95);
+pointer-events:none;
 }
 
+/* IMAGE */
 .card img{
 width:100%;
 height:180px;
 object-fit:cover;
 }
 
+/* CONTENT */
 .card-content{
 padding:15px;
-}
-
-.card-content h3{
-font-family:"Playfair Display";
-margin:0 0 10px 0;
-}
-
-.card-content p{
-margin:8px 0;
-line-height:1.5;
 }
 
 /* ORDER BUTTON */
@@ -159,6 +162,7 @@ h1{font-size:24px;}
 
 <body>
 
+<!-- 🧁 CUPCAKES -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
@@ -172,12 +176,11 @@ setTimeout(()=>c.remove(),9000);
 setInterval(createCupcake,650);
 </script>
 
+<!-- NAV -->
 <script>
 function goTo(page){
 document.body.classList.add("fade-out");
-setTimeout(()=>{
-window.location.href = page;
-},600);
+setTimeout(()=>{ window.location.href = page; },600);
 }
 </script>
 
@@ -190,24 +193,27 @@ window.location.href = page;
 
 <h1>World's Savoury - Nos créations</h1>
 
-<div class="menu">
-<button>Cakes</button>
-<button>Gâteaux</button>
-<button>Cupcakes</button>
-<button>Fleurs chocolat</button>
-<button>Chocolat personnalisé</button>
-<button>Esquimaux</button>
+<div class="remark">
+⭐ Remarque : le client choisit les ingrédients et la décoration de son gâteau.
 </div>
 
+<!-- FILTER -->
+<div class="menu">
+<button onclick="filterCategory('all')">Tout</button>
+<button onclick="filterCategory('cakes')">Cakes</button>
+<button onclick="filterCategory('gateaux')">Gâteaux</button>
+<button onclick="filterCategory('cupcakes')">Cupcakes</button>
+<button onclick="filterCategory('chocolat')">Fleurs chocolat</button>
+<button onclick="filterCategory('personnalise')">Chocolat personnalisé</button>
+<button onclick="filterCategory('esquimaux')">Esquimaux</button>
+</div>
+
+<!-- PRODUCTS (7 CAKES RESTORED) -->
 <div class="products">
 
-<!-- ✅ YOUR ORIGINAL PRODUCTS (UNCHANGED) -->
-
-<div class="card">
+<div class="card cakes">
 <img src="tarte1.jpg">
 <div class="card-content">
-<h3>Cake</h3>
-<p>Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec des morceaux de chocolat, une tartine au chocolat et des noix. Décoration personnalisée.</p>
 <p><b>Longueur:</b> 35 cm</p>
 <p><b>Largeur:</b> 25 cm</p>
 <p><b>Personnes:</b> 30</p>
@@ -215,11 +221,9 @@ window.location.href = page;
 </div>
 </div>
 
-<div class="card">
+<div class="card cakes">
 <img src="tarte2.jpg">
 <div class="card-content">
-<h3>Cake</h3>
-<p>Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec des morceaux de chocolat, une tartine au chocolat et des noix. Décoration personnalisée.</p>
 <p><b>Longueur:</b> 24 cm</p>
 <p><b>Largeur:</b> 24 cm</p>
 <p><b>Personnes:</b> 12</p>
@@ -227,56 +231,68 @@ window.location.href = page;
 </div>
 </div>
 
-<div class="card">
+<div class="card cakes">
 <img src="tarte3.jpg">
 <div class="card-content">
-<h3>Cake</h3>
-<p>Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec des morceaux de chocolat, une tartine au chocolat et des noix. Décoration personnalisée.</p>
-<p><b>diamètre:</b> 12 cm</p>
+<p><b>Diamètre:</b> 12 cm</p>
 <p><b>Personnes:</b> 12</p>
 <button class="order">Sur commande</button>
 </div>
 </div>
 
-<div class="card">
+<div class="card cakes">
 <img src="tarte4.jpg">
 <div class="card-content">
-<h3>Cake</h3>
-<p>Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec des morceaux de chocolat, une tartine au chocolat et des noix. Décoration personnalisée.</p>
-<p><b>diamètre:</b> 15 cm</p>
+<p><b>Diamètre:</b> 15 cm</p>
 <p><b>Personnes:</b> 7</p>
 <button class="order">Sur commande</button>
 </div>
 </div>
 
-<div class="card">
+<div class="card cakes">
 <img src="tarte5.jpg">
 <div class="card-content">
-<h3>Cake</h3>
-<p>Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec des morceaux de chocolat, une tartine au chocolat et des noix. Décoration personnalisée.</p>
-<p><b>diamètre:</b> 15 cm</p>
+<p><b>Diamètre:</b> 15 cm</p>
 <p><b>Personnes:</b> 15</p>
 <button class="order">Sur commande</button>
 </div>
 </div>
 
-<div class="card">
+<div class="card cakes">
 <img src="tarte6.jpg">
 <div class="card-content">
-<h3>Cake</h3>
-<p>Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec des morceaux de chocolat, une tartine au chocolat et des noix. Décoration personnalisée.</p>
-<p><b>diamètre:</b> 16 cm</p>
+<p><b>Diamètre:</b> 16 cm</p>
 <p><b>Personnes:</b> 6</p>
+<button class="order">Sur commande</button>
+</div>
+</div>
+
+<div class="card cakes">
+<img src="tarte7.jpg">
+<div class="card-content">
+<p><b>Diamètre:</b> 18 cm</p>
+<p><b>Personnes:</b> 10</p>
 <button class="order">Sur commande</button>
 </div>
 </div>
 
 </div>
 
-<section><h2>Cupcakes</h2><p>Section vide — produits à venir</p></section>
-<section><h2>Fleurs chocolat</h2><p>Section vide — produits à venir</p></section>
-<section><h2>Chocolat personnalisé</h2><p>Section vide — produits à venir</p></section>
-<section><h2>Esquimaux</h2><p>Section vide — produits à venir</p></section>
+<!-- FILTER SCRIPT -->
+<script>
+function filterCategory(category){
+let cards = document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+if(category === "all" || card.classList.contains(category)){
+card.classList.remove("hide");
+}else{
+card.classList.add("hide");
+}
+});
+}
+</script>
 
 </body>
 </html>
+
