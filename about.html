@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+
+<!-- ✅ IMPORTANT FIX FOR PHONE ZOOM -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>À propos - World's Savoury</title>
@@ -10,7 +12,7 @@
 
 <style>
 
-/* 🌸 PAGE */
+/* 🌸 PAGE LOAD */
 body{
 margin:0;
 font-family:Poppins;
@@ -20,21 +22,24 @@ text-align:center;
 opacity:0;
 animation:pageIn 0.9s ease forwards;
 overflow-x:hidden;
+
+/* ✅ FIX TEXT SCALING ON PHONE */
 -webkit-text-size-adjust:100%;
 }
 
+/* FIX ANIMATION */
 @keyframes pageIn{
 from{opacity:0; transform:scale(0.98);}
 to{opacity:1; transform:scale(1);}
 }
 
-/* 🚀 EXIT */
+/* 🚀 PAGE EXIT */
 .fade-out{
 opacity:0 !important;
 transition:0.6s ease;
 }
 
-/* NAV (same as menu system) */
+/* NAV */
 nav{
 display:flex;
 justify-content:center;
@@ -58,8 +63,9 @@ font-weight:bold;
 font-size:14px;
 }
 
-/* CONTAINER */
+/* 🌸 MAIN CARD (FIX MOBILE WIDTH) */
 .container{
+width:92%;
 max-width:900px;
 margin:40px auto;
 padding:30px;
@@ -69,7 +75,7 @@ border-radius:25px;
 box-shadow:0 20px 50px rgba(0,0,0,0.12);
 }
 
-/* LOGO */
+/* 🧁 LOGO */
 .logo{
 width:110px;
 max-width:35vw;
@@ -96,9 +102,10 @@ margin-bottom:10px;
 p{
 font-size:16px;
 line-height:1.8;
+word-wrap:break-word;
 }
 
-/* CUPCAKES (same behavior, mobile safe) */
+/* 🧁 CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -110,27 +117,21 @@ animation:fall linear forwards;
 }
 
 @keyframes fall{
-0%{
-transform:translateY(-50px) translateX(0);
-opacity:1;
-}
-100%{
-transform:translateY(110vh) translateX(-20px);
-opacity:0;
-}
+0%{transform:translateY(-50px) translateX(0);}
+100%{transform:translateY(110vh) translateX(-20px);opacity:0;}
 }
 
-/* 📱 MATCH MENU MOBILE SYSTEM */
+/* 📱 MOBILE FIX */
 @media (max-width:768px){
 
 .container{
-margin:15px;
+margin:20px;
 padding:20px;
 border-radius:18px;
 }
 
 h1{
-font-size:28px;
+font-size:26px;
 }
 
 p{
@@ -168,7 +169,6 @@ c.style.left=Math.random()*window.innerWidth+"px";
 c.style.animationDuration=(5+Math.random()*3)+"s";
 
 document.body.appendChild(c);
-
 setTimeout(()=>c.remove(),9000);
 }
 setInterval(createCupcake,800);
@@ -212,7 +212,7 @@ Notre objectif est simple : transformer chaque événement en une expérience go
 Que ce soit pour un anniversaire, un mariage ou une petite célébration, nous mettons tout notre cœur dans chaque création.
 </p>
 
-<p>
+<p class="highlight">
 World's Savoury — Créations maison avec amour, élégance et passion.
 </p>
 
@@ -220,5 +220,4 @@ World's Savoury — Créations maison avec amour, élégance et passion.
 
 </body>
 </html>
-
 
