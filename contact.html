@@ -8,7 +8,6 @@
 
 <style>
 
-/* 🌸 PAGE LOAD */
 body{
 margin:0;
 font-family:Poppins;
@@ -17,7 +16,6 @@ color:#333;
 text-align:center;
 opacity:0;
 animation:pageIn 0.8s ease forwards;
--webkit-text-size-adjust:100%;
 overflow-x:hidden;
 }
 
@@ -26,13 +24,11 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
-/* 🚀 SMOOTH EXIT */
 .fade-out{
 opacity:0 !important;
 transition:0.6s ease;
 }
 
-/* NAV */
 nav{
 display:flex;
 justify-content:center;
@@ -53,10 +49,8 @@ border-radius:20px;
 cursor:pointer;
 background:white;
 font-weight:bold;
-font-size:14px;
 }
 
-/* CONTAINER */
 .container{
 max-width:800px;
 margin:60px auto;
@@ -67,7 +61,6 @@ border-radius:25px;
 box-shadow:0 20px 50px rgba(0,0,0,0.1);
 }
 
-/* TITLE */
 h1{
 font-family:"Playfair Display";
 color:#b76e79;
@@ -78,7 +71,6 @@ margin-bottom:10px;
 p{
 font-size:16px;
 margin-bottom:25px;
-word-wrap:break-word;
 }
 
 /* BUTTONS */
@@ -103,14 +95,13 @@ box-shadow:0 10px 20px rgba(0,0,0,0.1);
 transform:scale(1.05);
 }
 
-/* SMALL TEXT */
 .small{
 font-size:13px;
 opacity:0.7;
 margin-top:20px;
 }
 
-/* 🧁 CUPCAKES (ONLY OPTIMIZED, SAME BEHAVIOR) */
+/* CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -127,26 +118,29 @@ will-change:transform;
 100%{transform:translateY(110vh);opacity:0;}
 }
 
-/* 📱 MOBILE ONLY OPTIMIZATION */
+/* 📱 FIX: REAL PHONE FULL-SCREEN FEEL */
 @media (max-width:768px){
 
 .container{
-margin:20px;
-padding:20px;
+margin:10px;
+padding:18px;
 border-radius:18px;
+width:auto;
 }
 
 h1{
-font-size:28px;
+font-size:30px;
+}
+
+p{
+font-size:15px;
+line-height:1.5;
 }
 
 .btn{
-width:95%;
-font-size:14px;
-}
-
-.cupcake{
-font-size:18px;
+width:100%;
+font-size:15px;
+padding:14px;
 }
 
 nav button{
@@ -174,7 +168,6 @@ document.body.appendChild(c);
 
 setTimeout(()=>{ c.remove(); },9000);
 }
-
 setInterval(createCupcake,650);
 </script>
 
