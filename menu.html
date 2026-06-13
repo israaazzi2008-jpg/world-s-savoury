@@ -7,20 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-  <script>
-function createCupcake(){
-let c=document.createElement("div");
-c.className="cupcake";
-c.innerHTML="🧁";
-c.style.left=Math.random()*window.innerWidth+"px";
-c.style.animationDuration=(3+Math.random()*5)+"s";
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),8000);
-}
-setInterval(createCupcake,400);
-</script>
 
-<style>
+/* CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -34,7 +22,8 @@ opacity:0.8;
 0%{transform:translateY(-50px);opacity:1;}
 100%{transform:translateY(110vh);opacity:0;}
 }
-</style>
+
+/* YOUR ORIGINAL DESIGN (UNCHANGED) */
 body {
 margin: 0;
 font-family: "Poppins", sans-serif;
@@ -125,10 +114,25 @@ width: 100%;
 cursor: pointer;
 margin-top: 10px;
 }
+
 </style>
 </head>
 
 <body>
+
+<!-- CUPCAKE SCRIPT (ONLY ONCE, FIXED) -->
+<script>
+function createCupcake(){
+let c=document.createElement("div");
+c.className="cupcake";
+c.innerHTML="🧁";
+c.style.left=Math.random()*window.innerWidth+"px";
+c.style.animationDuration=(3+Math.random()*5)+"s";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),8000);
+}
+setInterval(createCupcake,400);
+</script>
 
 <!-- NAV -->
 <nav>
@@ -140,7 +144,7 @@ margin-top: 10px;
 
 <h1>World's Savoury - Nos créations</h1>
 
-<!-- ORIGINAL CATEGORIES -->
+<!-- CATEGORIES -->
 <div class="menu">
 <button>Cakes</button>
 <button>Gâteaux</button>
@@ -150,15 +154,14 @@ margin-top: 10px;
 <button>Esquimaux</button>
 </div>
 
-<!-- PRODUCTS (ONLY 2 CAKES) -->
+<!-- PRODUCTS (UNCHANGED) -->
 <div class="products">
 
-<!-- CAKE 1 -->
 <div class="card">
 <img src="tarte1.jpg">
 
 <div class="card-content">
-<h3>Cake </h3>
+<h3>Cake</h3>
 
 <p>
 Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec une tartine au chocolat et des noix. Décoration personnalisée
@@ -172,12 +175,11 @@ Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et cara
 </div>
 </div>
 
-<!-- CAKE 2 -->
 <div class="card">
 <img src="tarte2.jpg">
 
 <div class="card-content">
-<h3>Cake </h3>
+<h3>Cake</h3>
 
 <p>
 Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec une tartine au chocolat et des noix. Décoration personnalisée
@@ -193,26 +195,11 @@ Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et cara
 
 </div>
 
-<!-- EMPTY SECTIONS -->
-<section>
-<h2>Cupcakes</h2>
-<p>Section vide — produits à venir</p>
-</section>
-
-<section>
-<h2>Fleurs chocolat</h2>
-<p>Section vide — produits à venir</p>
-</section>
-
-<section>
-<h2>Chocolat personnalisé</h2>
-<p>Section vide — produits à venir</p>
-</section>
-
-<section>
-<h2>Esquimaux</h2>
-<p>Section vide — produits à venir</p>
-</section>
+<!-- EMPTY SECTIONS (UNCHANGED) -->
+<section><h2>Cupcakes</h2><p>Section vide — produits à venir</p></section>
+<section><h2>Fleurs chocolat</h2><p>Section vide — produits à venir</p></section>
+<section><h2>Chocolat personnalisé</h2><p>Section vide — produits à venir</p></section>
+<section><h2>Esquimaux</h2><p>Section vide — produits à venir</p></section>
 
 </body>
 </html>
