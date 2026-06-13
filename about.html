@@ -8,7 +8,7 @@
 
 <style>
 
-/* 🌸 PAGE LOAD */
+/* 🌸 GLOBAL */
 body{
 margin:0;
 font-family:Poppins;
@@ -16,19 +16,13 @@ background:linear-gradient(135deg,#fff0f5,#fffaf5);
 color:#333;
 text-align:center;
 opacity:0;
-animation:pageIn 0.9s ease forwards;
+animation:pageIn 0.8s ease forwards;
 overflow-x:hidden;
 }
 
 @keyframes pageIn{
-from{opacity:0; transform:scale(0.98);}
-to{opacity:1; transform:scale(1);}
-}
-
-/* 🚀 PAGE EXIT */
-.fade-out{
-opacity:0 !important;
-transition:0.6s ease;
+from{opacity:0;}
+to{opacity:1;}
 }
 
 /* NAV */
@@ -52,171 +46,101 @@ border-radius:20px;
 cursor:pointer;
 background:white;
 font-weight:bold;
-font-size:14px;
 }
 
-/* 🌸 MAIN CARD */
+/* CONTAINER */
 .container{
 max-width:900px;
-margin:40px auto;
-padding:30px;
+margin:30px auto;
+padding:20px;
 background:rgba(255,255,255,0.75);
 backdrop-filter:blur(15px);
 border-radius:25px;
 box-shadow:0 20px 50px rgba(0,0,0,0.12);
 }
 
-/* 🧁 LOGO */
+/* LOGO */
 .logo{
-width:110px;
+width:100px;
 border-radius:15px;
-margin-bottom:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-animation:floatLogo 4s ease-in-out infinite;
-}
-
-@keyframes floatLogo{
-0%{transform:translateY(0);}
-50%{transform:translateY(-6px);}
-100%{transform:translateY(0);}
+margin-bottom:10px;
 }
 
 /* TEXT */
 h1{
 font-family:"Playfair Display";
 color:#b76e79;
-font-size:40px;
-margin-bottom:10px;
+font-size:32px;
 }
 
 p{
-font-size:16px;
-line-height:1.8;
+font-size:15px;
+line-height:1.6;
 }
 
-.highlight{
-font-weight:bold;
-color:#b76e79;
-}
-
-/* 🧁 CUPCAKES (OPTIMIZED FOR PHONE) */
+/* CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
-font-size:20px;
+font-size:22px;
 opacity:0.85;
 z-index:999;
-pointer-events:none;
 animation:fall linear forwards;
 }
 
 @keyframes fall{
-0%{
-transform:translateY(-50px) translateX(0);
-opacity:1;
-}
-100%{
-transform:translateY(110vh) translateX(-20px);
-opacity:0;
-}
+0%{transform:translateY(-50px);}
+100%{transform:translateY(110vh);opacity:0;}
 }
 
-/* 📱 MOBILE OPTIMIZATION */
+/* MOBILE */
 @media (max-width:768px){
-
-.container{
-margin:20px;
-padding:20px;
+.container{margin:15px; padding:15px;}
+h1{font-size:24px;}
+p{font-size:14px;}
+.logo{width:85px;}
 }
 
-h1{
-font-size:26px;
-}
-
-p{
-font-size:14px;
-line-height:1.6;
-}
-
-.logo{
-width:90px;
-}
-
-nav button{
-padding:8px 10px;
-font-size:13px;
-}
-
-.cupcake{
-font-size:18px;
-}
-
-}
 </style>
 </head>
 
 <body>
 
-<!-- 🧁 CUPCAKES -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
 c.className="cupcake";
 c.innerHTML="🧁";
-
 c.style.left=Math.random()*window.innerWidth+"px";
 c.style.animationDuration=(5+Math.random()*3)+"s";
-
 document.body.appendChild(c);
-
 setTimeout(()=>c.remove(),9000);
 }
-
-setInterval(createCupcake,800);
+setInterval(createCupcake,650);
 </script>
 
-<!-- 🚀 NAV -->
-<script>
-function goTo(page){
-document.body.classList.add("fade-out");
-setTimeout(()=>{
-window.location.href = page;
-},600);
-}
-</script>
-
-<!-- NAV -->
 <nav>
-<button onclick="goTo('index.html')">Accueil</button>
-<button onclick="goTo('menu.html')">Menu</button>
-<button onclick="goTo('contact.html')">Contact</button>
+<button onclick="window.location.href='index.html'">Accueil</button>
+<button onclick="window.location.href='menu.html'">Menu</button>
+<button onclick="window.location.href='contact.html'">Contact</button>
 </nav>
 
-<!-- ABOUT CONTENT -->
 <div class="container">
 
-<img src="logo.jpg" class="logo" alt="logo">
+<img src="logo.jpg" class="logo">
 
 <h1>À propos de World's Savoury</h1>
 
 <p>
-Bienvenue chez <span class="highlight">World's Savoury</span>, une pâtisserie artisanale créée avec passion, amour et créativité.
+Bienvenue chez <b>World's Savoury</b>, une pâtisserie artisanale créée avec passion, amour et créativité.
 </p>
 
 <p>
 Nous réalisons des gâteaux, cupcakes et chocolats personnalisés pour rendre chaque moment unique et inoubliable.
-Chaque création est faite maison avec des ingrédients soigneusement sélectionnés et une attention particulière aux détails.
+Chaque création est faite maison avec des ingrédients soigneusement sélectionnés.
 </p>
 
 <p>
-Notre objectif est simple : transformer chaque événement en une expérience gourmande et élégante.
-</p>
-
-<p>
-Que ce soit pour un anniversaire, un mariage ou une petite célébration, nous mettons tout notre cœur dans chaque création.
-</p>
-
-<p class="highlight">
 World's Savoury — Créations maison avec amour, élégance et passion.
 </p>
 
