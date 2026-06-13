@@ -8,111 +8,156 @@
 
 <style>
 
-/* CUPCAKES */
+/* 🌸 GLOBAL PAGE FADE IN */
+body{
+margin:0;
+font-family:Poppins;
+background: linear-gradient(135deg,#fff0f5,#fffaf5);
+color:#333;
+opacity:0;
+animation:pageIn 0.8s ease forwards;
+overflow-x:hidden;
+}
+
+@keyframes pageIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* 🚀 PAGE TRANSITION (USED BY ALL PAGES) */
+.fade-out{
+opacity:0 !important;
+transition:0.6s ease;
+}
+
+/* 🧁 CUPCAKES (UNIFIED STYLE) */
 .cupcake{
 position:fixed;
 top:-50px;
 font-size:24px;
-animation:fall linear infinite;
+opacity:0.85;
 z-index:999;
-opacity:0.8;
+animation:fall linear forwards;
 }
 
 @keyframes fall{
-0%{transform:translateY(-50px);opacity:1;}
-100%{transform:translateY(110vh);opacity:0;}
+0%{
+transform:translateY(-50px) translateX(0);
+opacity:1;
 }
-
-/* YOUR ORIGINAL DESIGN (UNCHANGED) */
-body {
-margin: 0;
-font-family: "Poppins", sans-serif;
-background: linear-gradient(135deg, #fff0f5, #fffaf5);
-color: #333;
+100%{
+transform:translateY(110vh) translateX(-30px);
+opacity:0;
+}
 }
 
 /* NAV */
-nav {
-display: flex;
-justify-content: center;
-gap: 10px;
-padding: 10px;
-background: rgba(255,255,255,0.85);
-position: sticky;
-top: 0;
-backdrop-filter: blur(10px);
+nav{
+display:flex;
+justify-content:center;
+gap:10px;
+padding:10px;
+background:rgba(255,255,255,0.85);
+position:sticky;
+top:0;
+backdrop-filter:blur(10px);
+z-index:1000;
 }
 
-nav button {
-border: none;
-padding: 10px 15px;
-border-radius: 20px;
-cursor: pointer;
-background: white;
-font-weight: bold;
+nav button{
+border:none;
+padding:10px 15px;
+border-radius:20px;
+cursor:pointer;
+background:white;
+font-weight:bold;
 }
 
 /* TITLE */
-h1 {
-text-align: center;
-font-family: "Playfair Display", serif;
-margin: 20px;
+h1{
+text-align:center;
+font-family:"Playfair Display";
+margin:20px;
 }
 
 /* CATEGORIES */
-.menu {
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-gap: 10px;
-padding: 15px;
+.menu{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
+padding:15px;
 }
 
-.menu button {
-border: none;
-padding: 10px 15px;
-border-radius: 20px;
-cursor: pointer;
-background: white;
-box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.menu button{
+border:none;
+padding:10px 15px;
+border-radius:20px;
+cursor:pointer;
+background:white;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 /* PRODUCTS */
-.products {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 20px;
-padding: 20px;
+.products{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:20px;
 }
 
-.card {
-width: 270px;
-background: rgba(255,255,255,0.85);
-border-radius: 20px;
-overflow: hidden;
-box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+/* CARD */
+.card{
+width:270px;
+background:rgba(255,255,255,0.85);
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+transition:0.3s ease;
 }
 
-.card img {
-width: 100%;
-height: 180px;
-object-fit: cover;
+.card:hover{
+transform:translateY(-6px);
 }
 
-.card-content {
-padding: 15px;
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
 }
 
-button.order {
-background: linear-gradient(90deg,#b76e79,#d88a9a);
-color: white;
-border: none;
-padding: 10px;
-border-radius: 12px;
-width: 100%;
-cursor: pointer;
-margin-top: 10px;
+.card-content{
+padding:15px;
+}
+
+.card-content h3{
+font-family:"Playfair Display";
+margin:0 0 10px 0;
+}
+
+.card-content p{
+margin:8px 0;
+line-height:1.5;
+}
+
+/* ORDER BUTTON (visual only) */
+button.order{
+background:linear-gradient(90deg,#b76e79,#d88a9a);
+color:white;
+border:none;
+padding:10px;
+border-radius:12px;
+width:100%;
+margin-top:10px;
+cursor:pointer;
+}
+
+/* 📱 MOBILE */
+@media (max-width:768px){
+.card{width:90%;}
+.menu{overflow-x:auto; flex-wrap:nowrap;}
+h1{font-size:24px;}
 }
 
 </style>
@@ -120,31 +165,48 @@ margin-top: 10px;
 
 <body>
 
-<!-- CUPCAKE SCRIPT (ONLY ONCE, FIXED) -->
+<!-- 🧁 CUPCAKE SYSTEM (UNIFIED ACROSS ALL PAGES) -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
 c.className="cupcake";
 c.innerHTML="🧁";
+
 c.style.left=Math.random()*window.innerWidth+"px";
-c.style.animationDuration=(3+Math.random()*5)+"s";
+c.style.animationDuration=(5+Math.random()*3)+"s";
+c.style.fontSize=(18+Math.random()*8)+"px";
+
 document.body.appendChild(c);
-setTimeout(()=>c.remove(),8000);
+
+setTimeout(()=>{
+c.remove();
+},9000);
 }
-setInterval(createCupcake,400);
+
+setInterval(createCupcake,650);
+</script>
+
+<!-- 🚀 SMOOTH PAGE NAVIGATION -->
+<script>
+function goTo(page){
+document.body.classList.add("fade-out");
+setTimeout(()=>{
+window.location.href = page;
+},600);
+}
 </script>
 
 <!-- NAV -->
 <nav>
-<button onclick="window.location.href='index.html'">Accueil</button>
-<button onclick="window.location.href='menu.html'">Menu</button>
-<button onclick="window.location.href='about.html'">À propos</button>
-<button onclick="window.location.href='contact.html'">Contact</button>
+<button onclick="goTo('index.html')">Accueil</button>
+<button onclick="goTo('menu.html')">Menu</button>
+<button onclick="goTo('about.html')">À propos</button>
+<button onclick="goTo('contact.html')">Contact</button>
 </nav>
 
 <h1>World's Savoury - Nos créations</h1>
 
-<!-- CATEGORIES -->
+<!-- CATEGORIES (UNCHANGED) -->
 <div class="menu">
 <button>Cakes</button>
 <button>Gâteaux</button>
@@ -154,48 +216,43 @@ setInterval(createCupcake,400);
 <button>Esquimaux</button>
 </div>
 
-<!-- PRODUCTS (UNCHANGED) -->
+<!-- PRODUCTS (SPACE KEPT FOR YOU) -->
 <div class="products">
 
+<!-- 👉 ADD YOUR PRODUCTS HERE -->
+<!-- SLOT 1 -->
+<!-- SLOT 2 -->
+<!-- SLOT 3 -->
+
+<!-- SAMPLE PRODUCT 1 -->
 <div class="card">
 <img src="tarte1.jpg">
-
 <div class="card-content">
 <h3>Cake</h3>
-
-<p>
-Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec une tartine au chocolat et des noix. Décoration personnalisée
-</p>
-
+<p>Génoise au chocolat ou à la vanille...</p>
 <p><b>Longueur:</b> 35 cm</p>
 <p><b>Largeur:</b> 25 cm</p>
 <p><b>Personnes:</b> 30</p>
-
 <button class="order">Sur commande</button>
 </div>
 </div>
 
+<!-- SAMPLE PRODUCT 2 -->
 <div class="card">
 <img src="tarte2.jpg">
-
 <div class="card-content">
 <h3>Cake</h3>
-
-<p>
-Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec une tartine au chocolat et des noix. Décoration personnalisée
-</p>
-
+<p>Génoise au chocolat ou à la vanille...</p>
 <p><b>Longueur:</b> 24 cm</p>
 <p><b>Largeur:</b> 24 cm</p>
 <p><b>Personnes:</b> 12</p>
-
 <button class="order">Sur commande</button>
 </div>
 </div>
 
 </div>
 
-<!-- EMPTY SECTIONS (UNCHANGED) -->
+<!-- EMPTY SECTIONS (NO CHANGE) -->
 <section><h2>Cupcakes</h2><p>Section vide — produits à venir</p></section>
 <section><h2>Fleurs chocolat</h2><p>Section vide — produits à venir</p></section>
 <section><h2>Chocolat personnalisé</h2><p>Section vide — produits à venir</p></section>
