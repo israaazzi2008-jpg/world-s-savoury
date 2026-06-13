@@ -111,11 +111,11 @@ font-size:20px;
 }
 
 </style>
-
 </head>
 
 <body>
 
+<!-- 🧁 WELCOME BOX -->
 <div class="box">
 
 <h1>Bienvenue 🧁</h1>
@@ -131,7 +131,7 @@ Préparez-vous à découvrir notre univers gourmand...
 
 </div>
 
-<!-- 🧁 CUPCAKE SCRIPT -->
+<!-- 🧁 CUPCAKE ANIMATION -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
@@ -150,18 +150,20 @@ setTimeout(()=>c.remove(),9000);
 setInterval(createCupcake,600);
 </script>
 
-<!-- 🚀 AUTO REDIRECT + FADE OUT -->
+<!-- 🚀 AUTO REDIRECT (FIXED → accueil.html) -->
 <script>
-setTimeout(function(){
+window.onload = function(){
+setTimeout(() => {
 
-document.body.style.transition="opacity 0.9s ease";
-document.body.style.opacity="0";
+document.body.style.transition = "opacity 0.8s ease";
+document.body.style.opacity = "0";
 
-setTimeout(()=>{
-window.location.href="index.html";
-},900);
+setTimeout(() => {
+window.location.href = "accueil.html";
+}, 800);
 
-},3000);
+}, 3000);
+};
 </script>
 
 </body>
