@@ -2,12 +2,15 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Contact - World's Savoury</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
+/* 🌸 PAGE */
 body{
 margin:0;
 font-family:Poppins;
@@ -16,6 +19,7 @@ color:#333;
 text-align:center;
 opacity:0;
 animation:pageIn 0.8s ease forwards;
+-webkit-text-size-adjust:100%;
 overflow-x:hidden;
 }
 
@@ -24,11 +28,13 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
+/* 🚀 EXIT */
 .fade-out{
 opacity:0 !important;
 transition:0.6s ease;
 }
 
+/* NAV (same system as menu) */
 nav{
 display:flex;
 justify-content:center;
@@ -49,11 +55,13 @@ border-radius:20px;
 cursor:pointer;
 background:white;
 font-weight:bold;
+font-size:14px;
 }
 
+/* CONTAINER */
 .container{
 max-width:800px;
-margin:60px auto;
+margin:40px auto;
 padding:30px;
 background:rgba(255,255,255,0.7);
 backdrop-filter:blur(15px);
@@ -61,6 +69,7 @@ border-radius:25px;
 box-shadow:0 20px 50px rgba(0,0,0,0.1);
 }
 
+/* TITLE */
 h1{
 font-family:"Playfair Display";
 color:#b76e79;
@@ -68,9 +77,11 @@ font-size:40px;
 margin-bottom:10px;
 }
 
+/* TEXT */
 p{
 font-size:16px;
 margin-bottom:25px;
+line-height:1.6;
 }
 
 /* BUTTONS */
@@ -95,13 +106,14 @@ box-shadow:0 10px 20px rgba(0,0,0,0.1);
 transform:scale(1.05);
 }
 
+/* SMALL TEXT */
 .small{
 font-size:13px;
 opacity:0.7;
 margin-top:20px;
 }
 
-/* CUPCAKES */
+/* 🧁 CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -118,14 +130,13 @@ will-change:transform;
 100%{transform:translateY(110vh);opacity:0;}
 }
 
-/* 📱 FIX: REAL PHONE FULL-SCREEN FEEL */
+/* 📱 SAME MOBILE SYSTEM AS MENU */
 @media (max-width:768px){
 
 .container{
-margin:10px;
-padding:18px;
+margin:15px;
+padding:20px;
 border-radius:18px;
-width:auto;
 }
 
 h1{
@@ -134,12 +145,11 @@ font-size:30px;
 
 p{
 font-size:15px;
-line-height:1.5;
 }
 
 .btn{
 width:100%;
-font-size:15px;
+font-size:14px;
 padding:14px;
 }
 
@@ -166,7 +176,7 @@ c.style.animationDuration=(5+Math.random()*3)+"s";
 
 document.body.appendChild(c);
 
-setTimeout(()=>{ c.remove(); },9000);
+setTimeout(()=>c.remove(),9000);
 }
 setInterval(createCupcake,650);
 </script>
