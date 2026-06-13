@@ -3,20 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bienvenue - World's Savoury</title>
+<title>World's Savoury</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
 /* 🌸 GLOBAL */
-html, body{
+*{
 margin:0;
 padding:0;
-font-family:Poppins,sans-serif;
-background:linear-gradient(135deg,#fff0f5,#fffaf5);
-overflow:hidden;
+box-sizing:border-box;
+}
+
+html,body{
+width:100%;
 height:100%;
+overflow:hidden;
+background:linear-gradient(135deg,#fff0f5,#fffaf5);
+font-family:Poppins,sans-serif;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -31,6 +36,7 @@ font-size:24px;
 opacity:0.85;
 z-index:999;
 animation:fall linear forwards;
+pointer-events:none;
 }
 
 @keyframes fall{
@@ -44,57 +50,79 @@ opacity:0;
 }
 }
 
-/* 💎 BOX */
-.box{
-background:rgba(255,255,255,0.75);
-backdrop-filter:blur(15px);
-padding:50px;
-border-radius:25px;
-box-shadow:0 20px 60px rgba(0,0,0,0.15);
-width:80%;
-max-width:650px;
-animation:fadeIn 1.2s ease-in-out;
+/* ✨ INTRO */
+.intro{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:2;
 }
 
 /* 🌟 LOGO */
 .logo{
-width:170px;
-max-width:65%;
-margin-bottom:15px;
-animation:logoAppear 1s ease;
+width:240px;
+max-width:75vw;
+opacity:0;
+animation:logoFade 1.2s ease forwards;
 }
 
-@keyframes logoAppear{
+@keyframes logoFade{
 from{
 opacity:0;
-transform:scale(0.8);
+transform:translateY(25px) scale(0.95);
 }
 to{
 opacity:1;
-transform:scale(1);
+transform:translateY(0) scale(1);
 }
 }
 
-/* ✨ TITLE */
-h1{
+/* 🌷 WORLD'S SAVOURY TYPING */
+.typing{
 font-family:"Playfair Display",serif;
-font-size:50px;
+font-size:58px;
+font-weight:700;
 color:#b76e79;
-margin:10px 0;
-animation:welcomeFloat 3s ease-in-out infinite;
+margin-top:20px;
+overflow:hidden;
+white-space:nowrap;
+width:0;
+border-right:2px solid #b76e79;
+animation:
+typing 1.4s steps(15,end) forwards,
+blink .7s infinite;
+animation-delay:1s;
 }
 
-@keyframes welcomeFloat{
-0%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
-100%{transform:translateY(0);}
+@keyframes typing{
+from{
+width:0;
+}
+to{
+width:15ch;
+}
 }
 
-/* ❤️ HEART DRAWING */
+@keyframes blink{
+50%{
+border-color:transparent;
+}
+}
+
+/* ❤️ HEART */
 .heart-container{
-display:flex;
-justify-content:center;
-margin:20px 0;
+margin-top:20px;
+opacity:0;
+animation:showHeart .1s forwards;
+animation-delay:2.2s;
+}
+
+@keyframes showHeart{
+to{
+opacity:1;
+}
 }
 
 .heart{
@@ -107,7 +135,8 @@ stroke-linecap:round;
 stroke-linejoin:round;
 stroke-dasharray:1600;
 stroke-dashoffset:1600;
-animation:drawHeart 2s ease forwards;
+animation:drawHeart 1s ease forwards;
+animation-delay:2.2s;
 }
 
 @keyframes drawHeart{
@@ -116,58 +145,41 @@ stroke-dashoffset:0;
 }
 }
 
-p{
-font-size:18px;
-color:#555;
-line-height:1.7;
-}
-
-.small{
-font-size:14px;
-opacity:0.7;
-margin-top:10px;
-}
-
-/* 🌟 FADE IN */
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:scale(0.95);
-}
-to{
-opacity:1;
-transform:scale(1);
-}
-}
-
-/* 📱 MOBILE */
-@media (max-width:768px){
-
-.box{
-width:90%;
-padding:30px;
-border-radius:20px;
-}
+/* 📱 MOBILE OPTIMIZATION */
+@media(max-width:768px){
 
 .logo{
-width:130px;
+width:180px;
+max-width:80vw;
 }
 
-h1{
-font-size:32px;
-}
-
-p{
-font-size:15px;
+.typing{
+font-size:36px;
 }
 
 .heart{
-width:75px;
-height:75px;
+width:70px;
+height:70px;
 }
 
 .cupcake{
 font-size:20px;
+}
+}
+
+@media(max-width:480px){
+
+.logo{
+width:150px;
+}
+
+.typing{
+font-size:28px;
+}
+
+.heart{
+width:60px;
+height:60px;
 }
 }
 
@@ -176,13 +188,12 @@ font-size:20px;
 
 <body>
 
-<!-- 🧁 WELCOME BOX -->
-<div class="box">
+<div class="intro">
 
-<!-- Replace logo.png with your actual logo file name -->
-<img src="logo.png" alt="World's Savoury Logo" class="logo">
+<!-- Replace logo.png with your logo filename -->
+<img src="logo.png" alt="World's Savoury" class="logo">
 
-<h1>Bienvenue chez World's Savoury</h1>
+<h1 class="typing">World's Savoury</h1>
 
 <div class="heart-container">
 <svg class="heart" viewBox="0 0 512 512">
@@ -190,13 +201,9 @@ font-size:20px;
 </svg>
 </div>
 
-<p class="small">
-Préparez-vous à découvrir notre univers gourmand...
-</p>
-
 </div>
 
-<!-- 🧁 CUPCAKE ANIMATION -->
+<!-- 🧁 FALLING CUPCAKES -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
@@ -209,29 +216,31 @@ c.style.fontSize=(18+Math.random()*10)+"px";
 
 document.body.appendChild(c);
 
-setTimeout(()=>c.remove(),9000);
+setTimeout(()=>{
+c.remove();
+},9000);
 }
 
 setInterval(createCupcake,600);
 </script>
 
-<!-- 🚀 AUTO REDIRECT AFTER 3 SECONDS -->
+<!-- 🚀 REDIRECT TO MENU -->
 <script>
-window.onload = function(){
+window.onload=function(){
 
-setTimeout(() => {
+setTimeout(()=>{
 
-document.body.style.transition = "opacity 0.8s ease";
-document.body.style.opacity = "0";
+document.body.style.transition="opacity 0.8s ease";
+document.body.style.opacity="0";
 
-setTimeout(() => {
-window.location.href = "menu.html";
-}, 800);
+setTimeout(()=>{
+window.location.href="menu.html";
+},800);
 
-}, 3000);
+},3000);
 
 };
 </script>
 
 </body>
-</html>    
+</html>   
