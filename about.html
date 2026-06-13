@@ -18,6 +18,7 @@ text-align:center;
 opacity:0;
 animation:pageIn 0.9s ease forwards;
 overflow-x:hidden;
+-webkit-text-size-adjust:100%;
 }
 
 @keyframes pageIn{
@@ -45,6 +46,7 @@ z-index:1000;
 flex-wrap:wrap;
 }
 
+/* FIX: buttons don’t overflow on phone */
 nav button{
 border:none;
 padding:10px 15px;
@@ -69,6 +71,7 @@ box-shadow:0 20px 50px rgba(0,0,0,0.12);
 /* 🧁 LOGO */
 .logo{
 width:110px;
+max-width:35vw;
 border-radius:15px;
 margin-bottom:15px;
 box-shadow:0 10px 25px rgba(0,0,0,0.2);
@@ -92,14 +95,10 @@ margin-bottom:10px;
 p{
 font-size:16px;
 line-height:1.8;
+word-wrap:break-word;
 }
 
-.highlight{
-font-weight:bold;
-color:#b76e79;
-}
-
-/* 🧁 CUPCAKES (OPTIMIZED FOR PHONE) */
+/* 🌸 CUPCAKES (OPTIMIZED) */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -127,6 +126,7 @@ opacity:0;
 .container{
 margin:20px;
 padding:20px;
+border-radius:18px;
 }
 
 h1{
@@ -148,16 +148,16 @@ font-size:13px;
 }
 
 .cupcake{
-font-size:18px;
+font-size:16px;
 }
 
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- 🧁 CUPCAKES -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
@@ -171,11 +171,9 @@ document.body.appendChild(c);
 
 setTimeout(()=>c.remove(),9000);
 }
-
 setInterval(createCupcake,800);
 </script>
 
-<!-- 🚀 NAV -->
 <script>
 function goTo(page){
 document.body.classList.add("fade-out");
@@ -185,14 +183,12 @@ window.location.href = page;
 }
 </script>
 
-<!-- NAV -->
 <nav>
 <button onclick="goTo('index.html')">Accueil</button>
 <button onclick="goTo('menu.html')">Menu</button>
 <button onclick="goTo('contact.html')">Contact</button>
 </nav>
 
-<!-- ABOUT CONTENT -->
 <div class="container">
 
 <img src="logo.jpg" class="logo" alt="logo">
