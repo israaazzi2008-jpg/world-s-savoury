@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>World's Savoury</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:Poppins;
+background:linear-gradient(135deg,#fff0f5,#fffaf5);
+overflow:hidden;
+text-align:center;
+}
+
+/* CUPCAKES ANIMATION */
+.cupcake{
+position:fixed;
+top:-50px;
+font-size:24px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-50px);opacity:1;}
+100%{transform:translateY(110vh);opacity:0;}
+}
+
+/* CENTER BOX */
+.box{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(15px);
+padding:50px;
+border-radius:25px;
+box-shadow:0 20px 60px rgba(0,0,0,0.2);
+width:80%;
+max-width:600px;
+}
+
+h1{
+font-size:50px;
+font-family:"Playfair Display";
+color:#b76e79;
+}
+
+p{
+font-size:18px;
+}
+
+.logo{
+width:120px;
+border-radius:15px;
+margin-bottom:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+button{
+margin-top:20px;
+padding:15px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,#b76e79,#d88a9a);
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.small{
+font-size:14px;
+opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<!-- CUPCAKES -->
+<script>
+function createCupcake(){
+let c=document.createElement("div");
+c.className="cupcake";
+c.innerHTML="🧁";
+c.style.left=Math.random()*window.innerWidth+"px";
+c.style.animationDuration=(3+Math.random()*5)+"s";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),8000);
+}
+setInterval(createCupcake,400);
+</script>
+
+<!-- MAIN BOX -->
+<div class="box">
+
+<!-- LOGO -->
+<img class="logo" src="logo.jpg" alt="logo">
+
+<h1>World's Savoury</h1>
+
+<p>Créations maison avec amour, passion et élégance</p>
+
+<p class="small">Gâteaux • Cupcakes • Chocolats personnalisés</p>
+
+<button onclick="window.location.href='menu.html'">
+Entrer dans le site
+</button>
+
+</div>
+
+</body>
+</html>
