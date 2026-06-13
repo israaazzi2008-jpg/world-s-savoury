@@ -7,6 +7,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+  <script>
+function createCupcake(){
+let c=document.createElement("div");
+c.className="cupcake";
+c.innerHTML="🧁";
+c.style.left=Math.random()*window.innerWidth+"px";
+c.style.animationDuration=(3+Math.random()*5)+"s";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),8000);
+}
+setInterval(createCupcake,400);
+</script>
+
+<style>
+.cupcake{
+position:fixed;
+top:-50px;
+font-size:24px;
+animation:fall linear infinite;
+z-index:999;
+opacity:0.8;
+}
+
+@keyframes fall{
+0%{transform:translateY(-50px);opacity:1;}
+100%{transform:translateY(110vh);opacity:0;}
+}
+</style>
 body{
 margin:0;
 font-family:Poppins;
