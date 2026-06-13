@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>World's Savoury - Menu</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -17,6 +19,7 @@ color:#333;
 opacity:0;
 animation:pageIn 0.8s ease forwards;
 overflow-x:hidden;
+-webkit-text-size-adjust: 100%;
 }
 
 @keyframes pageIn{
@@ -30,7 +33,7 @@ opacity:0 !important;
 transition:0.6s ease;
 }
 
-/* 🧁 CUPCAKES */
+/* 🧁 CUPCAKES (UNCHANGED LOGIC) */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -38,6 +41,8 @@ font-size:24px;
 opacity:0.85;
 z-index:999;
 animation:fall linear forwards;
+pointer-events:none;
+will-change: transform;
 }
 
 @keyframes fall{
@@ -56,6 +61,7 @@ position:sticky;
 top:0;
 backdrop-filter:blur(10px);
 z-index:1000;
+flex-wrap:wrap;
 }
 
 nav button{
@@ -65,6 +71,7 @@ border-radius:20px;
 cursor:pointer;
 background:white;
 font-weight:bold;
+font-size:14px;
 }
 
 /* TITLE */
@@ -81,6 +88,7 @@ font-size:13px;
 opacity:0.75;
 margin-top:-10px;
 margin-bottom:15px;
+padding:0 10px;
 }
 
 /* FILTER MENU */
@@ -99,6 +107,7 @@ border-radius:20px;
 cursor:pointer;
 background:white;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
+font-size:14px;
 }
 
 /* PRODUCTS */
@@ -150,11 +159,31 @@ margin-top:10px;
 cursor:pointer;
 }
 
-/* 📱 MOBILE */
+/* 📱 MOBILE OPTIMIZATION ONLY */
 @media (max-width:768px){
-.card{width:90%;}
-.menu{overflow-x:auto; flex-wrap:nowrap;}
-h1{font-size:24px;}
+
+.card{
+width:92%;
+}
+
+.menu{
+overflow-x:auto;
+flex-wrap:nowrap;
+padding:10px;
+}
+
+.menu button{
+flex:0 0 auto;
+}
+
+h1{
+font-size:22px;
+}
+
+.remark{
+font-size:12px;
+}
+
 }
 
 </style>
@@ -162,7 +191,6 @@ h1{font-size:24px;}
 
 <body>
 
-<!-- 🧁 CUPCAKES -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
@@ -176,7 +204,6 @@ setTimeout(()=>c.remove(),9000);
 setInterval(createCupcake,650);
 </script>
 
-<!-- NAV -->
 <script>
 function goTo(page){
 document.body.classList.add("fade-out");
@@ -197,7 +224,6 @@ setTimeout(()=>{ window.location.href = page; },600);
 ⭐ Remarque : le client choisit les ingrédients et la décoration de son gâteau.
 </div>
 
-<!-- FILTER -->
 <div class="menu">
 <button onclick="filterCategory('all')">Tout</button>
 <button onclick="filterCategory('cakes')">Cakes</button>
@@ -208,7 +234,6 @@ setTimeout(()=>{ window.location.href = page; },600);
 <button onclick="filterCategory('esquimaux')">Esquimaux</button>
 </div>
 
-<!-- PRODUCTS (7 CAKES RESTORED) -->
 <div class="products">
 
 <div class="card cakes">
@@ -278,7 +303,6 @@ setTimeout(()=>{ window.location.href = page; },600);
 
 </div>
 
-<!-- FILTER SCRIPT -->
 <script>
 function filterCategory(category){
 let cards = document.querySelectorAll(".card");
