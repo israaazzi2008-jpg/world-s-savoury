@@ -7,215 +7,55 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-margin: 0;
-font-family: "Poppins", sans-serif;
-background: linear-gradient(135deg, #fff0f5, #fffaf5);
-color: #333;
-overflow-x: hidden;
+body{
+margin:0;
+font-family:Poppins;
+background:linear-gradient(135deg,#fff0f5,#fffaf5);
+text-align:center;
+overflow:hidden;
 }
 
-/* ================= NAV ================= */
-nav {
-position: sticky;
-top: 0;
-background: rgba(255,255,255,0.85);
-backdrop-filter: blur(10px);
-display: flex;
-justify-content: center;
-gap: 10px;
-padding: 10px;
-z-index: 1000;
+.container{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(15px);
+padding:50px;
+border-radius:25px;
+box-shadow:0 20px 60px rgba(0,0,0,0.2);
 }
 
-nav button {
-border: none;
-padding: 10px 15px;
-border-radius: 20px;
-cursor: pointer;
-background: white;
-font-weight: bold;
+h1{
+font-size:50px;
+color:#b76e79;
+font-family:"Playfair Display";
 }
 
-/* ================= HERO ================= */
-header {
-text-align: center;
-padding: 60px 20px;
-background: radial-gradient(circle, #d88a9a, #b76e79);
-color: white;
-}
-
-header h1 {
-font-family: "Playfair Display", serif;
-font-size: 50px;
-}
-
-/* ================= SECTIONS ================= */
-section {
-padding: 60px 20px;
-text-align: center;
-}
-
-/* ================= PRODUCTS ================= */
-.products {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 20px;
-}
-
-.card {
-width: 270px;
-background: rgba(255,255,255,0.85);
-border-radius: 20px;
-overflow: hidden;
-box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-}
-
-.card img {
-width: 100%;
-height: 180px;
-object-fit: cover;
-}
-
-.card-content {
-padding: 15px;
-}
-
-button.order {
-background: linear-gradient(90deg,#b76e79,#d88a9a);
-color: white;
-border: none;
-padding: 10px;
-border-radius: 12px;
-width: 100%;
-cursor: pointer;
-}
-
-/* ================= CUPCAKES ================= */
-.cupcake {
-position: fixed;
-top: -50px;
-font-size: 24px;
-animation: fall linear infinite;
-z-index: 999;
-}
-
-@keyframes fall {
-0% {transform: translateY(-50px); opacity: 1;}
-100% {transform: translateY(110vh); opacity: 0;}
+button{
+padding:15px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,#b76e79,#d88a9a);
+color:white;
+cursor:pointer;
+font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= CUPCAKES ANIMATION ================= -->
-<script>
-function createCupcake(){
-let c=document.createElement("div");
-c.className="cupcake";
-c.innerHTML="🧁";
-c.style.left=Math.random()*window.innerWidth+"px";
-c.style.animationDuration=(4+Math.random()*4)+"s";
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),8000);
-}
-setInterval(createCupcake,500);
-</script>
-
-<!-- ================= NAV ================= -->
-<nav>
-<button onclick="scrollTo('home')">Accueil</button>
-<button onclick="scrollTo('menu')">Menu</button>
-<button onclick="scrollTo('about')">À propos</button>
-<button onclick="scrollTo('contact')">Contact</button>
-</nav>
-
-<!-- ================= HOME ================= -->
-<header id="home">
+<div class="container">
 <h1>World's Savoury</h1>
+
 <p>Créations maison avec amour et passion</p>
-</header>
 
-<!-- ================= MENU ================= -->
-<section id="menu">
-
-<h2>Nos créations</h2>
-
-<div class="products">
-
-<!-- PRODUCT 1 -->
-<div class="card">
-<img src="tarte1.jpg">
-
-<div class="card-content">
-<h3>Cake</h3>
-
-<p>
-Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec une tartine au chocolat et des noix. Décoration personnalisée
-</p>
-
-<p>35 cm • 30 personnes</p>
-
-<button class="order">Sur commande</button>
-</div>
-</div>
-
-<!-- PRODUCT 2 -->
-<div class="card">
-<img src="tarte2.jpg">
-
-<div class="card-content">
-<h3>cake</h3>
-
-<p>
-Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec une tartine au chocolat et des noix. Décoration personnalisée
-</p>
-
-<p>24 cm • 12 personnes</p>
-
-<button class="order">Sur commande</button>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- ================= ABOUT ================= -->
-<section id="about">
-<h2>À propos</h2>
-
-<p>
-World's Savoury est une pâtisserie maison spécialisée dans les gâteaux, cupcakes et chocolats personnalisés.
-Chaque création est faite avec amour et passion.
-</p>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact">
-<h2>Contact</h2>
-
-<button onclick="window.open('https://www.instagram.com/worldssavory?igsh=NWNpNGVsamZxYjc4')">
-Instagram
+<button onclick="window.location.href='menu.html'">
+Entrer dans le site
 </button>
-
-<button onclick="window.open('https://www.facebook.com/share/1AEWSZQUeR/?mibextid=wwXIfr')">
-Facebook
-</button>
-
-<button onclick="window.open('https://share.google/Db0AfpQq43n0VyLFz')">
-Localisation
-</button>
-</section>
-
-<script>
-function scrollTo(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-</script>
+</div>
 
 </body>
 </html>
-
-
