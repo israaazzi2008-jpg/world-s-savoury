@@ -8,19 +8,42 @@
 
 <style>
 
-html {
-scroll-behavior: smooth;
-}
-
+/* 🌸 BACKGROUND + PREMIUM GLOW */
 body{
 margin:0;
 font-family:Poppins;
 background:linear-gradient(135deg,#fff0f5,#fffaf5);
 overflow:hidden;
 text-align:center;
+opacity:0;
+animation:pageIn 1s ease forwards;
 }
 
-/* 🧁 FLOATING CUPCAKES (UPDATED LUXURY ANIMATION) */
+/* ✨ soft animated glow (NEW 10/10 TOUCH) */
+body::before{
+content:"";
+position:fixed;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:radial-gradient(circle,rgba(183,110,121,0.08),transparent 60%);
+animation:floatGlow 8s ease-in-out infinite;
+pointer-events:none;
+}
+
+@keyframes floatGlow{
+0%{transform:translate(0,0);}
+50%{transform:translate(3%,2%);}
+100%{transform:translate(0,0);}
+}
+
+@keyframes pageIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* 🧁 CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -44,7 +67,7 @@ opacity:0;
 }
 }
 
-/* BOX */
+/* 💎 BOX */
 .box{
 position:absolute;
 top:50%;
@@ -65,18 +88,22 @@ from{opacity:0; transform:translate(-50%,-60%);}
 to{opacity:1; transform:translate(-50%,-50%);}
 }
 
+/* ✨ TITLE (more premium presence) */
 h1{
-font-size:50px;
+font-size:52px;
 font-family:"Playfair Display";
 color:#b76e79;
-text-shadow:0 0 15px rgba(183,110,121,0.3);
+text-shadow:0 0 18px rgba(183,110,121,0.25);
+margin-bottom:10px;
 }
 
 p{
 font-size:18px;
 margin:10px 0;
+color:#444;
 }
 
+/* 🧁 LOGO */
 .logo{
 width:120px;
 border-radius:15px;
@@ -91,6 +118,7 @@ animation:floatLogo 4s ease-in-out infinite;
 100%{transform:translateY(0);}
 }
 
+/* 🔘 BUTTON (more app-like feel) */
 button{
 margin-top:20px;
 padding:15px 25px;
@@ -100,19 +128,25 @@ background:linear-gradient(90deg,#b76e79,#d88a9a);
 color:white;
 font-weight:bold;
 cursor:pointer;
-transition:0.3s;
+transition:0.25s ease;
 }
 
 button:hover{
-transform:scale(1.05);
+transform:scale(1.06);
 }
 
+button:active{
+transform:scale(0.97);
+}
+
+/* SMALL TEXT */
 .small{
 font-size:14px;
-opacity:0.7;
+opacity:0.75;
 margin-top:10px;
 }
 
+/* PREVIEW BOX */
 .preview{
 margin-top:20px;
 padding:10px;
@@ -122,20 +156,41 @@ font-size:14px;
 color:#555;
 }
 
-/* MOBILE */
+/* 🌟 NEW BRAND TAGLINE (10/10 upgrade) */
+.tagline{
+margin-top:10px;
+font-size:15px;
+color:#b76e79;
+font-weight:500;
+}
+
+/* 📱 MOBILE UPGRADE */
 @media (max-width:768px){
+
 .box{
 width:90%;
 padding:30px;
+border-radius:20px;
 }
-h1{font-size:34px;}
-p{font-size:16px;}
-.logo{width:100px;}
+
+h1{
+font-size:36px;
+}
+
+p{
+font-size:15px;
+}
+
+.logo{
+width:100px;
+}
+
 button{
 width:100%;
 padding:14px;
 font-size:16px;
 }
+
 }
 
 </style>
@@ -163,6 +218,10 @@ setInterval(createCupcake,700);
 <h1>World's Savoury</h1>
 
 <p>Créations artisanales faites avec amour, élégance et passion</p>
+
+<p class="tagline">
+Chaque création raconte une histoire sucrée ✨
+</p>
 
 <p class="small">
 Bienvenue chez World's Savoury, une pâtisserie artisanale où chaque création raconte une histoire.
