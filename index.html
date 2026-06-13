@@ -2,136 +2,106 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<title>World's Savoury</title>
+
+<!-- 📱 IMPORTANT FOR PHONE -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bienvenue - World's Savoury</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-/* 🌸 GLOBAL (PHONE FIXED) */
-html, body{
+/* 🌸 BACKGROUND (UNCHANGED) */
+body{
 margin:0;
-padding:0;
-font-family:Poppins,sans-serif;
+font-family:Poppins;
 background:linear-gradient(135deg,#fff0f5,#fffaf5);
 overflow:hidden;
-height:100vh;
-width:100%;
-display:flex;
-justify-content:center;
-align-items:center;
 text-align:center;
--webkit-text-size-adjust: 100%;
-}
-
-/* 🧁 CUPCAKES */
-.cupcake{
-position:fixed;
-top:-50px;
-font-size:24px;
-opacity:0.85;
-z-index:999;
-pointer-events:none;
-animation:fall linear forwards;
-will-change: transform;
-}
-
-@keyframes fall{
-0%{
-transform:translateY(-50px) translateX(0);
-opacity:1;
-}
-100%{
-transform:translateY(110vh) translateX(40px);
 opacity:0;
-}
+animation:pageIn 1s ease forwards;
 }
 
-/* 💎 BOX (PHONE STABLE) */
+@keyframes pageIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* 💎 BOX (ONLY MOBILE FIX) */
 .box{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 background:rgba(255,255,255,0.75);
 backdrop-filter:blur(15px);
 padding:50px;
 border-radius:25px;
 box-shadow:0 20px 60px rgba(0,0,0,0.15);
 width:80%;
-max-width:650px;
-box-sizing:border-box;
-animation:fadeIn 1.2s ease-in-out;
+max-width:600px;
+}
+
+/* 🧁 LOGO */
+.logo{
+width:110px;
+border-radius:15px;
+margin-bottom:10px;
 }
 
 /* ✨ TITLE */
 h1{
-font-family:"Playfair Display",serif;
-font-size:55px;
+font-family:"Playfair Display";
+font-size:52px;
 color:#b76e79;
-margin-bottom:15px;
-animation:welcomeFloat 3s ease-in-out infinite;
+margin:10px 0;
 }
 
-@keyframes welcomeFloat{
-0%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
-100%{transform:translateY(0);}
+/* CUPCAKES (UNCHANGED) */
+.cupcake{
+position:fixed;
+top:-50px;
+font-size:24px;
+z-index:999;
+animation:fall linear forwards;
 }
 
-p{
-font-size:18px;
-color:#555;
-line-height:1.7;
-word-wrap:break-word;
+@keyframes fall{
+0%{transform:translateY(-50px);}
+100%{transform:translateY(110vh);opacity:0;}
 }
 
-.small{
-font-size:14px;
-opacity:0.7;
-margin-top:20px;
+/* BUTTON */
+button{
+margin-top:18px;
+padding:15px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,#b76e79,#d88a9a);
+color:white;
+font-weight:bold;
+cursor:pointer;
 }
 
-/* 🌟 FADE IN */
-@keyframes fadeIn{
-from{opacity:0; transform:scale(0.95);}
-to{opacity:1; transform:scale(1);}
-}
-
-/* 📱 MOBILE OPTIMIZATION ONLY */
+/* 📱 ONLY MOBILE OPTIMIZATION */
 @media (max-width:768px){
 
 .box{
-width:92%;
+width:90%;
 padding:25px;
-border-radius:18px;
 }
 
 h1{
 font-size:34px;
-line-height:1.2;
 }
 
-p{
-font-size:15px;
+.logo{
+width:90px;
 }
 
-.small{
-font-size:13px;
-}
-
-.cupcake{
-font-size:18px;
-}
-
-}
-
-/* VERY SMALL PHONES */
-@media (max-width:380px){
-
-.box{
-padding:20px;
-}
-
-h1{
-font-size:30px;
+button{
+width:100%;
+padding:14px;
 }
 }
 
@@ -140,58 +110,32 @@ font-size:30px;
 
 <body>
 
-<!-- 🧁 WELCOME BOX -->
-<div class="box">
-
-<h1>Bienvenue 🧁</h1>
-
-<p>
-Bienvenue chez <b>World's Savoury</b>,
-où chaque création est réalisée avec amour, passion et élégance.
-</p>
-
-<p class="small">
-Préparez-vous à découvrir notre univers gourmand...
-</p>
-
-</div>
-
-<!-- 🧁 CUPCAKE ANIMATION (UNCHANGED) -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
 c.className="cupcake";
 c.innerHTML="🧁";
-
 c.style.left=Math.random()*window.innerWidth+"px";
 c.style.animationDuration=(4+Math.random()*4)+"s";
-c.style.fontSize=(18+Math.random()*10)+"px";
-
 document.body.appendChild(c);
-
 setTimeout(()=>c.remove(),9000);
 }
-
-setInterval(createCupcake,600);
+setInterval(createCupcake,700);
 </script>
 
-<!-- 🚀 AUTO REDIRECT (UNCHANGED) -->
-<script>
-window.onload = function(){
-setTimeout(() => {
+<div class="box">
 
-document.body.style.transition = "opacity 0.8s ease";
-document.body.style.opacity = "0";
+<img class="logo" src="logo.jpg" alt="logo">
 
-setTimeout(() => {
-window.location.href = "accueil.html";
-}, 800);
+<h1>World's Savoury</h1>
 
-}, 2000);
-};
-</script>
+<p>Créations artisanales avec amour</p>
+
+<button onclick="window.location.href='menu.html'">
+Découvrir 🧁
+</button>
+
+</div>
 
 </body>
 </html>
-
-
