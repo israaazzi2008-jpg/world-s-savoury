@@ -4,26 +4,30 @@
 <meta charset="UTF-8">
 <title>Contact - World's Savoury</title>
 
-<!-- 📱 MOBILE FIX -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
+/* 🌸 PAGE LOAD */
 body{
 margin:0;
 font-family:Poppins;
 background:linear-gradient(135deg,#fff0f5,#fffaf5);
+color:#333;
 text-align:center;
 opacity:0;
 animation:pageIn 0.8s ease forwards;
-overflow-x:hidden;
 }
 
 @keyframes pageIn{
 from{opacity:0;}
 to{opacity:1;}
+}
+
+/* 🚀 SMOOTH EXIT */
+.fade-out{
+opacity:0 !important;
+transition:0.6s ease;
 }
 
 /* NAV */
@@ -36,7 +40,7 @@ background:rgba(255,255,255,0.85);
 backdrop-filter:blur(10px);
 position:sticky;
 top:0;
-flex-wrap:wrap;
+z-index:1000;
 }
 
 nav button{
@@ -51,55 +55,99 @@ font-weight:bold;
 /* CONTAINER */
 .container{
 max-width:800px;
-margin:30px auto;
-padding:20px;
-background:rgba(255,255,255,0.75);
+margin:60px auto;
+padding:30px;
+background:rgba(255,255,255,0.7);
 backdrop-filter:blur(15px);
 border-radius:25px;
-box-shadow:0 20px 50px rgba(0,0,0,0.12);
+box-shadow:0 20px 50px rgba(0,0,0,0.1);
 }
 
 /* TITLE */
 h1{
 font-family:"Playfair Display";
 color:#b76e79;
-font-size:30px;
+font-size:40px;
+margin-bottom:10px;
+}
+
+p{
+font-size:16px;
+margin-bottom:25px;
 }
 
 /* BUTTONS */
 .btn{
 display:block;
-width:90%;
+width:80%;
 max-width:300px;
-margin:12px auto;
-padding:14px;
+margin:15px auto;
+padding:15px;
 border:none;
 border-radius:25px;
 cursor:pointer;
+font-weight:bold;
+font-size:15px;
+transition:0.3s;
 background:linear-gradient(90deg,#b76e79,#d88a9a);
 color:white;
-font-weight:bold;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* CUPCAKES */
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* SMALL TEXT */
+.small{
+font-size:13px;
+opacity:0.7;
+margin-top:20px;
+}
+
+/* 🧁 CUPCAKES (ONLY MOBILE OPTIMIZED, SAME TIMING) */
 .cupcake{
 position:fixed;
 top:-50px;
 font-size:22px;
-animation:fall linear forwards;
+opacity:0.85;
 z-index:999;
+pointer-events:none;
+animation:fall linear forwards;
+will-change: transform;
 }
 
 @keyframes fall{
-0%{transform:translateY(-50px);}
-100%{transform:translateY(110vh);opacity:0;}
+0%{
+transform:translateY(-50px);
+}
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
 }
 
-/* 📱 MOBILE */
-@media(max-width:768px){
-.container{margin:15px; padding:15px;}
-h1{font-size:24px;}
-.btn{width:95%;}
+/* 📱 MOBILE (ONLY OPTIMIZATION, NO BEHAVIOR CHANGE) */
+@media (max-width:768px){
+
+.container{
+margin:20px;
+padding:20px;
+}
+
+h1{
+font-size:28px;
+}
+
+.btn{
+width:95%;
+font-size:14px;
+}
+
+.cupcake{
+font-size:18px;
+}
+
 }
 
 </style>
@@ -112,36 +160,61 @@ function createCupcake(){
 let c=document.createElement("div");
 c.className="cupcake";
 c.innerHTML="🧁";
+
 c.style.left=Math.random()*window.innerWidth+"px";
 c.style.animationDuration=(5+Math.random()*3)+"s";
+
 document.body.appendChild(c);
-setTimeout(()=>c.remove(),9000);
+
+setTimeout(()=>{
+c.remove();
+},9000);
 }
+
 setInterval(createCupcake,650);
 </script>
 
+<script>
+function goTo(page){
+document.body.classList.add("fade-out");
+setTimeout(()=>{
+window.location.href = page;
+},600);
+}
+</script>
+
 <nav>
-<button onclick="window.location.href='index.html'">Accueil</button>
-<button onclick="window.location.href='menu.html'">Menu</button>
-<button onclick="window.location.href='about.html'">À propos</button>
+<button onclick="goTo('index.html')">Accueil</button>
+<button onclick="goTo('menu.html')">Menu</button>
+<button onclick="goTo('about.html')">À propos</button>
 </nav>
 
 <div class="container">
 
-<h1>Contact</h1>
+<h1>Contactez-nous</h1>
 
-<p>Contactez-nous pour vos commandes 💖</p>
+<p>
+Pour commander vos gâteaux personnalisés ou obtenir plus d’informations,
+contactez-nous via nos réseaux sociaux.
+</p>
 
-<button class="btn" onclick="window.open('https://instagram.com/worldssavory')">
+<button class="btn" onclick="window.open('https://www.instagram.com/worldssavory?igsh=NWNpNGVsamZxYjc4')">
 📸 Instagram
 </button>
 
-<button class="btn" onclick="window.open('https://facebook.com')">
+<button class="btn" onclick="window.open('https://www.facebook.com/share/1AEWSZQUeR/?mibextid=wwXIfr')">
 📘 Facebook
 </button>
+
+<button class="btn" onclick="window.open('https://share.google/Db0AfpQq43n0VyLFz')">
+📍 Localisation (Béni Saf)
+</button>
+
+<p class="small">
+World's Savoury — créations maison avec amour et passion 💖
+</p>
 
 </div>
 
 </body>
 </html>
-
