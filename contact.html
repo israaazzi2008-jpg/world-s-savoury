@@ -17,6 +17,8 @@ color:#333;
 text-align:center;
 opacity:0;
 animation:pageIn 0.8s ease forwards;
+-webkit-text-size-adjust:100%;
+overflow-x:hidden;
 }
 
 @keyframes pageIn{
@@ -41,6 +43,7 @@ backdrop-filter:blur(10px);
 position:sticky;
 top:0;
 z-index:1000;
+flex-wrap:wrap;
 }
 
 nav button{
@@ -50,6 +53,7 @@ border-radius:20px;
 cursor:pointer;
 background:white;
 font-weight:bold;
+font-size:14px;
 }
 
 /* CONTAINER */
@@ -74,6 +78,7 @@ margin-bottom:10px;
 p{
 font-size:16px;
 margin-bottom:25px;
+word-wrap:break-word;
 }
 
 /* BUTTONS */
@@ -105,7 +110,7 @@ opacity:0.7;
 margin-top:20px;
 }
 
-/* 🧁 CUPCAKES (ONLY MOBILE OPTIMIZED, SAME TIMING) */
+/* 🧁 CUPCAKES (ONLY OPTIMIZED, SAME BEHAVIOR) */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -114,25 +119,21 @@ opacity:0.85;
 z-index:999;
 pointer-events:none;
 animation:fall linear forwards;
-will-change: transform;
+will-change:transform;
 }
 
 @keyframes fall{
-0%{
-transform:translateY(-50px);
-}
-100%{
-transform:translateY(110vh);
-opacity:0;
-}
+0%{transform:translateY(-50px);}
+100%{transform:translateY(110vh);opacity:0;}
 }
 
-/* 📱 MOBILE (ONLY OPTIMIZATION, NO BEHAVIOR CHANGE) */
+/* 📱 MOBILE ONLY OPTIMIZATION */
 @media (max-width:768px){
 
 .container{
 margin:20px;
 padding:20px;
+border-radius:18px;
 }
 
 h1{
@@ -146,6 +147,11 @@ font-size:14px;
 
 .cupcake{
 font-size:18px;
+}
+
+nav button{
+padding:8px 10px;
+font-size:13px;
 }
 
 }
@@ -166,9 +172,7 @@ c.style.animationDuration=(5+Math.random()*3)+"s";
 
 document.body.appendChild(c);
 
-setTimeout(()=>{
-c.remove();
-},9000);
+setTimeout(()=>{ c.remove(); },9000);
 }
 
 setInterval(createCupcake,650);
@@ -218,3 +222,4 @@ World's Savoury — créations maison avec amour et passion 💖
 
 </body>
 </html>
+
