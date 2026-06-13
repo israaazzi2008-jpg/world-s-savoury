@@ -8,6 +8,10 @@
 
 <style>
 
+html {
+scroll-behavior: smooth;
+}
+
 body{
 margin:0;
 font-family:Poppins;
@@ -16,21 +20,31 @@ overflow:hidden;
 text-align:center;
 }
 
-/* CUPCAKES ANIMATION */
+/* 🧁 FLOATING CUPCAKES (UPDATED LUXURY ANIMATION) */
 .cupcake{
 position:fixed;
 top:-50px;
 font-size:24px;
-animation:fall linear infinite;
 z-index:999;
+opacity:0.85;
+animation:fall linear forwards;
 }
 
 @keyframes fall{
-0%{transform:translateY(-50px);opacity:1;}
-100%{transform:translateY(110vh);opacity:0;}
+0%{
+transform:translateY(-50px) translateX(0);
+opacity:1;
+}
+50%{
+transform:translateY(50vh) translateX(40px);
+}
+100%{
+transform:translateY(110vh) translateX(-40px);
+opacity:0;
+}
 }
 
-/* CENTER BOX */
+/* BOX */
 .box{
 position:absolute;
 top:50%;
@@ -43,16 +57,24 @@ border-radius:25px;
 box-shadow:0 20px 60px rgba(0,0,0,0.2);
 width:80%;
 max-width:600px;
+animation:fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translate(-50%,-60%);}
+to{opacity:1; transform:translate(-50%,-50%);}
 }
 
 h1{
 font-size:50px;
 font-family:"Playfair Display";
 color:#b76e79;
+text-shadow:0 0 15px rgba(183,110,121,0.3);
 }
 
 p{
 font-size:18px;
+margin:10px 0;
 }
 
 .logo{
@@ -60,6 +82,13 @@ width:120px;
 border-radius:15px;
 margin-bottom:15px;
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
+animation:floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+0%{transform:translateY(0);}
+50%{transform:translateY(-8px);}
+100%{transform:translateY(0);}
 }
 
 button{
@@ -71,11 +100,42 @@ background:linear-gradient(90deg,#b76e79,#d88a9a);
 color:white;
 font-weight:bold;
 cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
 }
 
 .small{
 font-size:14px;
 opacity:0.7;
+margin-top:10px;
+}
+
+.preview{
+margin-top:20px;
+padding:10px;
+border-radius:15px;
+background:rgba(255,255,255,0.5);
+font-size:14px;
+color:#555;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+.box{
+width:90%;
+padding:30px;
+}
+h1{font-size:34px;}
+p{font-size:16px;}
+.logo{width:100px;}
+button{
+width:100%;
+padding:14px;
+font-size:16px;
+}
 }
 
 </style>
@@ -83,35 +143,53 @@ opacity:0.7;
 
 <body>
 
-<!-- CUPCAKE SCRIPT (ONLY ONCE) -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
 c.className="cupcake";
 c.innerHTML="🧁";
 c.style.left=Math.random()*window.innerWidth+"px";
-c.style.animationDuration=(3+Math.random()*5)+"s";
+c.style.animationDuration=(4+Math.random()*4)+"s";
 document.body.appendChild(c);
-setTimeout(()=>c.remove(),8000);
+setTimeout(()=>c.remove(),9000);
 }
-setInterval(createCupcake,400);
+setInterval(createCupcake,700);
 </script>
 
-<!-- MAIN BOX -->
 <div class="box">
 
-<!-- LOGO -->
 <img class="logo" src="logo.jpg" alt="logo">
 
 <h1>World's Savoury</h1>
 
-<p>Créations maison avec amour, passion et élégance</p>
+<p>Créations artisanales faites avec amour, élégance et passion</p>
+
+<p class="small">
+Bienvenue chez World's Savoury, une pâtisserie artisanale où chaque création raconte une histoire.
+</p>
 
 <p class="small">Gâteaux • Cupcakes • Chocolats personnalisés</p>
 
+<div class="preview">
+✨ Création du moment : Gâteau chocolat caramel personnalisé<br>
+💖 Spécialité : Cakes & desserts sur commande
+</div>
+
 <button onclick="window.location.href='menu.html'">
-Entrer dans le site
+Découvrir World's Savoury 🧁
 </button>
+
+<div class="small">
+✔ Fait maison • ✔ Sur commande • ✔ Personnalisé avec soin
+</div>
+
+<p class="small">
+Des créations sucrées qui racontent une histoire.
+</p>
+
+<div class="small">
+Site created by Azzi Israa
+</div>
 
 </div>
 
