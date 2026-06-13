@@ -2,106 +2,111 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>World's Savoury</title>
-
-<!-- 📱 IMPORTANT FOR PHONE -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bienvenue - World's Savoury</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-/* 🌸 BACKGROUND (UNCHANGED) */
-body{
+/* 🌸 GLOBAL */
+html, body{
 margin:0;
-font-family:Poppins;
+padding:0;
+font-family:Poppins,sans-serif;
 background:linear-gradient(135deg,#fff0f5,#fffaf5);
 overflow:hidden;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
 text-align:center;
+}
+
+/* 🧁 CUPCAKES */
+.cupcake{
+position:fixed;
+top:-50px;
+font-size:24px;
+opacity:0.85;
+z-index:999;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-50px) translateX(0);
+opacity:1;
+}
+100%{
+transform:translateY(110vh) translateX(40px);
 opacity:0;
-animation:pageIn 1s ease forwards;
+}
 }
 
-@keyframes pageIn{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-/* 💎 BOX (ONLY MOBILE FIX) */
+/* 💎 BOX */
 .box{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
 background:rgba(255,255,255,0.75);
 backdrop-filter:blur(15px);
 padding:50px;
 border-radius:25px;
 box-shadow:0 20px 60px rgba(0,0,0,0.15);
 width:80%;
-max-width:600px;
-}
-
-/* 🧁 LOGO */
-.logo{
-width:110px;
-border-radius:15px;
-margin-bottom:10px;
+max-width:650px;
+animation:fadeIn 1.2s ease-in-out;
 }
 
 /* ✨ TITLE */
 h1{
-font-family:"Playfair Display";
-font-size:52px;
+font-family:"Playfair Display",serif;
+font-size:55px;
 color:#b76e79;
-margin:10px 0;
+margin-bottom:15px;
+animation:welcomeFloat 3s ease-in-out infinite;
 }
 
-/* CUPCAKES (UNCHANGED) */
-.cupcake{
-position:fixed;
-top:-50px;
-font-size:24px;
-z-index:999;
-animation:fall linear forwards;
+@keyframes welcomeFloat{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
 }
 
-@keyframes fall{
-0%{transform:translateY(-50px);}
-100%{transform:translateY(110vh);opacity:0;}
+p{
+font-size:18px;
+color:#555;
+line-height:1.7;
 }
 
-/* BUTTON */
-button{
-margin-top:18px;
-padding:15px 25px;
-border:none;
-border-radius:30px;
-background:linear-gradient(90deg,#b76e79,#d88a9a);
-color:white;
-font-weight:bold;
-cursor:pointer;
+.small{
+font-size:14px;
+opacity:0.7;
+margin-top:20px;
 }
 
-/* 📱 ONLY MOBILE OPTIMIZATION */
+/* 🌟 FADE IN */
+@keyframes fadeIn{
+from{opacity:0; transform:scale(0.95);}
+to{opacity:1; transform:scale(1);}
+}
+
+/* 📱 MOBILE */
 @media (max-width:768px){
 
 .box{
 width:90%;
-padding:25px;
+padding:30px;
+border-radius:20px;
 }
 
 h1{
-font-size:34px;
+font-size:38px;
 }
 
-.logo{
-width:90px;
+p{
+font-size:15px;
 }
 
-button{
-width:100%;
-padding:14px;
+.cupcake{
+font-size:20px;
 }
 }
 
@@ -110,32 +115,56 @@ padding:14px;
 
 <body>
 
+<!-- 🧁 WELCOME BOX -->
+<div class="box">
+
+<h1>Bienvenue 🧁</h1>
+
+<p>
+Bienvenue chez <b>World's Savoury</b>,
+où chaque création est réalisée avec amour, passion et élégance.
+</p>
+
+<p class="small">
+Préparez-vous à découvrir notre univers gourmand...
+</p>
+
+</div>
+
+<!-- 🧁 CUPCAKE ANIMATION -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
 c.className="cupcake";
 c.innerHTML="🧁";
+
 c.style.left=Math.random()*window.innerWidth+"px";
 c.style.animationDuration=(4+Math.random()*4)+"s";
+c.style.fontSize=(18+Math.random()*10)+"px";
+
 document.body.appendChild(c);
+
 setTimeout(()=>c.remove(),9000);
 }
-setInterval(createCupcake,700);
+
+setInterval(createCupcake,600);
 </script>
 
-<div class="box">
+<!-- 🚀 AUTO REDIRECT (2 SECONDS NOW) -->
+<script>
+window.onload = function(){
+setTimeout(() => {
 
-<img class="logo" src="logo.jpg" alt="logo">
+document.body.style.transition = "opacity 0.8s ease";
+document.body.style.opacity = "0";
 
-<h1>World's Savoury</h1>
+setTimeout(() => {
+window.location.href = "accueil.html";
+}, 800);
 
-<p>Créations artisanales avec amour</p>
-
-<button onclick="window.location.href='menu.html'">
-Découvrir 🧁
-</button>
-
-</div>
+}, 2000); <!-- CHANGED HERE -->
+};
+</script>
 
 </body>
-</html>
+</html>    same here dont touch anything else
