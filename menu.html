@@ -8,7 +8,7 @@
 
 <style>
 
-/* 🌸 GLOBAL PAGE FADE IN */
+/* 🌸 GLOBAL */
 body{
 margin:0;
 font-family:Poppins;
@@ -24,13 +24,13 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
-/* 🚀 PAGE TRANSITION (USED BY ALL PAGES) */
+/* 🚀 PAGE TRANSITION */
 .fade-out{
 opacity:0 !important;
 transition:0.6s ease;
 }
 
-/* 🧁 CUPCAKES (UNIFIED STYLE) */
+/* 🧁 CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -41,14 +41,8 @@ animation:fall linear forwards;
 }
 
 @keyframes fall{
-0%{
-transform:translateY(-50px) translateX(0);
-opacity:1;
-}
-100%{
-transform:translateY(110vh) translateX(-30px);
-opacity:0;
-}
+0%{transform:translateY(-50px);}
+100%{transform:translateY(110vh);opacity:0;}
 }
 
 /* NAV */
@@ -113,12 +107,12 @@ width:270px;
 background:rgba(255,255,255,0.85);
 border-radius:20px;
 overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
+box-shadow:0 10px 25px rgba(0,0,0,0.12);
 transition:0.3s ease;
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-5px);
 }
 
 .card img{
@@ -141,7 +135,7 @@ margin:8px 0;
 line-height:1.5;
 }
 
-/* ORDER BUTTON (visual only) */
+/* ORDER BUTTON */
 button.order{
 background:linear-gradient(90deg,#b76e79,#d88a9a);
 color:white;
@@ -165,28 +159,19 @@ h1{font-size:24px;}
 
 <body>
 
-<!-- 🧁 CUPCAKE SYSTEM (UNIFIED ACROSS ALL PAGES) -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
 c.className="cupcake";
 c.innerHTML="🧁";
-
 c.style.left=Math.random()*window.innerWidth+"px";
 c.style.animationDuration=(5+Math.random()*3)+"s";
-c.style.fontSize=(18+Math.random()*8)+"px";
-
 document.body.appendChild(c);
-
-setTimeout(()=>{
-c.remove();
-},9000);
+setTimeout(()=>c.remove(),9000);
 }
-
 setInterval(createCupcake,650);
 </script>
 
-<!-- 🚀 SMOOTH PAGE NAVIGATION -->
 <script>
 function goTo(page){
 document.body.classList.add("fade-out");
@@ -196,7 +181,6 @@ window.location.href = page;
 }
 </script>
 
-<!-- NAV -->
 <nav>
 <button onclick="goTo('index.html')">Accueil</button>
 <button onclick="goTo('menu.html')">Menu</button>
@@ -206,7 +190,6 @@ window.location.href = page;
 
 <h1>World's Savoury - Nos créations</h1>
 
-<!-- CATEGORIES (UNCHANGED) -->
 <div class="menu">
 <button>Cakes</button>
 <button>Gâteaux</button>
@@ -216,20 +199,15 @@ window.location.href = page;
 <button>Esquimaux</button>
 </div>
 
-<!-- PRODUCTS (SPACE KEPT FOR YOU) -->
 <div class="products">
 
-<!-- 👉 ADD YOUR PRODUCTS HERE -->
-<!-- SLOT 1 -->
-<!-- SLOT 2 -->
-<!-- SLOT 3 -->
+<!-- ✅ YOUR ORIGINAL PRODUCTS (UNCHANGED) -->
 
-<!-- SAMPLE PRODUCT 1 -->
 <div class="card">
 <img src="tarte1.jpg">
 <div class="card-content">
 <h3>Cake</h3>
-<p>Génoise au chocolat ou à la vanille...</p>
+<p>Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec des morceaux de chocolat, une tartine au chocolat et des noix. Décoration personnalisée.</p>
 <p><b>Longueur:</b> 35 cm</p>
 <p><b>Largeur:</b> 25 cm</p>
 <p><b>Personnes:</b> 30</p>
@@ -237,12 +215,11 @@ window.location.href = page;
 </div>
 </div>
 
-<!-- SAMPLE PRODUCT 2 -->
 <div class="card">
 <img src="tarte2.jpg">
 <div class="card-content">
 <h3>Cake</h3>
-<p>Génoise au chocolat ou à la vanille...</p>
+<p>Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec des morceaux de chocolat, une tartine au chocolat et des noix. Décoration personnalisée.</p>
 <p><b>Longueur:</b> 24 cm</p>
 <p><b>Largeur:</b> 24 cm</p>
 <p><b>Personnes:</b> 12</p>
@@ -250,9 +227,52 @@ window.location.href = page;
 </div>
 </div>
 
+<div class="card">
+<img src="tarte3.jpg">
+<div class="card-content">
+<h3>Cake</h3>
+<p>Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec des morceaux de chocolat, une tartine au chocolat et des noix. Décoration personnalisée.</p>
+<p><b>diamètre:</b> 12 cm</p>
+<p><b>Personnes:</b> 12</p>
+<button class="order">Sur commande</button>
+</div>
 </div>
 
-<!-- EMPTY SECTIONS (NO CHANGE) -->
+<div class="card">
+<img src="tarte4.jpg">
+<div class="card-content">
+<h3>Cake</h3>
+<p>Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec des morceaux de chocolat, une tartine au chocolat et des noix. Décoration personnalisée.</p>
+<p><b>diamètre:</b> 15 cm</p>
+<p><b>Personnes:</b> 7</p>
+<button class="order">Sur commande</button>
+</div>
+</div>
+
+<div class="card">
+<img src="tarte5.jpg">
+<div class="card-content">
+<h3>Cake</h3>
+<p>Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec des morceaux de chocolat, une tartine au chocolat et des noix. Décoration personnalisée.</p>
+<p><b>diamètre:</b> 15 cm</p>
+<p><b>Personnes:</b> 15</p>
+<button class="order">Sur commande</button>
+</div>
+</div>
+
+<div class="card">
+<img src="tarte6.jpg">
+<div class="card-content">
+<h3>Cake</h3>
+<p>Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec des morceaux de chocolat, une tartine au chocolat et des noix. Décoration personnalisée.</p>
+<p><b>diamètre:</b> 16 cm</p>
+<p><b>Personnes:</b> 6</p>
+<button class="order">Sur commande</button>
+</div>
+</div>
+
+</div>
+
 <section><h2>Cupcakes</h2><p>Section vide — produits à venir</p></section>
 <section><h2>Fleurs chocolat</h2><p>Section vide — produits à venir</p></section>
 <section><h2>Chocolat personnalisé</h2><p>Section vide — produits à venir</p></section>
