@@ -2,47 +2,29 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>World's Savoury - Menu</title>
+<title>Menu</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-/* 🌸 GLOBAL */
 body{
 margin:0;
 font-family:Poppins;
-background: linear-gradient(135deg,#fff0f5,#fffaf5);
-color:#333;
+background:linear-gradient(135deg,#fff0f5,#fffaf5);
 opacity:0;
 animation:pageIn 0.8s ease forwards;
-overflow-x:hidden;
--webkit-text-size-adjust: 100%;
 }
 
-@keyframes pageIn{
-from{opacity:0;}
-to{opacity:1;}
-}
+@keyframes pageIn{from{opacity:0;}to{opacity:1;}}
 
-/* 🚀 PAGE FADE */
-.fade-out{
-opacity:0 !important;
-transition:0.6s ease;
-}
-
-/* 🧁 CUPCAKES (UNCHANGED LOGIC) */
+/* CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
-font-size:24px;
-opacity:0.85;
-z-index:999;
+font-size:22px;
 animation:fall linear forwards;
-pointer-events:none;
-will-change: transform;
+z-index:999;
 }
 
 @keyframes fall{
@@ -59,55 +41,17 @@ padding:10px;
 background:rgba(255,255,255,0.85);
 position:sticky;
 top:0;
-backdrop-filter:blur(10px);
-z-index:1000;
-flex-wrap:wrap;
-}
-
-nav button{
-border:none;
-padding:10px 15px;
-border-radius:20px;
-cursor:pointer;
-background:white;
-font-weight:bold;
-font-size:14px;
 }
 
 /* TITLE */
-h1{
-text-align:center;
-font-family:"Playfair Display";
-margin:20px;
-}
+h1{text-align:center;font-family:"Playfair Display";}
 
-/* REMARK */
+/* REMARK (GLOBAL ONLY) */
 .remark{
 text-align:center;
 font-size:13px;
 opacity:0.75;
-margin-top:-10px;
-margin-bottom:15px;
 padding:0 10px;
-}
-
-/* FILTER MENU */
-.menu{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:10px;
-padding:15px;
-}
-
-.menu button{
-border:none;
-padding:10px 15px;
-border-radius:20px;
-cursor:pointer;
-background:white;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-font-size:14px;
 }
 
 /* PRODUCTS */
@@ -125,65 +69,19 @@ width:270px;
 background:rgba(255,255,255,0.85);
 border-radius:20px;
 overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.12);
-transition:0.5s ease;
-}
-
-.card.hide{
-opacity:0;
-transform:translateY(20px) scale(0.95);
-pointer-events:none;
 }
 
 /* IMAGE */
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
-}
+.card img{width:100%;height:180px;object-fit:cover;}
 
 /* CONTENT */
-.card-content{
-padding:15px;
-}
+.card-content{padding:15px;}
 
-/* ORDER BUTTON */
-button.order{
-background:linear-gradient(90deg,#b76e79,#d88a9a);
-color:white;
-border:none;
-padding:10px;
-border-radius:12px;
-width:100%;
-margin-top:10px;
-cursor:pointer;
-}
-
-/* 📱 MOBILE OPTIMIZATION ONLY */
-@media (max-width:768px){
-
-.card{
-width:92%;
-}
-
-.menu{
-overflow-x:auto;
-flex-wrap:nowrap;
-padding:10px;
-}
-
-.menu button{
-flex:0 0 auto;
-}
-
-h1{
-font-size:22px;
-}
-
-.remark{
-font-size:12px;
-}
-
+/* MOBILE FIX */
+@media(max-width:768px){
+.card{width:90%;}
+h1{font-size:22px;}
+.remark{font-size:12px;}
 }
 
 </style>
@@ -204,118 +102,73 @@ setTimeout(()=>c.remove(),9000);
 setInterval(createCupcake,650);
 </script>
 
-<script>
-function goTo(page){
-document.body.classList.add("fade-out");
-setTimeout(()=>{ window.location.href = page; },600);
-}
-</script>
-
 <nav>
-<button onclick="goTo('index.html')">Accueil</button>
-<button onclick="goTo('menu.html')">Menu</button>
-<button onclick="goTo('about.html')">À propos</button>
-<button onclick="goTo('contact.html')">Contact</button>
+<button onclick="window.location.href='accueil.html'">Accueil</button>
+<button onclick="window.location.href='menu.html'">Menu</button>
+<button onclick="window.location.href='about.html'">À propos</button>
+<button onclick="window.location.href='contact.html'">Contact</button>
 </nav>
 
-<h1>World's Savoury - Nos créations</h1>
+<h1>Nos créations</h1>
 
+<!-- GLOBAL REMARK ONLY (YOU WANTED THIS) -->
 <div class="remark">
-⭐ Remarque : le client choisit les ingrédients et la décoration de son gâteau.
-</div>
-
-<div class="menu">
-<button onclick="filterCategory('all')">Tout</button>
-<button onclick="filterCategory('cakes')">Cakes</button>
-<button onclick="filterCategory('gateaux')">Gâteaux</button>
-<button onclick="filterCategory('cupcakes')">Cupcakes</button>
-<button onclick="filterCategory('chocolat')">Fleurs chocolat</button>
-<button onclick="filterCategory('personnalise')">Chocolat personnalisé</button>
-<button onclick="filterCategory('esquimaux')">Esquimaux</button>
+⭐ Remarque : le client choisit la génoise, la crème, le chocolat, les noix et la décoration personnalisée.
 </div>
 
 <div class="products">
 
-<div class="card cakes">
+<!-- YOUR 7 CAKES KEPT -->
+<div class="card">
 <img src="tarte1.jpg">
 <div class="card-content">
-<p><b>Longueur:</b> 35 cm</p>
-<p><b>Largeur:</b> 25 cm</p>
-<p><b>Personnes:</b> 30</p>
-<button class="order">Sur commande</button>
+<p>35 cm • 25 cm • 30 personnes</p>
 </div>
 </div>
 
-<div class="card cakes">
+<div class="card">
 <img src="tarte2.jpg">
 <div class="card-content">
-<p><b>Longueur:</b> 24 cm</p>
-<p><b>Largeur:</b> 24 cm</p>
-<p><b>Personnes:</b> 12</p>
-<button class="order">Sur commande</button>
+<p>24 cm • 24 cm • 12 personnes</p>
 </div>
 </div>
 
-<div class="card cakes">
+<div class="card">
 <img src="tarte3.jpg">
 <div class="card-content">
-<p><b>Diamètre:</b> 12 cm</p>
-<p><b>Personnes:</b> 12</p>
-<button class="order">Sur commande</button>
+<p>12 cm • 12 personnes</p>
 </div>
 </div>
 
-<div class="card cakes">
+<div class="card">
 <img src="tarte4.jpg">
 <div class="card-content">
-<p><b>Diamètre:</b> 15 cm</p>
-<p><b>Personnes:</b> 7</p>
-<button class="order">Sur commande</button>
+<p>15 cm • 7 personnes</p>
 </div>
 </div>
 
-<div class="card cakes">
+<div class="card">
 <img src="tarte5.jpg">
 <div class="card-content">
-<p><b>Diamètre:</b> 15 cm</p>
-<p><b>Personnes:</b> 15</p>
-<button class="order">Sur commande</button>
+<p>15 cm • 15 personnes</p>
 </div>
 </div>
 
-<div class="card cakes">
+<div class="card">
 <img src="tarte6.jpg">
 <div class="card-content">
-<p><b>Diamètre:</b> 16 cm</p>
-<p><b>Personnes:</b> 6</p>
-<button class="order">Sur commande</button>
+<p>16 cm • 6 personnes</p>
 </div>
 </div>
 
-<div class="card cakes">
+<div class="card">
 <img src="tarte7.jpg">
 <div class="card-content">
-<p><b>Diamètre:</b> 18 cm</p>
-<p><b>Personnes:</b> 10</p>
-<button class="order">Sur commande</button>
+<p>18 cm • 10 personnes</p>
 </div>
 </div>
 
 </div>
-
-<script>
-function filterCategory(category){
-let cards = document.querySelectorAll(".card");
-
-cards.forEach(card=>{
-if(category === "all" || card.classList.contains(category)){
-card.classList.remove("hide");
-}else{
-card.classList.add("hide");
-}
-});
-}
-</script>
 
 </body>
 </html>
