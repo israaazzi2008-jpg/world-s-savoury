@@ -4,22 +4,30 @@
 <meta charset="UTF-8">
 <title>World's Savoury</title>
 
+<!-- 📱 MOBILE FIX -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
+/* 🌸 BACKGROUND (UNCHANGED) */
 body{
 margin:0;
 font-family:Poppins;
 background:linear-gradient(135deg,#fff0f5,#fffaf5);
+overflow:hidden;
 text-align:center;
 opacity:0;
 animation:pageIn 1s ease forwards;
 }
 
-@keyframes pageIn{from{opacity:0;}to{opacity:1;}}
+@keyframes pageIn{
+from{opacity:0;}
+to{opacity:1;}
+}
 
-/* BOX */
+/* 💎 BOX (MOBILE FIX ONLY) */
 .box{
 position:absolute;
 top:50%;
@@ -34,14 +42,14 @@ width:80%;
 max-width:600px;
 }
 
-/* LOGO */
+/* 🧁 LOGO */
 .logo{
 width:110px;
 border-radius:15px;
 margin-bottom:10px;
 }
 
-/* TITLE */
+/* ✨ TITLE (UNCHANGED) */
 h1{
 font-family:"Playfair Display";
 font-size:52px;
@@ -49,7 +57,7 @@ color:#b76e79;
 margin:10px 0;
 }
 
-/* CUPCAKES */
+/* CUPCAKES (UNCHANGED) */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -72,13 +80,31 @@ border-radius:30px;
 background:linear-gradient(90deg,#b76e79,#d88a9a);
 color:white;
 font-weight:bold;
+cursor:pointer;
 }
 
-/* MOBILE FIX */
-@media(max-width:768px){
-.box{width:90%;padding:25px;}
-h1{font-size:36px;}
+/* 📱 MOBILE ONLY FIX */
+@media (max-width:768px){
+
+.box{
+width:90%;
+padding:25px;
 }
+
+h1{
+font-size:34px;
+}
+
+.logo{
+width:90px;
+}
+
+button{
+width:100%;
+padding:14px;
+}
+}
+
 </style>
 </head>
 
@@ -98,19 +124,25 @@ setInterval(createCupcake,700);
 </script>
 
 <div class="box">
-<img src="logo.jpg" class="logo">
+
+<img class="logo" src="logo.jpg" alt="logo">
+
 <h1>World's Savoury</h1>
+
 <p>Créations artisanales avec amour</p>
 
-<button onclick="window.location.href='accueil.html'">Découvrir</button>
-</div>
+<p class="tagline">✨ Douceur • Élégance • Passion</p>
 
-<script>
-setTimeout(()=>{
-document.body.style.opacity="0";
-setTimeout(()=>{window.location.href="accueil.html";},800);
-},2000);
-</script>
+<button onclick="window.location.href='menu.html'">
+Découvrir 🧁
+</button>
+
+<p class="small">Fait maison • Sur commande</p>
+
+<div class="small">Site created by Azzi Israa</div>
+
+</div>
 
 </body>
 </html>
+
