@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <title>World's Savoury</title>
@@ -11,8 +11,30 @@ body {
 margin: 0;
 font-family: "Poppins", sans-serif;
 background: linear-gradient(135deg, #fff0f5, #fffaf5);
-overflow-x: hidden;
 color: #333;
+overflow-x: hidden;
+}
+
+/* ================= NAV ================= */
+nav {
+position: sticky;
+top: 0;
+background: rgba(255,255,255,0.85);
+backdrop-filter: blur(10px);
+display: flex;
+justify-content: center;
+gap: 10px;
+padding: 10px;
+z-index: 1000;
+}
+
+nav button {
+border: none;
+padding: 10px 15px;
+border-radius: 20px;
+cursor: pointer;
+background: white;
+font-weight: bold;
 }
 
 /* ================= HERO ================= */
@@ -21,57 +43,17 @@ text-align: center;
 padding: 60px 20px;
 background: radial-gradient(circle, #d88a9a, #b76e79);
 color: white;
-position: relative;
-overflow: hidden;
 }
 
 header h1 {
 font-family: "Playfair Display", serif;
 font-size: 50px;
-margin: 10px 0;
 }
 
-header p {
-font-size: 18px;
-opacity: 0.9;
-}
-
-/* ================= LOGO ================= */
-.logo {
-width: 120px;
-border-radius: 15px;
-box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-/* ================= MENU ================= */
-.menu {
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-gap: 10px;
-padding: 15px;
-position: sticky;
-top: 0;
-background: rgba(255,255,255,0.6);
-backdrop-filter: blur(10px);
-z-index: 100;
-}
-
-.menu button {
-border: none;
-padding: 10px 15px;
-border-radius: 20px;
-cursor: pointer;
-background: white;
-box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-transition: 0.3s;
-font-weight: 500;
-}
-
-.menu button.active {
-background: #b76e79;
-color: white;
-transform: scale(1.05);
+/* ================= SECTIONS ================= */
+section {
+padding: 60px 20px;
+text-align: center;
 }
 
 /* ================= PRODUCTS ================= */
@@ -80,23 +62,14 @@ display: flex;
 flex-wrap: wrap;
 justify-content: center;
 gap: 20px;
-padding: 30px;
 }
 
 .card {
 width: 270px;
-background: rgba(255,255,255,0.8);
-backdrop-filter: blur(10px);
+background: rgba(255,255,255,0.85);
 border-radius: 20px;
 overflow: hidden;
 box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-transition: 0.4s;
-border: 1px solid rgba(255,255,255,0.4);
-}
-
-.card:hover {
-transform: translateY(-10px);
-box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
 .card img {
@@ -109,162 +82,119 @@ object-fit: cover;
 padding: 15px;
 }
 
-.card h3 {
-font-family: "Playfair Display", serif;
-margin: 5px 0;
-}
-
-.info {
-font-size: 13px;
-color: #555;
-margin: 5px 0;
-}
-
 button.order {
-background: linear-gradient(90deg, #b76e79, #d88a9a);
+background: linear-gradient(90deg,#b76e79,#d88a9a);
 color: white;
 border: none;
 padding: 10px;
 border-radius: 12px;
-cursor: pointer;
 width: 100%;
-margin-top: 10px;
+cursor: pointer;
 }
 
-/* ================= ANIMATIONS ================= */
-.cupcake, .heart {
+/* ================= CUPCAKES ================= */
+.cupcake {
 position: fixed;
 top: -50px;
-z-index: 999;
+font-size: 24px;
 animation: fall linear infinite;
-opacity: 0.8;
+z-index: 999;
 }
 
-.cupcake { font-size: 26px; }
-.heart { font-size: 20px; }
-
 @keyframes fall {
-0% { transform: translateY(-50px); }
-100% { transform: translateY(110vh); }
+0% {transform: translateY(-50px); opacity: 1;}
+100% {transform: translateY(110vh); opacity: 0;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HERO ================= -->
-<header>
+<!-- ================= CUPCAKES ANIMATION ================= -->
+<script>
+function createCupcake(){
+let c=document.createElement("div");
+c.className="cupcake";
+c.innerHTML="🧁";
+c.style.left=Math.random()*window.innerWidth+"px";
+c.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),8000);
+}
+setInterval(createCupcake,500);
+</script>
 
-<img class="logo" src="logo.jpg">
+<!-- ================= NAV ================= -->
+<nav>
+<button onclick="scrollTo('home')">Accueil</button>
+<button onclick="scrollTo('menu')">Menu</button>
+<button onclick="scrollTo('about')">À propos</button>
+<button onclick="scrollTo('contact')">Contact</button>
+</nav>
 
+<!-- ================= HOME ================= -->
+<header id="home">
 <h1>World's Savoury</h1>
-<p>Créations maison avec amour, élégance et passion</p>
+<p>Créations maison avec amour et passion</p>
 </header>
 
 <!-- ================= MENU ================= -->
-<div class="menu">
-<button class="active" onclick="filter('all', this)">Tous</button>
-<button onclick="filter('cakes', this)">Cakes</button>
-<button onclick="filter('gateaux', this)">Gâteaux</button>
-<button onclick="filter('cupcakes', this)">Cupcakes</button>
-<button onclick="filter('fleurs', this)">Fleurs chocolat</button>
-<button onclick="filter('choco', this)">Chocolat</button>
-<button onclick="filter('esquimaux', this)">Esquimaux</button>
-</div>
+<section id="menu">
 
-<!-- ================= PRODUCTS ================= -->
+<h2>Nos créations</h2>
+
 <div class="products">
 
 <!-- PRODUCT 1 -->
-<div class="card" data-category="cakes">
+<div class="card">
 <img src="tarte1.jpg">
 
 <div class="card-content">
 <h3>Cake</h3>
 
-<p class="info">
+<p>
 Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec une tartine au chocolat et des noix. Décoration personnalisée
 </p>
 
-<p class="info"><b>Longueur:</b> 35 cm</p>
-<p class="info"><b>Largeur:</b> 25 cm</p>
-<p class="info"><b>Personnes:</b> 30</p>
+<p>35 cm • 30 personnes</p>
 
 <button class="order">Sur commande</button>
 </div>
 </div>
 
 <!-- PRODUCT 2 -->
-<div class="card" data-category="cakes">
+<div class="card">
 <img src="tarte2.jpg">
 
 <div class="card-content">
 <h3>cake</h3>
 
-<p class="info">Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec une tartine au chocolat et des noix. Décoration personnalisée</p>
+<p>
+Génoise au chocolat ou à la vanille, garnie d’une crème au chocolat et caramel, avec une tartine au chocolat et des noix. Décoration personnalisée
+</p>
 
-<p class="info"><b>Longueur:</b> 24 cm</p>
-<p class="info"><b>Largeur:</b> 24 cm</p>
-<p class="info"><b>Personnes:</b> 12</p>
+<p>24 cm • 12 personnes</p>
 
 <button class="order">Sur commande</button>
 </div>
 </div>
 
 </div>
+</section>
 
-<!-- ================= SCRIPT ================= -->
-<script>
+<!-- ================= ABOUT ================= -->
+<section id="about">
+<h2>À propos</h2>
 
-function createCupcake() {
-let c = document.createElement("div");
-c.className = "cupcake";
-c.innerHTML = "🧁";
-c.style.left = Math.random() * window.innerWidth + "px";
-c.style.animationDuration = (3 + Math.random() * 5) + "s";
-document.body.appendChild(c);
-setTimeout(() => c.remove(), 9000);
-}
+<p>
+World's Savoury est une pâtisserie maison spécialisée dans les gâteaux, cupcakes et chocolats personnalisés.
+Chaque création est faite avec amour et passion.
+</p>
+</section>
 
-function createHeart() {
-let h = document.createElement("div");
-h.className = "heart";
-h.innerHTML = "💖";
-h.style.left = Math.random() * window.innerWidth + "px";
-h.style.animationDuration = (4 + Math.random() * 6) + "s";
-document.body.appendChild(h);
-setTimeout(() => h.remove(), 9000);
-}
-
-setInterval(createCupcake, 500);
-setInterval(createHeart, 800);
-
-/* FILTER SYSTEM */
-function filter(category, btn) {
-let cards = document.querySelectorAll(".card");
-
-cards.forEach(card => {
-let cat = card.getAttribute("data-category");
-
-if(category === "all" || cat === category) {
-card.style.display = "block";
-} else {
-card.style.display = "none";
-}
-});
-
-document.querySelectorAll(".menu button").forEach(b => b.classList.remove("active"));
-btn.classList.add("active");
-}
-
-</script>
-
-<!-- ================= SOCIAL LINKS ================= -->
-<div style="text-align:center; padding:30px;">
-
-<h2 style="font-family:'Playfair Display', serif;">
-Contact & Localisation
-</h2>
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+<h2>Contact</h2>
 
 <button onclick="window.open('https://www.instagram.com/worldssavory?igsh=NWNpNGVsamZxYjc4')">
 Instagram
@@ -275,10 +205,17 @@ Facebook
 </button>
 
 <button onclick="window.open('https://share.google/Db0AfpQq43n0VyLFz')">
-Béni Saf Location
+Localisation
 </button>
+</section>
 
-</div>
+<script>
+function scrollTo(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+</script>
 
 </body>
 </html>
+
+
