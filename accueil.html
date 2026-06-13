@@ -8,39 +8,18 @@
 
 <style>
 
-/* 🌸 BACKGROUND */
 body{
 margin:0;
 font-family:Poppins;
 background:linear-gradient(135deg,#fff0f5,#fffaf5);
-overflow:hidden;
 text-align:center;
 opacity:0;
 animation:pageIn 1s ease forwards;
 }
 
-@keyframes pageIn{
-from{opacity:0;}
-to{opacity:1;}
-}
+@keyframes pageIn{from{opacity:0;}to{opacity:1;}}
 
-/* 🧁 CUPCAKES (OPTIMIZED LIKE OTHER PAGES) */
-.cupcake{
-position:fixed;
-top:-50px;
-font-size:22px;
-z-index:999;
-opacity:0.85;
-pointer-events:none;
-animation:fall linear forwards;
-}
-
-@keyframes fall{
-0%{transform:translateY(-50px);}
-100%{transform:translateY(110vh);opacity:0;}
-}
-
-/* 💎 BOX */
+/* BOX */
 .box{
 position:absolute;
 top:50%;
@@ -53,29 +32,16 @@ border-radius:25px;
 box-shadow:0 20px 60px rgba(0,0,0,0.15);
 width:80%;
 max-width:600px;
-animation:fadeIn 1.2s ease-in-out;
 }
 
-@keyframes fadeIn{
-from{opacity:0; transform:translate(-50%,-60%);}
-to{opacity:1; transform:translate(-50%,-50%);}
-}
-
-/* 🧁 LOGO */
+/* LOGO */
 .logo{
 width:110px;
 border-radius:15px;
 margin-bottom:10px;
-animation:floatLogo 4s ease-in-out infinite;
 }
 
-@keyframes floatLogo{
-0%{transform:translateY(0);}
-50%{transform:translateY(-8px);}
-100%{transform:translateY(0);}
-}
-
-/* ✨ TITLE */
+/* TITLE */
 h1{
 font-family:"Playfair Display";
 font-size:52px;
@@ -83,18 +49,18 @@ color:#b76e79;
 margin:10px 0;
 }
 
-/* TEXT */
-p{
-font-size:16px;
-color:#555;
-margin:6px 0;
+/* CUPCAKES */
+.cupcake{
+position:fixed;
+top:-50px;
+font-size:24px;
+z-index:999;
+animation:fall linear forwards;
 }
 
-/* TAGLINE */
-.tagline{
-color:#b76e79;
-font-size:15px;
-margin-top:5px;
+@keyframes fall{
+0%{transform:translateY(-50px);}
+100%{transform:translateY(110vh);opacity:0;}
 }
 
 /* BUTTON */
@@ -106,51 +72,13 @@ border-radius:30px;
 background:linear-gradient(90deg,#b76e79,#d88a9a);
 color:white;
 font-weight:bold;
-cursor:pointer;
-transition:0.25s;
 }
 
-button:hover{
-transform:scale(1.05);
+/* MOBILE FIX */
+@media(max-width:768px){
+.box{width:90%;padding:25px;}
+h1{font-size:36px;}
 }
-
-/* SMALL TEXT */
-.small{
-font-size:13px;
-opacity:0.75;
-margin-top:10px;
-}
-
-/* 📱 MOBILE FIX (IMPORTANT) */
-@media (max-width:768px){
-
-.box{
-width:90%;
-padding:30px;
-}
-
-h1{
-font-size:36px;
-}
-
-.logo{
-width:95px;
-}
-
-button{
-width:100%;
-padding:14px;
-}
-
-}
-
-/* EXTRA SMALL PHONES */
-@media (max-width:400px){
-h1{
-font-size:30px;
-}
-}
-
 </style>
 </head>
 
@@ -170,24 +98,19 @@ setInterval(createCupcake,700);
 </script>
 
 <div class="box">
-
-<img class="logo" src="logo.jpg" alt="logo">
-
+<img src="logo.jpg" class="logo">
 <h1>World's Savoury</h1>
-
 <p>Créations artisanales avec amour</p>
 
-<p class="tagline">✨ Douceur • Élégance • Passion</p>
-
-<button onclick="window.location.href='menu.html'">
-Découvrir 🧁
-</button>
-
-<p class="small">Fait maison • Sur commande</p>
-
-<div class="small">Site created by Azzi Israa</div>
-
+<button onclick="window.location.href='accueil.html'">Découvrir</button>
 </div>
+
+<script>
+setTimeout(()=>{
+document.body.style.opacity="0";
+setTimeout(()=>{window.location.href="accueil.html";},800);
+},2000);
+</script>
 
 </body>
 </html>
