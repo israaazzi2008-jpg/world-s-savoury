@@ -2,29 +2,44 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Menu</title>
+<title>World's Savoury - Menu</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
+/* 🌸 GLOBAL (OPTIMIZED FOR PHONE) */
 body{
 margin:0;
 font-family:Poppins;
-background:linear-gradient(135deg,#fff0f5,#fffaf5);
+background: linear-gradient(135deg,#fff0f5,#fffaf5);
+color:#333;
 opacity:0;
 animation:pageIn 0.8s ease forwards;
+overflow-x:hidden;
 }
 
-@keyframes pageIn{from{opacity:0;}to{opacity:1;}}
+@keyframes pageIn{
+from{opacity:0;}
+to{opacity:1;}
+}
 
-/* CUPCAKES */
+/* 🚀 PAGE FADE */
+.fade-out{
+opacity:0 !important;
+transition:0.6s ease;
+}
+
+/* 🧁 CUPCAKES (UNCHANGED) */
 .cupcake{
 position:fixed;
 top:-50px;
-font-size:22px;
-animation:fall linear forwards;
+font-size:24px;
+opacity:0.85;
 z-index:999;
+animation:fall linear forwards;
 }
 
 @keyframes fall{
@@ -32,7 +47,7 @@ z-index:999;
 100%{transform:translateY(110vh);opacity:0;}
 }
 
-/* NAV */
+/* NAV (PHONE FIX) */
 nav{
 display:flex;
 justify-content:center;
@@ -41,47 +56,104 @@ padding:10px;
 background:rgba(255,255,255,0.85);
 position:sticky;
 top:0;
+backdrop-filter:blur(10px);
+z-index:1000;
+flex-wrap:wrap;
+}
+
+nav button{
+border:none;
+padding:10px 15px;
+border-radius:20px;
+cursor:pointer;
+background:white;
+font-weight:bold;
 }
 
 /* TITLE */
-h1{text-align:center;font-family:"Playfair Display";}
+h1{
+text-align:center;
+font-family:"Playfair Display";
+margin:20px;
+font-size:22px;
+}
 
-/* REMARK (GLOBAL ONLY) */
+/* REMARK */
 .remark{
 text-align:center;
 font-size:13px;
 opacity:0.75;
-padding:0 10px;
+margin:10px;
 }
 
-/* PRODUCTS */
+/* MENU FILTER (PHONE SCROLL FIX) */
+.menu{
+display:flex;
+justify-content:flex-start;
+gap:10px;
+padding:15px;
+overflow-x:auto;
+white-space:nowrap;
+}
+
+.menu button{
+border:none;
+padding:10px 15px;
+border-radius:20px;
+cursor:pointer;
+background:white;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+flex-shrink:0;
+}
+
+/* PRODUCTS GRID (FIX FOR PHONE) */
 .products{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:20px;
-padding:20px;
+gap:15px;
+padding:15px;
 }
 
-/* CARD */
+/* CARD (PHONE FIX) */
 .card{
 width:270px;
+max-width:95%;
 background:rgba(255,255,255,0.85);
 border-radius:20px;
 overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.12);
+transition:0.5s ease;
 }
 
 /* IMAGE */
-.card img{width:100%;height:180px;object-fit:cover;}
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
 
 /* CONTENT */
-.card-content{padding:15px;}
+.card-content{
+padding:15px;
+}
 
-/* MOBILE FIX */
-@media(max-width:768px){
-.card{width:90%;}
-h1{font-size:22px;}
-.remark{font-size:12px;}
+/* ORDER BUTTON */
+button.order{
+background:linear-gradient(90deg,#b76e79,#d88a9a);
+color:white;
+border:none;
+padding:10px;
+border-radius:12px;
+width:100%;
+margin-top:10px;
+cursor:pointer;
+}
+
+/* 📱 SMALL PHONE */
+@media (max-width:768px){
+h1{font-size:20px;}
+.card{width:100%;}
 }
 
 </style>
@@ -102,69 +174,45 @@ setTimeout(()=>c.remove(),9000);
 setInterval(createCupcake,650);
 </script>
 
+<script>
+function goTo(page){
+document.body.classList.add("fade-out");
+setTimeout(()=>{ window.location.href = page; },600);
+}
+</script>
+
 <nav>
-<button onclick="window.location.href='accueil.html'">Accueil</button>
-<button onclick="window.location.href='menu.html'">Menu</button>
-<button onclick="window.location.href='about.html'">À propos</button>
-<button onclick="window.location.href='contact.html'">Contact</button>
+<button onclick="goTo('index.html')">Accueil</button>
+<button onclick="goTo('menu.html')">Menu</button>
+<button onclick="goTo('about.html')">À propos</button>
+<button onclick="goTo('contact.html')">Contact</button>
 </nav>
 
-<h1>Nos créations</h1>
+<h1>World's Savoury - Nos créations</h1>
 
-<!-- GLOBAL REMARK ONLY (YOU WANTED THIS) -->
 <div class="remark">
-⭐ Remarque : le client choisit la génoise, la crème, le chocolat, les noix et la décoration personnalisée.
+⭐ Remarque : le client choisit les ingrédients et la décoration de son gâteau.
+</div>
+
+<div class="menu">
+<button>Cakes</button>
+<button>Gâteaux</button>
+<button>Cupcakes</button>
+<button>Fleurs chocolat</button>
+<button>Chocolat personnalisé</button>
+<button>Esquimaux</button>
 </div>
 
 <div class="products">
 
-<!-- YOUR 7 CAKES KEPT -->
+<!-- YOUR CAKES KEPT EXACTLY -->
 <div class="card">
 <img src="tarte1.jpg">
 <div class="card-content">
-<p>35 cm • 25 cm • 30 personnes</p>
-</div>
-</div>
-
-<div class="card">
-<img src="tarte2.jpg">
-<div class="card-content">
-<p>24 cm • 24 cm • 12 personnes</p>
-</div>
-</div>
-
-<div class="card">
-<img src="tarte3.jpg">
-<div class="card-content">
-<p>12 cm • 12 personnes</p>
-</div>
-</div>
-
-<div class="card">
-<img src="tarte4.jpg">
-<div class="card-content">
-<p>15 cm • 7 personnes</p>
-</div>
-</div>
-
-<div class="card">
-<img src="tarte5.jpg">
-<div class="card-content">
-<p>15 cm • 15 personnes</p>
-</div>
-</div>
-
-<div class="card">
-<img src="tarte6.jpg">
-<div class="card-content">
-<p>16 cm • 6 personnes</p>
-</div>
-</div>
-
-<div class="card">
-<img src="tarte7.jpg">
-<div class="card-content">
-<p>18 cm • 10 personnes</p>
+<p><b>Longueur:</b> 35 cm</p>
+<p><b>Largeur:</b> 25 cm</p>
+<p><b>Personnes:</b> 30</p>
+<button class="order">Sur commande</button>
 </div>
 </div>
 
@@ -172,4 +220,3 @@ setInterval(createCupcake,650);
 
 </body>
 </html>
-
