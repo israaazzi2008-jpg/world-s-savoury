@@ -8,28 +8,26 @@
 
 <style>
 
-/* CUPCAKES STYLE */
-.cupcake{
-position:fixed;
-top:-50px;
-font-size:24px;
-animation:fall linear infinite;
-z-index:999;
-opacity:0.8;
-}
-
-@keyframes fall{
-0%{transform:translateY(-50px);opacity:1;}
-100%{transform:translateY(110vh);opacity:0;}
-}
-
-/* YOUR ORIGINAL DESIGN (UNCHANGED) */
+/* 🌸 PAGE LOAD */
 body{
 margin:0;
 font-family:Poppins;
 background:linear-gradient(135deg,#fff0f5,#fffaf5);
 color:#333;
 text-align:center;
+opacity:0;
+animation:pageIn 0.8s ease forwards;
+}
+
+@keyframes pageIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* 🚀 SMOOTH EXIT */
+.fade-out{
+opacity:0 !important;
+transition:0.6s ease;
 }
 
 /* NAV */
@@ -42,6 +40,7 @@ background:rgba(255,255,255,0.85);
 backdrop-filter:blur(10px);
 position:sticky;
 top:0;
+z-index:1000;
 }
 
 nav button{
@@ -105,30 +104,84 @@ font-size:13px;
 opacity:0.7;
 margin-top:20px;
 }
+
+/* 🧁 CUPCAKES */
+.cupcake{
+position:fixed;
+top:-50px;
+font-size:24px;
+opacity:0.85;
+z-index:999;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-50px);
+}
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+/* 📱 MOBILE */
+@media (max-width:768px){
+.container{
+margin:20px;
+padding:20px;
+}
+
+h1{
+font-size:28px;
+}
+
+.btn{
+width:95%;
+font-size:14px;
+}
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- CUPCAKE SCRIPT (MUST BE HERE) -->
+<!-- 🧁 CUPCAKES SYSTEM -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
 c.className="cupcake";
 c.innerHTML="🧁";
+
 c.style.left=Math.random()*window.innerWidth+"px";
-c.style.animationDuration=(3+Math.random()*5)+"s";
+c.style.animationDuration=(5+Math.random()*3)+"s";
+
 document.body.appendChild(c);
-setTimeout(()=>c.remove(),8000);
+
+setTimeout(()=>{
+c.remove();
+},9000);
 }
-setInterval(createCupcake,400);
+
+setInterval(createCupcake,650);
+</script>
+
+<!-- 🚀 NAV SMOOTH -->
+<script>
+function goTo(page){
+document.body.classList.add("fade-out");
+setTimeout(()=>{
+window.location.href = page;
+},600);
+}
 </script>
 
 <!-- NAV -->
 <nav>
-<button onclick="window.location.href='index.html'">Accueil</button>
-<button onclick="window.location.href='menu.html'">Menu</button>
-<button onclick="window.location.href='about.html'">À propos</button>
+<button onclick="goTo('index.html')">Accueil</button>
+<button onclick="goTo('menu.html')">Menu</button>
+<button onclick="goTo('about.html')">À propos</button>
 </nav>
 
 <!-- CONTACT -->
