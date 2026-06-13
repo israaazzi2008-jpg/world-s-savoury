@@ -8,38 +8,42 @@
 
 <style>
 
-body{
+/* 🌸 GLOBAL */
+html, body{
 margin:0;
+padding:0;
 font-family:Poppins,sans-serif;
 background:linear-gradient(135deg,#fff0f5,#fffaf5);
 overflow:hidden;
+height:100%;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
 text-align:center;
 }
 
-/* CUPCAKES */
+/* 🧁 CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
 font-size:24px;
-animation:fall linear infinite;
+opacity:0.85;
 z-index:999;
-opacity:0.8;
+animation:fall linear forwards;
 }
 
 @keyframes fall{
 0%{
-transform:translateY(-50px);
+transform:translateY(-50px) translateX(0);
+opacity:1;
 }
 100%{
-transform:translateY(110vh);
+transform:translateY(110vh) translateX(40px);
+opacity:0;
 }
 }
 
-/* BOX */
+/* 💎 BOX */
 .box{
 background:rgba(255,255,255,0.75);
 backdrop-filter:blur(15px);
@@ -48,9 +52,10 @@ border-radius:25px;
 box-shadow:0 20px 60px rgba(0,0,0,0.15);
 width:80%;
 max-width:650px;
+animation:fadeIn 1.2s ease-in-out;
 }
 
-/* TITLE */
+/* ✨ TITLE */
 h1{
 font-family:"Playfair Display",serif;
 font-size:55px;
@@ -60,15 +65,9 @@ animation:welcomeFloat 3s ease-in-out infinite;
 }
 
 @keyframes welcomeFloat{
-0%{
-transform:translateY(0);
-}
-50%{
-transform:translateY(-10px);
-}
-100%{
-transform:translateY(0);
-}
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
 }
 
 p{
@@ -83,14 +82,35 @@ opacity:0.7;
 margin-top:20px;
 }
 
-</style>
+/* 🌟 FADE IN */
+@keyframes fadeIn{
+from{opacity:0; transform:scale(0.95);}
+to{opacity:1; transform:scale(1);}
+}
 
-<!-- REDIRECT AFTER 3 SECONDS -->
-<script>
-setTimeout(function(){
-window.location.href="accueil.html";
-},3000);
-</script>
+/* 📱 MOBILE */
+@media (max-width:768px){
+
+.box{
+width:90%;
+padding:30px;
+border-radius:20px;
+}
+
+h1{
+font-size:38px;
+}
+
+p{
+font-size:15px;
+}
+
+.cupcake{
+font-size:20px;
+}
+}
+
+</style>
 
 </head>
 
@@ -111,24 +131,39 @@ Préparez-vous à découvrir notre univers gourmand...
 
 </div>
 
-<!-- CUPCAKES ANIMATION -->
+<!-- 🧁 CUPCAKE SCRIPT -->
 <script>
 function createCupcake(){
 let c=document.createElement("div");
 c.className="cupcake";
 c.innerHTML="🧁";
+
 c.style.left=Math.random()*window.innerWidth+"px";
-c.style.animationDuration=(3+Math.random()*5)+"s";
+c.style.animationDuration=(4+Math.random()*4)+"s";
+c.style.fontSize=(18+Math.random()*10)+"px";
 
 document.body.appendChild(c);
 
-setTimeout(()=>{
-c.remove();
-},8000);
+setTimeout(()=>c.remove(),9000);
 }
 
-setInterval(createCupcake,400);
+setInterval(createCupcake,600);
+</script>
+
+<!-- 🚀 AUTO REDIRECT + FADE OUT -->
+<script>
+setTimeout(function(){
+
+document.body.style.transition="opacity 0.9s ease";
+document.body.style.opacity="0";
+
+setTimeout(()=>{
+window.location.href="index.html";
+},900);
+
+},3000);
 </script>
 
 </body>
 </html>
+
