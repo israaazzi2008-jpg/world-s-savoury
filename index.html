@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bienvenue - World's Savoury</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -55,12 +56,31 @@ max-width:650px;
 animation:fadeIn 1.2s ease-in-out;
 }
 
+/* 🌟 LOGO */
+.logo{
+width:170px;
+max-width:65%;
+margin-bottom:15px;
+animation:logoAppear 1s ease;
+}
+
+@keyframes logoAppear{
+from{
+opacity:0;
+transform:scale(0.8);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
 /* ✨ TITLE */
 h1{
 font-family:"Playfair Display",serif;
-font-size:55px;
+font-size:50px;
 color:#b76e79;
-margin-bottom:15px;
+margin:10px 0;
 animation:welcomeFloat 3s ease-in-out infinite;
 }
 
@@ -68,6 +88,32 @@ animation:welcomeFloat 3s ease-in-out infinite;
 0%{transform:translateY(0);}
 50%{transform:translateY(-10px);}
 100%{transform:translateY(0);}
+}
+
+/* ❤️ HEART DRAWING */
+.heart-container{
+display:flex;
+justify-content:center;
+margin:20px 0;
+}
+
+.heart{
+width:90px;
+height:90px;
+fill:none;
+stroke:#b76e79;
+stroke-width:18;
+stroke-linecap:round;
+stroke-linejoin:round;
+stroke-dasharray:1600;
+stroke-dashoffset:1600;
+animation:drawHeart 2s ease forwards;
+}
+
+@keyframes drawHeart{
+to{
+stroke-dashoffset:0;
+}
 }
 
 p{
@@ -79,13 +125,19 @@ line-height:1.7;
 .small{
 font-size:14px;
 opacity:0.7;
-margin-top:20px;
+margin-top:10px;
 }
 
 /* 🌟 FADE IN */
 @keyframes fadeIn{
-from{opacity:0; transform:scale(0.95);}
-to{opacity:1; transform:scale(1);}
+from{
+opacity:0;
+transform:scale(0.95);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
 }
 
 /* 📱 MOBILE */
@@ -97,12 +149,21 @@ padding:30px;
 border-radius:20px;
 }
 
+.logo{
+width:130px;
+}
+
 h1{
-font-size:38px;
+font-size:32px;
 }
 
 p{
 font-size:15px;
+}
+
+.heart{
+width:75px;
+height:75px;
 }
 
 .cupcake{
@@ -118,12 +179,16 @@ font-size:20px;
 <!-- 🧁 WELCOME BOX -->
 <div class="box">
 
-<h1>Bienvenue 🧁</h1>
+<!-- Replace logo.png with your actual logo file name -->
+<img src="logo.png" alt="World's Savoury Logo" class="logo">
 
-<p>
-Bienvenue chez <b>World's Savoury</b>,
-où chaque création est réalisée avec amour, passion et élégance.
-</p>
+<h1>Bienvenue chez World's Savoury</h1>
+
+<div class="heart-container">
+<svg class="heart" viewBox="0 0 512 512">
+<path d="M256 464s-192-112-192-256c0-70 54-128 120-128 40 0 72 18 72 18s32-18 72-18c66 0 120 58 120 128 0 144-192 256-192 256z"/>
+</svg>
+</div>
 
 <p class="small">
 Préparez-vous à découvrir notre univers gourmand...
@@ -150,21 +215,23 @@ setTimeout(()=>c.remove(),9000);
 setInterval(createCupcake,600);
 </script>
 
-<!-- 🚀 AUTO REDIRECT (2 SECONDS NOW) -->
+<!-- 🚀 AUTO REDIRECT AFTER 3 SECONDS -->
 <script>
 window.onload = function(){
+
 setTimeout(() => {
 
 document.body.style.transition = "opacity 0.8s ease";
 document.body.style.opacity = "0";
 
 setTimeout(() => {
-window.location.href = "menu.html";
+window.location.href = "accueil.html";
 }, 800);
 
-}, 2000); <!-- CHANGED HERE -->
+}, 3000);
+
 };
 </script>
 
 </body>
-</html>      
+</html>    
