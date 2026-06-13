@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <title>À propos - World's Savoury</title>
 
+<!-- 📱 MOBILE FIX -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-/* 🌸 GLOBAL */
 body{
 margin:0;
 font-family:Poppins;
@@ -35,7 +37,6 @@ background:rgba(255,255,255,0.85);
 backdrop-filter:blur(10px);
 position:sticky;
 top:0;
-z-index:1000;
 flex-wrap:wrap;
 }
 
@@ -62,15 +63,15 @@ box-shadow:0 20px 50px rgba(0,0,0,0.12);
 /* LOGO */
 .logo{
 width:100px;
-border-radius:15px;
 margin-bottom:10px;
+border-radius:15px;
 }
 
 /* TEXT */
 h1{
 font-family:"Playfair Display";
 color:#b76e79;
-font-size:32px;
+font-size:30px;
 }
 
 p{
@@ -83,9 +84,8 @@ line-height:1.6;
 position:fixed;
 top:-50px;
 font-size:22px;
-opacity:0.85;
-z-index:999;
 animation:fall linear forwards;
+z-index:999;
 }
 
 @keyframes fall{
@@ -93,12 +93,13 @@ animation:fall linear forwards;
 100%{transform:translateY(110vh);opacity:0;}
 }
 
-/* MOBILE */
-@media (max-width:768px){
+/* 📱 MOBILE */
+@media(max-width:768px){
 .container{margin:15px; padding:15px;}
 h1{font-size:24px;}
 p{font-size:14px;}
 .logo{width:85px;}
+nav{flex-wrap:wrap;}
 }
 
 </style>
@@ -136,12 +137,11 @@ Bienvenue chez <b>World's Savoury</b>, une pâtisserie artisanale créée avec p
 </p>
 
 <p>
-Nous réalisons des gâteaux, cupcakes et chocolats personnalisés pour rendre chaque moment unique et inoubliable.
-Chaque création est faite maison avec des ingrédients soigneusement sélectionnés.
+Nous réalisons des gâteaux, cupcakes et chocolats personnalisés avec soin.
 </p>
 
 <p>
-World's Savoury — Créations maison avec amour, élégance et passion.
+World's Savoury — Créations maison avec amour et élégance.
 </p>
 
 </div>
