@@ -24,13 +24,14 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
-/* 🧁 CUPCAKES */
+/* 🧁 CUPCAKES (OPTIMIZED LIKE OTHER PAGES) */
 .cupcake{
 position:fixed;
 top:-50px;
-font-size:24px;
+font-size:22px;
 z-index:999;
 opacity:0.85;
+pointer-events:none;
 animation:fall linear forwards;
 }
 
@@ -82,7 +83,7 @@ color:#b76e79;
 margin:10px 0;
 }
 
-/* SHORT STYLE TEXT */
+/* TEXT */
 p{
 font-size:16px;
 color:#555;
@@ -113,19 +114,41 @@ button:hover{
 transform:scale(1.05);
 }
 
-/* SMALL LINE */
+/* SMALL TEXT */
 .small{
 font-size:13px;
 opacity:0.75;
 margin-top:10px;
 }
 
-/* 📱 MOBILE */
+/* 📱 MOBILE FIX (IMPORTANT) */
 @media (max-width:768px){
-.box{width:90%; padding:30px;}
-h1{font-size:36px;}
-button{width:100%;}
-.logo{width:95px;}
+
+.box{
+width:90%;
+padding:30px;
+}
+
+h1{
+font-size:36px;
+}
+
+.logo{
+width:95px;
+}
+
+button{
+width:100%;
+padding:14px;
+}
+
+}
+
+/* EXTRA SMALL PHONES */
+@media (max-width:400px){
+h1{
+font-size:30px;
+}
 }
 
 </style>
