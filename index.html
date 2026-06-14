@@ -45,12 +45,12 @@ z-index:999;
 /* SPARKLES */
 .sparkle{
 position:fixed;
-width:6px;
-height:6px;
-background:rgba(255,215,170,0.9);
+width:5px;
+height:5px;
+background:rgba(255,215,170,0.85);
 border-radius:50%;
-pointer-events:none;
 animation:floatSparkle 3s linear forwards;
+pointer-events:none;
 }
 
 @keyframes floatSparkle{
@@ -67,11 +67,10 @@ gap:15px;
 z-index:2;
 }
 
-/* LOGO (CINEMATIC) */
+/* LOGO */
 .logo{
 width:210px;
 opacity:0;
-transform:scale(0.8);
 animation:logoIn 1.5s forwards;
 }
 
@@ -80,7 +79,7 @@ from{opacity:0;transform:scale(0.7);}
 to{opacity:1;transform:scale(1);}
 }
 
-/* SIGNATURE TEXT */
+/* TITLE */
 .title{
 font-family:'Great Vibes', cursive;
 font-size:82px;
@@ -96,35 +95,45 @@ text-shadow:0 2px 10px rgba(183,110,121,0.15);
 100%{opacity:1;transform:translateY(0);}
 }
 
-/* HEART */
+/* ❤️ TRUE HAND-DRAWN HEART */
 .heart{
-width:85px;
-height:85px;
+width:90px;
+height:90px;
 fill:none;
 stroke:#b76e79;
-stroke-width:14;
-stroke-dasharray:1600;
-stroke-dashoffset:1600;
-animation:draw 1.8s forwards;
-animation-delay:3.2s;
+
+/* KEY FIX: real pen effect */
+stroke-width:2.5;
+stroke-linecap:round;
+stroke-linejoin:round;
+
+stroke-dasharray:1000;
+stroke-dashoffset:1000;
+
 opacity:0;
-animation-fill-mode:forwards;
+
+animation:drawHeart 2.8s ease forwards;
+animation-delay:3.2s;
+
+filter:drop-shadow(0 2px 2px rgba(183,110,121,0.25));
 }
 
-@keyframes draw{
-0%{stroke-dashoffset:1600;opacity:1;}
-100%{stroke-dashoffset:0;opacity:1;}
+@keyframes drawHeart{
+0%{
+stroke-dashoffset:1000;
+opacity:1;
+}
+100%{
+stroke-dashoffset:0;
+opacity:1;
+}
 }
 
 /* MOBILE */
 @media(max-width:600px){
 .title{font-size:48px;}
 .logo{width:150px;}
-}
-
-/* remove selection */
-::selection{
-background:transparent;
+.heart{width:70px;height:70px;}
 }
 
 </style>
@@ -134,7 +143,7 @@ background:transparent;
 
 <div class="container">
 
-<img src="logo.jpg" class="logo" alt="logo">
+<img src="logo1.jpg" class="logo" alt="logo">
 
 <div class="title">World's Savoury</div>
 
@@ -166,9 +175,9 @@ s.style.top=(window.innerHeight-100)+"px";
 document.body.appendChild(s);
 setTimeout(()=>s.remove(),3000);
 }
-setInterval(sparkle,200);
+setInterval(sparkle,220);
 
-/* REDIRECT (5 SECONDS) */
+/* REDIRECT */
 setTimeout(()=>{
 document.body.style.transition="opacity 1s ease";
 document.body.style.opacity="0";
