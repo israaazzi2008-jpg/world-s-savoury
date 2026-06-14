@@ -9,22 +9,27 @@
 
 <style>
 
-/* GLOBAL */
+/* RESET */
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 }
 
-body{
-height:100vh;
+html,body{
+width:100%;
+height:100%;
 overflow:hidden;
+background:linear-gradient(135deg,#fff0f5,#fffaf5);
+font-family:'Cormorant Garamond',serif;
+}
+
+/* CENTER PERFECTLY ON ALL PHONES */
+body{
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#fff0f5,#fffaf5);
 text-align:center;
-font-family:'Cormorant Garamond',serif;
 }
 
 /* CUPCAKES */
@@ -58,18 +63,21 @@ pointer-events:none;
 100%{transform:translateY(-120px) scale(0);opacity:0;}
 }
 
-/* CONTAINER */
+/* MAIN CONTAINER */
 .container{
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:15px;
-z-index:2;
+justify-content:center;
+gap:12px;
+padding:20px;
+width:100%;
+max-width:100%;
 }
 
 /* LOGO */
 .logo{
-width:210px;
+width:clamp(120px, 35vw, 210px);
 opacity:0;
 animation:logoIn 1.4s forwards;
 }
@@ -79,10 +87,10 @@ from{opacity:0;transform:scale(0.75);}
 to{opacity:1;transform:scale(1);}
 }
 
-/* TITLE */
+/* TITLE (RESPONSIVE + PRETTY) */
 .title{
 font-family:'Great Vibes', cursive;
-font-size:82px;
+font-size:clamp(34px, 8vw, 82px);
 color:#b76e79;
 opacity:0;
 animation:writeIn 2.2s forwards;
@@ -95,34 +103,34 @@ text-shadow:0 2px 10px rgba(183,110,121,0.15);
 100%{opacity:1;transform:translateY(0);}
 }
 
-/* ❤️ HAND-DRAWN HEART (REAL INK STYLE) */
+/* HEART (BOLD + PERFECT ON PHONE) */
 .heart{
-width:92px;
-height:92px;
+width:clamp(70px, 18vw, 110px);
+height:clamp(70px, 18vw, 110px);
 fill:none;
 stroke:#b76e79;
+stroke-width:10;
 
-/* ink feel */
-stroke-width:5.5;
 stroke-linecap:round;
 stroke-linejoin:round;
 
-stroke-dasharray:1200;
-stroke-dashoffset:1200;
+stroke-dasharray:1400;
+stroke-dashoffset:1400;
 
 opacity:0;
 
-animation:
-drawHeart 3.4s ease forwards;
+animation:drawHeart 3.2s ease forwards;
+animation-delay:2s;
 
-animation-delay:2.0s;
-
-filter:drop-shadow(0 3px 5px rgba(183,110,121,0.25));
+filter:drop-shadow(0 4px 6px rgba(183,110,121,0.28));
 }
 
 @keyframes drawHeart{
 0%{
-stroke-dashoffset:1200;
+stroke-dashoffset:1400;
+opacity:1;
+}
+70%{
 opacity:1;
 }
 100%{
@@ -131,11 +139,22 @@ opacity:1;
 }
 }
 
-/* MOBILE */
-@media(max-width:600px){
-.title{font-size:46px;}
-.logo{width:150px;}
-.heart{width:70px;height:70px;}
+/* MOBILE TWEAKS */
+@media(max-width:480px){
+.container{
+gap:10px;
+padding:15px;
+}
+
+.title{
+font-size:36px;
+}
+
+}
+
+/* NO SELECTION */
+::selection{
+background:transparent;
 }
 
 </style>
@@ -145,7 +164,7 @@ opacity:1;
 
 <div class="container">
 
-<img src="logo1.jpg" class="logo" alt="logo">
+<img src="logo.jpg" class="logo" alt="logo">
 
 <div class="title">World's Savoury</div>
 
@@ -194,5 +213,4 @@ window.location.href="menu.html";
 
 </body>
 </html>
-
  
