@@ -24,7 +24,7 @@ background:linear-gradient(135deg,#fff0f5,#fffaf5);
 font-family:'Cormorant Garamond',serif;
 }
 
-/* CENTER PERFECTLY ON ALL PHONES */
+/* CENTER */
 body{
 display:flex;
 justify-content:center;
@@ -63,16 +63,13 @@ pointer-events:none;
 100%{transform:translateY(-120px) scale(0);opacity:0;}
 }
 
-/* MAIN CONTAINER */
+/* CONTAINER */
 .container{
 display:flex;
 flex-direction:column;
 align-items:center;
-justify-content:center;
 gap:12px;
 padding:20px;
-width:100%;
-max-width:100%;
 }
 
 /* LOGO */
@@ -87,10 +84,10 @@ from{opacity:0;transform:scale(0.75);}
 to{opacity:1;transform:scale(1);}
 }
 
-/* TITLE (RESPONSIVE + PRETTY) */
+/* TITLE */
 .title{
 font-family:'Great Vibes', cursive;
-font-size:clamp(34px, 8vw, 82px);
+font-size:clamp(36px, 8vw, 82px);
 color:#b76e79;
 opacity:0;
 animation:writeIn 2.2s forwards;
@@ -103,31 +100,36 @@ text-shadow:0 2px 10px rgba(183,110,121,0.15);
 100%{opacity:1;transform:translateY(0);}
 }
 
-/* HEART (BOLD + PERFECT ON PHONE) */
+/* ❤️ HEART */
 .heart{
-width:clamp(70px, 18vw, 110px);
-height:clamp(70px, 18vw, 110px);
+width:clamp(80px, 20vw, 120px);
+height:clamp(80px, 20vw, 120px);
+
 fill:none;
 stroke:#b76e79;
-stroke-width:10;
+stroke-width:11;
 
 stroke-linecap:round;
 stroke-linejoin:round;
 
-stroke-dasharray:1400;
-stroke-dashoffset:1400;
+stroke-dasharray:1600;
+stroke-dashoffset:1600;
 
 opacity:0;
 
-animation:drawHeart 3.2s ease forwards;
+animation:
+drawHeart 3.2s ease forwards,
+heartbeat 0.6s ease-in-out 3.2s 3;
+
 animation-delay:2s;
 
-filter:drop-shadow(0 4px 6px rgba(183,110,121,0.28));
+filter:drop-shadow(0 4px 6px rgba(183,110,121,0.25));
 }
 
+/* DRAW */
 @keyframes drawHeart{
 0%{
-stroke-dashoffset:1400;
+stroke-dashoffset:1600;
 opacity:1;
 }
 70%{
@@ -139,17 +141,19 @@ opacity:1;
 }
 }
 
-/* MOBILE TWEAKS */
-@media(max-width:480px){
-.container{
-gap:10px;
-padding:15px;
+/* 💓 CUTE WOBBLE AFTER DRAW */
+@keyframes heartbeat{
+0%{transform:scale(1);}
+25%{transform:scale(1.08);}
+50%{transform:scale(1);}
+75%{transform:scale(1.05);}
+100%{transform:scale(1);}
 }
 
-.title{
-font-size:36px;
-}
-
+/* MOBILE */
+@media(max-width:600px){
+.title{font-size:38px;}
+.logo{width:150px;}
 }
 
 /* NO SELECTION */
@@ -168,15 +172,22 @@ background:transparent;
 
 <div class="title">World's Savoury</div>
 
+<!-- ❤️ CUTE HEART -->
 <svg class="heart" viewBox="0 0 512 512">
-<path d="M256 464s-192-112-192-256c0-70 54-128 120-128 40 0 72 18 72 18s32-18 72-18c66 0 120 58 120 128 0 144-192 256-192 256z"/>
+<path d="M256 460
+C180 420, 90 340, 110 240
+C125 170, 190 150, 230 180
+C245 195, 250 210, 256 220
+C262 210, 267 195, 282 180
+C322 150, 387 170, 402 240
+C422 340, 332 420, 256 460Z"/>
 </svg>
 
 </div>
 
 <script>
 
-/* CUPCAKES */
+/* 🧁 CUPCAKES */
 function cupcake(){
 let c=document.createElement("div");
 c.className="cupcake";
@@ -187,7 +198,7 @@ setTimeout(()=>c.remove(),5000);
 }
 setInterval(cupcake,450);
 
-/* SPARKLES */
+/* ✨ SPARKLES */
 function sparkle(){
 let s=document.createElement("div");
 s.className="sparkle";
@@ -198,7 +209,7 @@ setTimeout(()=>s.remove(),3000);
 }
 setInterval(sparkle,220);
 
-/* REDIRECT (5 SECONDS TOTAL) */
+/* ⏱️ REDIRECT (5 SECONDS) */
 setTimeout(()=>{
 document.body.style.transition="opacity 1s ease";
 document.body.style.opacity="0";
