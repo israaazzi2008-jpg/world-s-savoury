@@ -121,7 +121,6 @@ font-size:14px;
 
 <body>
 
-<!-- 💖 LOGO -->
 <header class="logo-header">
 <img src="logo.jpg" alt="World's Savoury Logo">
 </header>
@@ -146,7 +145,7 @@ Décrivez votre création chocolat (style, couleur, occasion).
 <option>Retrait à la maison</option>
 </select>
 
-<button onclick="send()">Envoyer sur Messenger</button>
+<button onclick="send()">Envoyer sur WhatsApp</button>
 
 <div class="success" id="success">
 Merci 💖 Nous vous contacterons très bientôt.
@@ -174,9 +173,9 @@ let remark = document.getElementById("remark").value;
 let delivery = document.getElementById("delivery").value;
 
 let text =
-`Bonjour,
+`Bonjour 🌸
 
-🍫🌸 Nouvelle commande FLEURS CHOCOLAT :
+🍫 Fleurs Chocolat - World's Savoury :
 
 👤 Nom : ${client}
 
@@ -185,11 +184,16 @@ ${remark}
 
 🚚 Livraison : ${delivery}
 
-Merci de me donner le prix et les informations.`;
+Merci de confirmer 💖`;
 
-let messengerLink = "https://www.facebook.com/share/18pco2cmJQ/?mibextid=wwXIfr";
+let encodedText = encodeURIComponent(text);
 
-window.open(messengerLink, "_blank");
+// ⚠️ CHANGE TON NUMÉRO ICI
+let phoneNumber = "213657936584";
+
+let url = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+window.open(url, "_blank");
 
 document.getElementById("success").style.display="block";
 
