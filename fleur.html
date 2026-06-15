@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>World's Savoury - Fleurs Chocolat</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* 💖 SAME DESIGN AS MENU */
+body{
+margin:0;
+font-family:Poppins;
+background: linear-gradient(135deg,#fff0f5,#fffaf5);
+color:#333;
+overflow-x:hidden;
+}
+
+/* 🧁 CUPCAKES */
+.cupcake{
+position:fixed;
+top:-50px;
+font-size:24px;
+opacity:0.85;
+z-index:999;
+animation:fall linear forwards;
+pointer-events:none;
+}
+
+@keyframes fall{
+0%{transform:translateY(-50px);}
+100%{transform:translateY(110vh);opacity:0;}
+}
+
+/* 💖 LOGO */
+.logo-header{
+text-align:center;
+padding:10px 0;
+}
+
+.logo-header img{
+height:70px;
+}
+
+/* 💎 CONTAINER */
+.container{
+max-width:650px;
+margin:20px auto;
+background:rgba(255,255,255,0.88);
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.12);
+padding:20px;
+}
+
+/* TITLE */
+h2{
+text-align:center;
+font-family:"Playfair Display";
+}
+
+/* INFO */
+.info{
+text-align:center;
+font-size:13px;
+opacity:0.85;
+margin-bottom:10px;
+}
+
+/* LABEL */
+label{
+font-weight:600;
+display:block;
+margin-top:12px;
+}
+
+/* INPUTS */
+input, textarea, select{
+width:100%;
+padding:10px;
+margin-top:5px;
+border-radius:12px;
+border:1px solid #ddd;
+font-family:Poppins;
+}
+
+/* BUTTON */
+button{
+width:100%;
+padding:13px;
+margin-top:18px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+background:linear-gradient(90deg,#b76e79,#d88a9a);
+color:white;
+font-weight:bold;
+font-size:15px;
+}
+
+/* SUCCESS */
+.success{
+display:none;
+text-align:center;
+margin-top:15px;
+padding:12px;
+background:#ffe6ef;
+border-radius:12px;
+font-size:14px;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+.container{width:92%;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 💖 LOGO -->
+<header class="logo-header">
+<img src="logo.jpg" alt="World's Savoury Logo">
+</header>
+
+<div class="container">
+
+<h2>Commande Fleurs Chocolat</h2>
+
+<div class="info">
+Décrivez votre création chocolat (style, couleur, occasion).
+</div>
+
+<label>Nom du client</label>
+<input type="text" id="name" placeholder="Votre nom complet">
+
+<label>Votre remarque</label>
+<textarea id="remark" placeholder="Ex: bouquet chocolat thème rose, cadeau anniversaire"></textarea>
+
+<label>Mode de réception</label>
+<select id="delivery">
+<option>Livraison</option>
+<option>Retrait à la maison</option>
+</select>
+
+<button onclick="send()">Envoyer sur Messenger</button>
+
+<div class="success" id="success">
+Merci 💖 Nous vous contacterons très bientôt.
+</div>
+
+</div>
+
+<script>
+
+function createCupcake(){
+let c=document.createElement("div");
+c.className="cupcake";
+c.innerHTML="🧁";
+c.style.left=Math.random()*window.innerWidth+"px";
+c.style.animationDuration=(5+Math.random()*3)+"s";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),9000);
+}
+setInterval(createCupcake,650);
+
+function send(){
+
+let client = document.getElementById("name").value;
+let remark = document.getElementById("remark").value;
+let delivery = document.getElementById("delivery").value;
+
+let text =
+`Bonjour,
+
+🍫🌸 Nouvelle commande FLEURS CHOCOLAT :
+
+👤 Nom : ${client}
+
+📝 Remarque :
+${remark}
+
+🚚 Livraison : ${delivery}
+
+Merci de me donner le prix et les informations.`;
+
+let messengerLink = "https://www.facebook.com/share/18pco2cmJQ/?mibextid=wwXIfr";
+
+window.open(messengerLink, "_blank");
+
+document.getElementById("success").style.display="block";
+
+setTimeout(()=>{
+window.location.href = "merci.html";
+},2000);
+
+}
+
+</script>
+
+</body>
+</html>
