@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -157,7 +158,7 @@ transform:translateY(20px) scale(0.95);
 pointer-events:none;
 }
 
-/* LOGO (ADDED ONLY) */
+/* LOGO */
 .logo-header{
 text-align:center;
 padding:10px 0;
@@ -183,7 +184,6 @@ h1{font-size:22px;}
 
 <body>
 
-<!-- 💖 LOGO (ONLY ADDITION) -->
 <header class="logo-header">
   <img src="logo.jpg" alt="World's Savoury Logo">
 </header>
@@ -205,16 +205,13 @@ document.body.classList.add("fade-out");
 setTimeout(()=>{ window.location.href = page; },600);
 }
 
-/* ORDER SYSTEM (ADDED ONLY) */
-function orderCake(name,size,persons){
-const url=`cake.html?name=${encodeURIComponent(name)}&size=${encodeURIComponent(size)}&persons=${encodeURIComponent(persons)}`;
+function orderPage(page, name, size, persons){
+const url=`${page}?name=${encodeURIComponent(name)}&size=${encodeURIComponent(size)}&persons=${encodeURIComponent(persons)}`;
 window.open(url,"_blank");
 }
 
-/* FILTER (KEEP YOUR SYSTEM - NO CHANGE LOGIC) */
 function filterCategory(category){
 let cards=document.querySelectorAll(".card");
-
 cards.forEach(card=>{
 if(category==="all" || card.classList.contains(category)){
 card.classList.remove("hide");
@@ -238,7 +235,6 @@ card.classList.add("hide");
 ⭐ Remarque : le client choisit les ingrédients et la décoration de son gâteau.
 </div>
 
-<!-- FILTERS (UNCHANGED STRUCTURE) -->
 <div class="menu">
 <button onclick="filterCategory('all')">Tout</button>
 <button onclick="filterCategory('cakes')">Cakes</button>
@@ -249,152 +245,141 @@ card.classList.add("hide");
 <button onclick="filterCategory('esquimaux')">Esquimaux</button>
 </div>
 
-<!-- PRODUCTS (UNCHANGED PLACEHOLDER - YOU ADD YOUR PRODUCTS) -->
 <div class="products">
-  <!-- ===================== 🧁 CUSTOM PRODUCTS ===================== -->
 
 <h2 style="text-align:center;">🧁 CUSTOM / OTHER CATEGORIES</h2>
 
-<!-- 🍫 PERSONNALISÉ -->
 <h3 style="margin-left:20px;">🍫 Chocolat personnalisé</h3>
 
 <div class="card personnalise">
 <img src="prs.jpg">
 <div class="card-content">
 <p><b>chocolat</b></p>
-<button class="order" onclick="orderCake('NAME','SIZE','PERSONS')">
+<button class="order" onclick="orderPage('chocolat.html','NAME','SIZE','PERSONS')">
 Sur commande
 </button>
 </div>
 </div>
 
-<!-- 🌸 CHOCOLAT FLOWERS -->
 <h3 style="margin-left:20px;">🌸 Fleurs chocolat</h3>
 
 <div class="card chocolat">
 <img src="flt.jpg">
 <div class="card-content">
 <p><b>fleur au chocolat</b></p>
-<button class="order" onclick="orderCake('NAME','SIZE','PERSONS')">
+<button class="order" onclick="orderPage('fleur.html','NAME','SIZE','PERSONS')">
 Sur commande
 </button>
 </div>
 </div>
 
-<!-- 🧁 CUPCAKES -->
 <h3 style="margin-left:20px;">🧁 Cupcakes</h3>
 
 <div class="card cupcakes">
 <img src="cup.jpg">
 <div class="card-content">
 <p><b>cupcakes</b></p>
-<button class="order" onclick="orderCake('NAME','SIZE','PERSONS')">
+<button class="order" onclick="orderPage('cupcakes.html','NAME','SIZE','PERSONS')">
 Sur commande
 </button>
 </div>
 </div>
 
-<!-- 🍰 GÂTEAUX -->
 <h3 style="margin-left:20px;">🍰 Gâteaux</h3>
 
 <div class="card gateaux">
 <img src="1.jpg">
 <div class="card-content">
 <p><b>K3ik3at</b></p>
-<button class="order" onclick="orderCake('NAME','SIZE','PERSONS')">
+<button class="order" onclick="orderPage('gateaux.html','NAME','SIZE','PERSONS')">
 Sur commande
 </button>
 </div>
 </div>
 
-<!-- ===================== 🍰 CAKES SECTION ===================== -->
-
 <h2 style="text-align:center;">🍰 CAKES (7 designs)</h2>
 
-<!-- CAKE 1 -->
 <div class="card cakes">
 <img src="tarte1.jpg">
 <div class="card-content">
 <p><b>35 cm x 25 cm</b></p>
 <p><b>30 personnes</b></p>
-<button class="order" onclick="orderCake('Cake 1','35x25','30 personnes')">
+<button class="order" onclick="orderPage('cake.html','Cake 1','35x25','30 personnes')">
 Sur commande
 </button>
 </div>
 </div>
 
-<!-- CAKE 2 -->
 <div class="card cakes">
 <img src="tarte2.jpg">
 <div class="card-content">
 <p><b>24 cm x 24 cm</b></p>
 <p><b>12 personnes</b></p>
-<button class="order" onclick="orderCake('Cake 2','24x24','12 personnes')">
+<button class="order" onclick="orderPage('cake.html','Cake 2','24x24','12 personnes')">
 Sur commande
 </button>
 </div>
 </div>
 
-<!-- CAKE 3 -->
 <div class="card cakes">
 <img src="tarte3.jpg">
 <div class="card-content">
 <p><b>12 cm</b></p>
 <p><b>12 personnes</b></p>
-<button class="order" onclick="orderCake('Cake 3','12cm','12 personnes')">
+<button class="order" onclick="orderPage('cake.html','Cake 3','12cm','12 personnes')">
 Sur commande
 </button>
 </div>
 </div>
 
-<!-- CAKE 4 -->
 <div class="card cakes">
 <img src="tarte4.jpg">
 <div class="card-content">
 <p><b>15 cm</b></p>
 <p><b>7 personnes</b></p>
-<button class="order" onclick="orderCake('Cake 4','15cm','7 personnes')">
+<button class="order" onclick="orderPage('cake.html','Cake 4','15cm','7 personnes')">
 Sur commande
 </button>
 </div>
 </div>
 
-<!-- CAKE 5 -->
 <div class="card cakes">
 <img src="tarte5.jpg">
 <div class="card-content">
 <p><b>15 cm</b></p>
 <p><b>15 personnes</b></p>
-<button class="order" onclick="orderCake('Cake 5','15cm','15 personnes')">
+<button class="order" onclick="orderPage('cake.html','Cake 5','15cm','15 personnes')">
 Sur commande
 </button>
 </div>
 </div>
 
-<!-- CAKE 6 -->
 <div class="card cakes">
 <img src="tarte6.jpg">
 <div class="card-content">
 <p><b>16 cm</b></p>
 <p><b>6 personnes</b></p>
-<button class="order" onclick="orderCake('Cake 6','16cm','6 personnes')">
+<button class="order" onclick="orderPage('cake.html','Cake 6','16cm','6 personnes')">
 Sur commande
 </button>
 </div>
 </div>
 
-<!-- CAKE 7 -->
 <div class="card cakes">
 <img src="tarte7.jpg">
 <div class="card-content">
 <p><b>18 cm</b></p>
 <p><b>10 personnes</b></p>
-<button class="order" onclick="orderCake('Cake 7','18cm','10 personnes')">
+<button class="order" onclick="orderPage('cake.html','Cake 7','18cm','10 personnes')">
 Sur commande
 </button>
 </div>
 </div>
+
 </div>
 
 </body>
 </html>
+
+
+
