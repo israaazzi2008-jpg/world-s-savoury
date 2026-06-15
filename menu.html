@@ -1,17 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>World's Savoury - Menu</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
 
-/* 🌸 GLOBAL */
 body{
 margin:0;
 font-family:Poppins;
@@ -28,13 +23,11 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
-/* 🚀 PAGE FADE */
 .fade-out{
 opacity:0 !important;
 transition:0.6s ease;
 }
 
-/* 🧁 CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -51,7 +44,6 @@ will-change: transform;
 100%{transform:translateY(110vh);opacity:0;}
 }
 
-/* NAV */
 nav{
 display:flex;
 justify-content:center;
@@ -75,14 +67,12 @@ font-weight:bold;
 font-size:14px;
 }
 
-/* TITLE */
 h1{
 text-align:center;
 font-family:"Playfair Display";
 margin:20px;
 }
 
-/* REMARK */
 .remark{
 text-align:center;
 font-size:13px;
@@ -92,7 +82,6 @@ margin-bottom:15px;
 padding:0 10px;
 }
 
-/* FILTER MENU */
 .menu{
 display:flex;
 justify-content:center;
@@ -111,16 +100,29 @@ box-shadow:0 5px 15px rgba(0,0,0,0.1);
 font-size:14px;
 }
 
-/* PRODUCTS */
+.menu button.active{
+background:linear-gradient(90deg,#b76e79,#d88a9a);
+color:white;
+}
+
+.category-section{
+width:100%;
+padding:10px 20px;
+}
+
+.category-section h3{
+font-family:"Playfair Display";
+margin:20px 0 10px 10px;
+}
+
 .products{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
 gap:20px;
-padding:20px;
+padding:10px 0;
 }
 
-/* CARD */
 .card{
 width:270px;
 background:rgba(255,255,255,0.85);
@@ -158,7 +160,6 @@ transform:translateY(20px) scale(0.95);
 pointer-events:none;
 }
 
-/* LOGO */
 .logo-header{
 text-align:center;
 padding:10px 0;
@@ -170,7 +171,6 @@ width:auto;
 object-fit:contain;
 }
 
-/* MOBILE */
 @media (max-width:768px){
 .card{width:92%;}
 .menu{overflow-x:auto;flex-wrap:nowrap;padding:10px;}
@@ -210,16 +210,20 @@ const url=`${page}?name=${encodeURIComponent(name)}&size=${encodeURIComponent(si
 window.open(url,"_blank");
 }
 
-function filterCategory(category){
-let cards=document.querySelectorAll(".card");
-cards.forEach(card=>{
-if(category==="all" || card.classList.contains(category)){
-card.classList.remove("hide");
-}else{
-card.classList.add("hide");
-}
+function filterCategory(category, btn){
+document.querySelectorAll(".menu button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+
+document.querySelectorAll(".category-section").forEach(section=>{
+const match = section.dataset.category === category;
+section.style.display = match ? "block" : "none";
 });
 }
+
+window.onload = function(){
+const first = document.querySelector(".menu button");
+if(first) first.click();
+};
 </script>
 
 <nav>
@@ -236,77 +240,25 @@ card.classList.add("hide");
 </div>
 
 <div class="menu">
-<button onclick="filterCategory('all')">Tout</button>
-<button onclick="filterCategory('cakes')">Cakes</button>
-<button onclick="filterCategory('gateaux')">Gâteaux</button>
-<button onclick="filterCategory('cupcakes')">Cupcakes</button>
-<button onclick="filterCategory('chocolat')">Fleurs chocolat</button>
-<button onclick="filterCategory('personnalise')">Chocolat personnalisé</button>
-<button onclick="filterCategory('esquimaux')">Esquimaux</button>
+<button onclick="filterCategory('cakes', this)">🍰 Cakes</button>
+<button onclick="filterCategory('gateaux', this)">🍰 Gâteaux</button>
+<button onclick="filterCategory('cupcakes', this)">🧁 Cupcakes</button>
+<button onclick="filterCategory('chocolat', this)">🌸 Fleurs chocolat</button>
+<button onclick="filterCategory('personnalise', this)">🍫 Chocolat personnalisé</button>
+<button onclick="filterCategory('esquimaux', this)">🍦 Esquimaux</button>
 </div>
 
+<!-- 🍰 CAKES -->
+<div class="category-section" data-category="cakes">
+<h3>🍰 Cakes</h3>
 <div class="products">
-
-<h2 style="text-align:center;">🧁 CUSTOM / OTHER CATEGORIES</h2>
-
-<h3 style="margin-left:20px;">🍫 Chocolat personnalisé</h3>
-
-<div class="card personnalise">
-<img src="prs.jpg">
-<div class="card-content">
-<p><b>chocolat</b></p>
-<button class="order" onclick="orderPage('chocolat.html','NAME','SIZE','PERSONS')">
-Sur commande
-</button>
-</div>
-</div>
-
-<h3 style="margin-left:20px;">🌸 Fleurs chocolat</h3>
-
-<div class="card chocolat">
-<img src="flt.jpg">
-<div class="card-content">
-<p><b>fleur au chocolat</b></p>
-<button class="order" onclick="orderPage('fleur.html','NAME','SIZE','PERSONS')">
-Sur commande
-</button>
-</div>
-</div>
-
-<h3 style="margin-left:20px;">🧁 Cupcakes</h3>
-
-<div class="card cupcakes">
-<img src="cup.jpg">
-<div class="card-content">
-<p><b>cupcakes</b></p>
-<button class="order" onclick="orderPage('cupcakes.html','NAME','SIZE','PERSONS')">
-Sur commande
-</button>
-</div>
-</div>
-
-<h3 style="margin-left:20px;">🍰 Gâteaux</h3>
-
-<div class="card gateaux">
-<img src="1.jpg">
-<div class="card-content">
-<p><b>K3ik3at</b></p>
-<button class="order" onclick="orderPage('gateaux.html','NAME','SIZE','PERSONS')">
-Sur commande
-</button>
-</div>
-</div>
-
-<h2 style="text-align:center;">🍰 CAKES (7 designs)</h2>
 
 <div class="card cakes">
 <img src="tarte1.jpg">
 <div class="card-content">
 <p><b>35 cm x 25 cm</b></p>
 <p><b>30 personnes</b></p>
-<button class="order" onclick="orderPage('cake.html','Cake 1','35x25','30 personnes')">
-Sur commande
-</button>
+<button class="order" onclick="orderPage('cake.html','Cake 1','35x25','30 personnes')">Sur commande</button>
 </div>
 </div>
 
@@ -315,9 +267,7 @@ Sur commande
 <div class="card-content">
 <p><b>24 cm x 24 cm</b></p>
 <p><b>12 personnes</b></p>
-<button class="order" onclick="orderPage('cake.html','Cake 2','24x24','12 personnes')">
-Sur commande
-</button>
+<button class="order" onclick="orderPage('cake.html','Cake 2','24x24','12 personnes')">Sur commande</button>
 </div>
 </div>
 
@@ -326,9 +276,7 @@ Sur commande
 <div class="card-content">
 <p><b>12 cm</b></p>
 <p><b>12 personnes</b></p>
-<button class="order" onclick="orderPage('cake.html','Cake 3','12cm','12 personnes')">
-Sur commande
-</button>
+<button class="order" onclick="orderPage('cake.html','Cake 3','12cm','12 personnes')">Sur commande</button>
 </div>
 </div>
 
@@ -337,9 +285,7 @@ Sur commande
 <div class="card-content">
 <p><b>15 cm</b></p>
 <p><b>7 personnes</b></p>
-<button class="order" onclick="orderPage('cake.html','Cake 4','15cm','7 personnes')">
-Sur commande
-</button>
+<button class="order" onclick="orderPage('cake.html','Cake 4','15cm','7 personnes')">Sur commande</button>
 </div>
 </div>
 
@@ -348,9 +294,7 @@ Sur commande
 <div class="card-content">
 <p><b>15 cm</b></p>
 <p><b>15 personnes</b></p>
-<button class="order" onclick="orderPage('cake.html','Cake 5','15cm','15 personnes')">
-Sur commande
-</button>
+<button class="order" onclick="orderPage('cake.html','Cake 5','15cm','15 personnes')">Sur commande</button>
 </div>
 </div>
 
@@ -359,9 +303,7 @@ Sur commande
 <div class="card-content">
 <p><b>16 cm</b></p>
 <p><b>6 personnes</b></p>
-<button class="order" onclick="orderPage('cake.html','Cake 6','16cm','6 personnes')">
-Sur commande
-</button>
+<button class="order" onclick="orderPage('cake.html','Cake 6','16cm','6 personnes')">Sur commande</button>
 </div>
 </div>
 
@@ -370,16 +312,78 @@ Sur commande
 <div class="card-content">
 <p><b>18 cm</b></p>
 <p><b>10 personnes</b></p>
-<button class="order" onclick="orderPage('cake.html','Cake 7','18cm','10 personnes')">
-Sur commande
-</button>
+<button class="order" onclick="orderPage('cake.html','Cake 7','18cm','10 personnes')">Sur commande</button>
 </div>
 </div>
 
+</div>
+</div>
+
+<!-- 🍰 GÂTEAUX -->
+<div class="category-section" data-category="gateaux">
+<h3>🍰 Gâteaux</h3>
+<div class="products">
+<div class="card gateaux">
+<img src="1.jpg">
+<div class="card-content">
+<p><b>K3ik3at</b></p>
+<button class="order" onclick="orderPage('gateaux.html','NAME','SIZE','PERSONS')">Sur commande</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 🧁 CUPCAKES -->
+<div class="category-section" data-category="cupcakes">
+<h3>🧁 Cupcakes</h3>
+<div class="products">
+<div class="card cupcakes">
+<img src="cup.jpg">
+<div class="card-content">
+<p><b>cupcakes</b></p>
+<button class="order" onclick="orderPage('cupcakes.html','NAME','SIZE','PERSONS')">Sur commande</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 🌸 FLEURS CHOCOLAT -->
+<div class="category-section" data-category="chocolat">
+<h3>🌸 Fleurs chocolat</h3>
+<div class="products">
+<div class="card chocolat">
+<img src="flt.jpg">
+<div class="card-content">
+<p><b>fleur au chocolat</b></p>
+<button class="order" onclick="orderPage('fleur.html','NAME','SIZE','PERSONS')">Sur commande</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 🍫 CHOCOLAT PERSONNALISÉ -->
+<div class="category-section" data-category="personnalise">
+<h3>🍫 Chocolat personnalisé</h3>
+<div class="products">
+<div class="card personnalise">
+<img src="prs.jpg">
+<div class="card-content">
+<p><b>chocolat</b></p>
+<button class="order" onclick="orderPage('chocolat.html','NAME','SIZE','PERSONS')">Sur commande</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 🍦 ESQUIMAUX -->
+<div class="category-section" data-category="esquimaux">
+<h3>🍦 Esquimaux</h3>
+<div class="products">
+<!-- Ajoute tes cartes esquimaux ici -->
+</div>
 </div>
 
 </body>
 </html>
-
 
 
