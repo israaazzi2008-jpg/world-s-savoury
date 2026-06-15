@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cake Order - World's Savoury</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* SAME BACKGROUND AS MENU */
+body{
+margin:0;
+font-family:Poppins;
+background: linear-gradient(135deg,#fff0f5,#fffaf5);
+overflow-x:hidden;
+}
+
+/* TITLE SAME STYLE FEEL */
+h1{
+text-align:center;
+font-family:"Playfair Display";
+color:#333;
+margin-top:20px;
+}
+
+/* CUPCAKES (SAME AS MENU) */
+.cupcake{
+position:fixed;
+top:-50px;
+font-size:24px;
+opacity:0.85;
+z-index:999;
+animation:fall linear forwards;
+pointer-events:none;
+will-change: transform;
+}
+
+@keyframes fall{
+0%{transform:translateY(-50px);}
+100%{transform:translateY(110vh);opacity:0;}
+}
+
+/* FORM CONTAINER (PINK BUT MATCHES MENU SOFT STYLE) */
+.container{
+max-width:650px;
+margin:20px auto;
+background:rgba(255,255,255,0.85);
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* LABELS */
+label{
+font-weight:bold;
+display:block;
+margin-top:10px;
+color:#444;
+}
+
+/* INPUTS SAME STYLE AS SITE */
+input, textarea, select{
+width:100%;
+padding:10px;
+border-radius:12px;
+border:1px solid #ddd;
+margin-top:5px;
+font-family:Poppins;
+}
+
+/* CHECKBOX STYLE */
+.checkbox-group{
+display:flex;
+flex-direction:column;
+gap:6px;
+margin-top:5px;
+font-size:14px;
+}
+
+/* BUTTON SAME STYLE AS MENU BUTTONS */
+button{
+background:linear-gradient(90deg,#b76e79,#d88a9a);
+color:white;
+border:none;
+padding:12px;
+border-radius:12px;
+width:100%;
+margin-top:15px;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* INFO TEXT */
+.info{
+text-align:center;
+margin-top:10px;
+font-size:14px;
+opacity:0.7;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Commande personnalisée</h1>
+<div class="info" id="info"></div>
+
+<div class="container">
+
+<label>Génoise</label>
+<select id="genoise">
+<option>Chocolat</option>
+<option>Vanille</option>
+</select>
+
+<label>Fourrage (vous pouvez choisir plusieurs)</label>
+
+<div class="checkbox-group">
+<label><input type="checkbox" value="Ganache au chocolat"> Ganache au chocolat</label>
+<label><input type="checkbox" value="Banane"> Banane</label>
+<label><input type="checkbox" value="Caramel"> Caramel</label>
+<label><input type="checkbox" value="Noix chocolat"> Noix chocolat</label>
+<label><input type="checkbox" value="Tartine feuilletine"> Tartine feuilletine</label>
+<label><input type="checkbox" value="Fraise crème vanille"> Fraise crème vanille</label>
+<label><input type="checkbox" value="Crème pistache"> Crème pistache</label>
+<label><input type="checkbox" value="Cunafa chocolat"> Cunafa chocolat</label>
+<label><input type="checkbox" value="Tartine mourgane ou buino"> Tartine mourgane ou buino</label>
+</div>
+
+<label>Nom</label>
+<input type="text" id="name">
+
+<label>Téléphone</label>
+<input type="text" id="phone">
+
+<label>Texte sur le gâteau</label>
+<input type="text" id="text">
+
+<label>Remarque</label>
+<textarea id="remark"></textarea>
+
+<label>Livraison</label>
+<select id="delivery">
+<option>Oui</option>
+<option>Non (Retrait)</option>
+</select>
+
+<button onclick="send()">Commander via Messenger</button>
+
+</div>
+
+<script>
+
+/* GET CAKE INFO */
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name");
+const size = params.get("size");
+const persons = params.get("persons");
+
+document.getElementById("info").innerText =
+name ? `${name} • ${size} • ${persons}` : "";
+
+/* SEND TO MESSENGER */
+function send(){
+
+let genoise = document.getElementById("genoise").value;
+
+let fourrage = [];
+document.querySelectorAll("input[type=checkbox]:checked").forEach(c=>{
+fourrage.push(c.value);
+});
+
+let message =
+`Bonjour,
+
+Je souhaite passer une commande.
+
+🍰 Produit : ${name} (${size} - ${persons})
+
+🥐 Génoise : ${genoise}
+
+🍫 Fourrage : ${fourrage.join(", ")}
+
+📍 Livraison : ${document.getElementById("delivery").value}
+
+👤 Nom : ${document.getElementById("name").value}
+
+📞 Téléphone : ${document.getElementById("phone").value}
+
+✍️ Texte sur le gâteau : ${document.getElementById("text").value}
+
+📝 Remarque : ${document.getElementById("remark").value}
+
+Merci de me confirmer le prix et la disponibilité.`;
+
+let url = "https://m.me/WorldsSavoury?text=" + encodeURIComponent(message);
+
+window.open(url, "_blank");
+}
+
+/* CUPCAKES ANIMATION (SAME STYLE AS MENU) */
+function createCupcake(){
+let c=document.createElement("div");
+c.className="cupcake";
+c.innerHTML="🧁";
+c.style.left=Math.random()*window.innerWidth+"px";
+c.style.animationDuration=(5+Math.random()*3)+"s";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),9000);
+}
+setInterval(createCupcake,700);
+
+</script>
+
+</body>
+</html>
