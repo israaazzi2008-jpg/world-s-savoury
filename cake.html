@@ -45,7 +45,7 @@ padding:10px 0;
 height:70px;
 }
 
-/* 💎 CONTAINER (LUXURY BOX) */
+/* 💎 CONTAINER */
 .container{
 max-width:720px;
 margin:20px auto;
@@ -126,11 +126,6 @@ background:linear-gradient(90deg,#b76e79,#d88a9a);
 color:white;
 font-weight:bold;
 font-size:15px;
-transition:0.3s ease;
-}
-
-button:hover{
-transform:scale(1.02);
 }
 
 /* SUCCESS */
@@ -154,7 +149,6 @@ font-size:14px;
 
 <body>
 
-<!-- 💖 LOGO -->
 <header class="logo-header">
 <img src="logo.jpg">
 </header>
@@ -177,7 +171,7 @@ setInterval(createCupcake,650);
 <h2>Commande personnalisée</h2>
 
 <div class="sub">
-Veuillez remplir votre demande avec soin. Nous vous répondrons rapidement sur Messenger avec le prix et les détails.
+Veuillez remplir votre demande avec soin. Nous vous répondrons rapidement sur WhatsApp avec le prix et les détails.
 </div>
 
 <div class="info" id="info"></div>
@@ -212,7 +206,7 @@ Veuillez remplir votre demande avec soin. Nous vous répondrons rapidement sur M
 <option>Retrait au maison</option>
 </select>
 
-<button onclick="send()">Envoyer la demande sur Messenger</button>
+<button onclick="send()">Envoyer la demande sur WhatsApp</button>
 
 <div class="success" id="success">
 Merci pour votre commande 💖 Nous vous contacterons très bientôt.
@@ -222,7 +216,6 @@ Merci pour votre commande 💖 Nous vous contacterons très bientôt.
 
 <script>
 
-// DATA FROM MENU
 const params = new URLSearchParams(window.location.search);
 
 let name = params.get("name");
@@ -243,7 +236,7 @@ if(c.checked) values.push(c.value);
 return values.join(", ");
 }
 
-// SEND
+// SEND WHATSAPP
 function send(){
 
 let client = document.getElementById("name").value;
@@ -253,30 +246,32 @@ let delivery = document.getElementById("delivery").value;
 let fourrage = getChecks();
 
 let text =
-`Bonjour,
+`Bonjour 🌸
 
-Je souhaite passer une commande :
+Commande World's Savoury :
 
 Nom : ${client}
-Produit : ${name}
-Taille : ${size}
-Personnes : ${persons}
+Produit : ${name || "-"}
+Taille : ${size || "-"}
+Personnes : ${persons || "-"}
 Génoise : ${genoise}
 Fourrage : ${fourrage}
 Message : ${msg}
 Livraison : ${delivery}
 
-Merci de bien vouloir me communiquer le prix et les informations nécessaires.`;
+Merci 💖`;
 
-let messengerLink = "https://www.facebook.com/share/18pco2cmJQ/?mibextid=wwXIfr";
+let encodedText = encodeURIComponent(text);
 
-// OPEN MESSENGER
-window.open(messengerLink, "_blank");
+// 🔴 MET TON NUMÉRO ICI
+let phoneNumber = "213657936584";
 
-// SUCCESS MESSAGE
+let url = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+window.open(url, "_blank");
+
 document.getElementById("success").style.display="block";
 
-// REDIRECT TO THANK YOU PAGE
 setTimeout(()=>{
 window.location.href = "merci.html";
 },2000);
