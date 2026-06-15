@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>World's Savoury - Commande Personnalisée</title>
+<title>World's Savoury - Gâteaux</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-/* 💖 GLOBAL (SAME AS MENU) */
+/* 💖 SAME DESIGN AS MENU */
 body{
 margin:0;
 font-family:Poppins;
@@ -19,7 +19,7 @@ color:#333;
 overflow-x:hidden;
 }
 
-/* 🧁 CUPCAKES */
+/* 🧁 CUPCAKES ANIMATION */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -45,73 +45,45 @@ padding:10px 0;
 height:70px;
 }
 
-/* 💎 CONTAINER (LUXURY BOX) */
+/* 💎 CONTAINER */
 .container{
-max-width:720px;
+max-width:650px;
 margin:20px auto;
 background:rgba(255,255,255,0.88);
-border-radius:22px;
+border-radius:20px;
 box-shadow:0 10px 25px rgba(0,0,0,0.12);
-padding:22px;
+padding:20px;
 }
 
 /* TITLE */
 h2{
 text-align:center;
 font-family:"Playfair Display";
-font-size:26px;
-margin-bottom:5px;
-}
-
-/* SUB TEXT */
-.sub{
-text-align:center;
-font-size:13px;
-opacity:0.75;
-margin-bottom:15px;
 }
 
 /* INFO */
 .info{
 text-align:center;
 font-size:13px;
-margin-bottom:10px;
 opacity:0.85;
+margin-bottom:10px;
 }
 
-/* LABELS */
+/* LABEL */
 label{
 font-weight:600;
 display:block;
-margin-top:14px;
+margin-top:12px;
 }
 
-/* INPUT STYLE */
-input, select, textarea{
+/* INPUTS */
+input, textarea{
 width:100%;
-padding:11px;
-margin-top:6px;
+padding:10px;
+margin-top:5px;
 border-radius:12px;
 border:1px solid #ddd;
 font-family:Poppins;
-outline:none;
-}
-
-/* CHECKBOX LUXURY */
-.checks{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-margin-top:10px;
-}
-
-.checks label{
-background:white;
-padding:8px 10px;
-border-radius:12px;
-box-shadow:0 5px 12px rgba(0,0,0,0.08);
-font-weight:normal;
-font-size:13px;
 }
 
 /* BUTTON */
@@ -126,14 +98,9 @@ background:linear-gradient(90deg,#b76e79,#d88a9a);
 color:white;
 font-weight:bold;
 font-size:15px;
-transition:0.3s ease;
 }
 
-button:hover{
-transform:scale(1.02);
-}
-
-/* SUCCESS */
+/* SUCCESS MESSAGE */
 .success{
 display:none;
 text-align:center;
@@ -174,109 +141,62 @@ setInterval(createCupcake,650);
 
 <div class="container">
 
-<h2>Commande personnalisée</h2>
-
-<div class="sub">
-Veuillez remplir votre demande avec soin. Nous vous répondrons rapidement sur Messenger avec le prix et les détails.
-</div>
+<h2>Commande Gâteaux</h2>
 
 <div class="info" id="info"></div>
 
 <label>Nom du client</label>
 <input type="text" id="name" placeholder="Votre nom complet">
 
-<label>Génoise</label>
-<select id="genoise">
-<option>Chocolat</option>
-<option>Vanille</option>
-</select>
+<label>Votre remarque</label>
+<textarea id="remark" placeholder="Ex: Gâteau anniversaire thème rose, écrit 'Happy Birthday'"></textarea>
 
-<label>Fourrage (vous pouvez choisir plusieurs options)</label>
-
-<div class="checks">
-<label><input type="checkbox" value="Ganache chocolat"> Ganache chocolat</label>
-<label><input type="checkbox" value="Banane"> Banane</label>
-<label><input type="checkbox" value="Caramel"> Caramel</label>
-<label><input type="checkbox" value="Noix"> Noix</label>
-<label><input type="checkbox" value="Fraise"> Fraise</label>
-<label><input type="checkbox" value="Crème vanille"> Crème vanille</label>
-<label><input type="checkbox" value="Crème pistache"> Crème pistache</label>
-</div>
-
-<label>Message sur le gâteau</label>
-<textarea id="msg" placeholder="Ex: Joyeux anniversaire Sarah ❤️"></textarea>
-
-<label>Mode de réception</label>
-<select id="delivery">
-<option>Livraison</option>
-<option>Retrait au maison</option>
-</select>
-
-<button onclick="send()">Envoyer la demande sur Messenger</button>
+<button onclick="send()">Envoyer sur Messenger</button>
 
 <div class="success" id="success">
-Merci pour votre commande 💖 Nous vous contacterons très bientôt.
+Merci 💖 Nous vous contacterons sur Messenger très bientôt.
 </div>
 
 </div>
 
 <script>
 
-// DATA FROM MENU
+// GET DATA FROM MENU
 const params = new URLSearchParams(window.location.search);
 
 let name = params.get("name");
 let size = params.get("size");
-let persons = params.get("persons");
 
 document.getElementById("info").innerHTML =
-`<b>Produit :</b> ${name || "Personnalisation libre"}<br>
-<b>Taille :</b> ${size || "-"}<br>
-<b>Personnes :</b> ${persons || "-"}`;
+`<b>Produit :</b> ${name || "Gâteau personnalisé"}<br>
+<b>Détails :</b> ${size || "-"}`;
 
-// CHECKBOXES
-function getChecks(){
-let values=[];
-document.querySelectorAll(".checks input").forEach(c=>{
-if(c.checked) values.push(c.value);
-});
-return values.join(", ");
-}
-
-// SEND
+// SEND MESSAGE
 function send(){
 
 let client = document.getElementById("name").value;
-let genoise = document.getElementById("genoise").value;
-let msg = document.getElementById("msg").value;
-let delivery = document.getElementById("delivery").value;
-let fourrage = getChecks();
+let remark = document.getElementById("remark").value;
 
 let text =
 `Bonjour,
 
-Je souhaite passer une commande :
+🧁 Nouvelle commande GÂTEAUX :
 
-Nom : ${client}
-Produit : ${name}
-Taille : ${size}
-Personnes : ${persons}
-Génoise : ${genoise}
-Fourrage : ${fourrage}
-Message : ${msg}
-Livraison : ${delivery}
+👤 Nom : ${client}
+🍰 Produit : ${name || "Non spécifié"}
+📏 Détails : ${size || "-"}
 
-Merci de bien vouloir me communiquer le prix et les informations nécessaires.`;
+📝 Remarque :
+${remark}
+
+Merci de me donner le prix et les informations.`;
 
 let messengerLink = "https://www.facebook.com/share/18pco2cmJQ/?mibextid=wwXIfr";
 
-// OPEN MESSENGER
 window.open(messengerLink, "_blank");
 
-// SUCCESS MESSAGE
 document.getElementById("success").style.display="block";
 
-// REDIRECT TO THANK YOU PAGE
 setTimeout(()=>{
 window.location.href = "merci.html";
 },2000);
