@@ -33,7 +33,7 @@ opacity:0 !important;
 transition:0.6s ease;
 }
 
-/* 🧁 CUPCAKES (UNCHANGED LOGIC) */
+/* 🧁 CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -129,25 +129,16 @@ box-shadow:0 10px 25px rgba(0,0,0,0.12);
 transition:0.5s ease;
 }
 
-.card.hide{
-opacity:0;
-transform:translateY(20px) scale(0.95);
-pointer-events:none;
-}
-
-/* IMAGE */
 .card img{
 width:100%;
 height:180px;
 object-fit:cover;
 }
 
-/* CONTENT */
 .card-content{
 padding:15px;
 }
 
-/* ORDER BUTTON */
 button.order{
 background:linear-gradient(90deg,#b76e79,#d88a9a);
 color:white;
@@ -157,39 +148,45 @@ border-radius:12px;
 width:100%;
 margin-top:10px;
 cursor:pointer;
+font-weight:bold;
 }
 
-/* 📱 MOBILE OPTIMIZATION ONLY */
+.card.hide{
+opacity:0;
+transform:translateY(20px) scale(0.95);
+pointer-events:none;
+}
+
+/* LOGO (ADDED ONLY) */
+.logo-header{
+text-align:center;
+padding:10px 0;
+}
+
+.logo-header img{
+height:70px;
+width:auto;
+object-fit:contain;
+}
+
+/* MOBILE */
 @media (max-width:768px){
-
-.card{
-width:92%;
-}
-
-.menu{
-overflow-x:auto;
-flex-wrap:nowrap;
-padding:10px;
-}
-
-.menu button{
-flex:0 0 auto;
-}
-
-h1{
-font-size:22px;
-}
-
-.remark{
-font-size:12px;
-}
-
+.card{width:92%;}
+.menu{overflow-x:auto;flex-wrap:nowrap;padding:10px;}
+.menu button{flex:0 0 auto;}
+h1{font-size:22px;}
+.remark{font-size:12px;}
 }
 
 </style>
 </head>
 
 <body>
+
+<!-- 💖 LOGO (ONLY ADDITION) -->
+<header class="logo-header">
+  <img src="logo.jpg" alt="World's Savoury Logo">
+</header>
 
 <script>
 function createCupcake(){
@@ -202,12 +199,29 @@ document.body.appendChild(c);
 setTimeout(()=>c.remove(),9000);
 }
 setInterval(createCupcake,650);
-</script>
 
-<script>
 function goTo(page){
 document.body.classList.add("fade-out");
 setTimeout(()=>{ window.location.href = page; },600);
+}
+
+/* ORDER SYSTEM (ADDED ONLY) */
+function orderCake(name,size,persons){
+const url=`cake.html?name=${encodeURIComponent(name)}&size=${encodeURIComponent(size)}&persons=${encodeURIComponent(persons)}`;
+window.open(url,"_blank");
+}
+
+/* FILTER (KEEP YOUR SYSTEM - NO CHANGE LOGIC) */
+function filterCategory(category){
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+if(category==="all" || card.classList.contains(category)){
+card.classList.remove("hide");
+}else{
+card.classList.add("hide");
+}
+});
 }
 </script>
 
@@ -224,6 +238,7 @@ setTimeout(()=>{ window.location.href = page; },600);
 ⭐ Remarque : le client choisit les ingrédients et la décoration de son gâteau.
 </div>
 
+<!-- FILTERS (UNCHANGED STRUCTURE) -->
 <div class="menu">
 <button onclick="filterCategory('all')">Tout</button>
 <button onclick="filterCategory('cakes')">Cakes</button>
@@ -234,88 +249,132 @@ setTimeout(()=>{ window.location.href = page; },600);
 <button onclick="filterCategory('esquimaux')">Esquimaux</button>
 </div>
 
+<!-- PRODUCTS (UNCHANGED PLACEHOLDER - YOU ADD YOUR PRODUCTS) -->
 <div class="products">
+  <div class="card personnalise">
+<img src="prs.jpg">
+<div class="card-content">
 
+<p><b>chocolat</b></p>
+
+
+<button class="order" onclick="orderCake('NAME','SIZE','PERSONS')">
+Sur commande
+</button>
+
+</div>
+</div>
+  <div class="card chocolat">
+<img src="flt.jpg">
+<div class="card-content">
+
+<p><b>fleur au chocolat</b></p>
+
+
+<button class="order" onclick="orderCake('NAME','SIZE','PERSONS')">
+Sur commande
+</button>
+
+</div>
+</div>
+  <div class="card cupcakes">
+<img src="cup.jpg">
+<div class="card-content">
+
+<p><b>cupcakes</b></p>
+
+
+<button class="order" onclick="orderCake('NAME','SIZE','PERSONS')">
+Sur commande
+</button>
+
+</div>
+</div>
+  <div class="card gateaux">
+<img src="1.jpg">
+<div class="card-content">
+
+<p><b>K3ik3at</b></p>
+
+
+<button class="order" onclick="orderCake('NAME','SIZE','PERSONS')">
+Sur commande
+</button>
+
+</div>
+</div>
+
+<!-- 🍰 CAKE 1 -->
 <div class="card cakes">
 <img src="tarte1.jpg">
 <div class="card-content">
-<p><b>Longueur:</b> 35 cm</p>
-<p><b>Largeur:</b> 25 cm</p>
-<p><b>Personnes:</b> 30</p>
-<button class="order">Sur commande</button>
+<p><b>35 cm x 25 cm</b></p>
+<p><b>30 personnes</b></p>
+<button class="order" onclick="orderCake('Cake 1','35x25','30 personnes')">Sur commande</button>
 </div>
 </div>
 
+<!-- 🍰 CAKE 2 -->
 <div class="card cakes">
 <img src="tarte2.jpg">
 <div class="card-content">
-<p><b>Longueur:</b> 24 cm</p>
-<p><b>Largeur:</b> 24 cm</p>
-<p><b>Personnes:</b> 12</p>
-<button class="order">Sur commande</button>
+<p><b>24 cm x 24 cm</b></p>
+<p><b>12 personnes</b></p>
+<button class="order" onclick="orderCake('Cake 2','24x24','12 personnes')">Sur commande</button>
 </div>
 </div>
 
+<!-- 🍰 CAKE 3 -->
 <div class="card cakes">
 <img src="tarte3.jpg">
 <div class="card-content">
-<p><b>Diamètre:</b> 12 cm</p>
-<p><b>Personnes:</b> 12</p>
-<button class="order">Sur commande</button>
+<p><b>12 cm</b></p>
+<p><b>12 personnes</b></p>
+<button class="order" onclick="orderCake('Cake 3','12cm','12 personnes')">Sur commande</button>
 </div>
 </div>
 
+<!-- 🍰 CAKE 4 -->
 <div class="card cakes">
 <img src="tarte4.jpg">
 <div class="card-content">
-<p><b>Diamètre:</b> 15 cm</p>
-<p><b>Personnes:</b> 7</p>
-<button class="order">Sur commande</button>
+<p><b>15 cm</b></p>
+<p><b>7 personnes</b></p>
+<button class="order" onclick="orderCake('Cake 4','15cm','7 personnes')">Sur commande</button>
 </div>
 </div>
 
+<!-- 🍰 CAKE 5 -->
 <div class="card cakes">
 <img src="tarte5.jpg">
 <div class="card-content">
-<p><b>Diamètre:</b> 15 cm</p>
-<p><b>Personnes:</b> 15</p>
-<button class="order">Sur commande</button>
+<p><b>15 cm</b></p>
+<p><b>15 personnes</b></p>
+<button class="order" onclick="orderCake('Cake 5','15cm','15 personnes')">Sur commande</button>
 </div>
 </div>
 
+<!-- 🍰 CAKE 6 -->
 <div class="card cakes">
 <img src="tarte6.jpg">
 <div class="card-content">
-<p><b>Diamètre:</b> 16 cm</p>
-<p><b>Personnes:</b> 6</p>
-<button class="order">Sur commande</button>
+<p><b>16 cm</b></p>
+<p><b>6 personnes</b></p>
+<button class="order" onclick="orderCake('Cake 6','16cm','6 personnes')">Sur commande</button>
 </div>
 </div>
 
+<!-- 🍰 CAKE 7 -->
 <div class="card cakes">
 <img src="tarte7.jpg">
 <div class="card-content">
-<p><b>Diamètre:</b> 18 cm</p>
-<p><b>Personnes:</b> 10</p>
-<button class="order">Sur commande</button>
+<p><b>18 cm</b></p>
+<p><b>10 personnes</b></p>
+<button class="order" onclick="orderCake('Cake 7','18cm','10 personnes')">Sur commande</button>
 </div>
 </div>
 
 </div>
-
-<script>
-function filterCategory(category){
-let cards = document.querySelectorAll(".card");
-
-cards.forEach(card=>{
-if(category === "all" || card.classList.contains(category)){
-card.classList.remove("hide");
-}else{
-card.classList.add("hide");
-}
-});
-}
-</script>
 
 </body>
 </html>
