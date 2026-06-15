@@ -19,7 +19,7 @@ color:#333;
 overflow-x:hidden;
 }
 
-/* 🧁 CUPCAKES (GLOBAL ANIMATION) */
+/* 🧁 CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -146,7 +146,7 @@ Décrivez votre commande chocolat avec détails (forme, décoration, texte…).
 <option>Retrait à la maison</option>
 </select>
 
-<button onclick="send()">Envoyer sur Messenger</button>
+<button onclick="send()">Envoyer sur WhatsApp</button>
 
 <div class="success" id="success">
 Merci 💖 Nous vous contacterons très bientôt.
@@ -156,6 +156,7 @@ Merci 💖 Nous vous contacterons très bientôt.
 
 <script>
 
+/* CUPCAKES */
 function createCupcake(){
 let c=document.createElement("div");
 c.className="cupcake";
@@ -167,6 +168,7 @@ setTimeout(()=>c.remove(),9000);
 }
 setInterval(createCupcake,650);
 
+/* SEND WHATSAPP MESSAGE */
 function send(){
 
 let client = document.getElementById("name").value;
@@ -174,9 +176,9 @@ let remark = document.getElementById("remark").value;
 let delivery = document.getElementById("delivery").value;
 
 let text =
-`Bonjour,
+`Bonjour 🌸
 
-🍫 Nouvelle commande CHOCOLAT :
+🍰 Commande World's Savoury :
 
 👤 Nom : ${client}
 
@@ -185,13 +187,20 @@ ${remark}
 
 🚚 Livraison : ${delivery}
 
-Merci de me donner le prix et les informations.`;
+Merci de confirmer 💖`;
 
-let messengerLink = "https://www.facebook.com/share/18pco2cmJQ/?mibextid=wwXIfr";
+let encodedText = encodeURIComponent(text);
 
-window.open(messengerLink, "_blank");
+// 🔴 PUT YOUR REAL NUMBER HERE
+let phoneNumber = "213657936584";
 
-document.getElementById("success").style.display="block";
+// WhatsApp link
+let url = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+window.open(url, "_blank");
+
+// success message
+document.getElementById("success").style.display = "block";
 
 setTimeout(()=>{
 window.location.href = "merci.html";
