@@ -10,7 +10,6 @@
 
 <style>
 
-/* 💖 SAME DESIGN AS MENU */
 body{
 margin:0;
 font-family:Poppins;
@@ -19,7 +18,7 @@ color:#333;
 overflow-x:hidden;
 }
 
-/* 🧁 CUPCAKES ANIMATION */
+/* 🧁 CUPCAKES */
 .cupcake{
 position:fixed;
 top:-50px;
@@ -35,7 +34,7 @@ pointer-events:none;
 100%{transform:translateY(110vh);opacity:0;}
 }
 
-/* 💖 LOGO */
+/* LOGO */
 .logo-header{
 text-align:center;
 padding:10px 0;
@@ -45,7 +44,7 @@ padding:10px 0;
 height:70px;
 }
 
-/* 💎 CONTAINER */
+/* CONTAINER */
 .container{
 max-width:650px;
 margin:20px auto;
@@ -55,13 +54,11 @@ box-shadow:0 10px 25px rgba(0,0,0,0.12);
 padding:20px;
 }
 
-/* TITLE */
 h2{
 text-align:center;
 font-family:"Playfair Display";
 }
 
-/* INFO */
 .info{
 text-align:center;
 font-size:13px;
@@ -69,14 +66,12 @@ opacity:0.85;
 margin-bottom:10px;
 }
 
-/* LABEL */
 label{
 font-weight:600;
 display:block;
 margin-top:12px;
 }
 
-/* INPUTS */
 input, textarea, select{
 width:100%;
 padding:10px;
@@ -86,7 +81,6 @@ border:1px solid #ddd;
 font-family:Poppins;
 }
 
-/* BUTTON */
 button{
 width:100%;
 padding:13px;
@@ -100,7 +94,6 @@ font-weight:bold;
 font-size:15px;
 }
 
-/* SUCCESS MESSAGE */
 .success{
 display:none;
 text-align:center;
@@ -111,7 +104,6 @@ border-radius:12px;
 font-size:14px;
 }
 
-/* MOBILE */
 @media (max-width:768px){
 .container{width:92%;}
 }
@@ -121,7 +113,6 @@ font-size:14px;
 
 <body>
 
-<!-- 💖 LOGO -->
 <header class="logo-header">
 <img src="logo.jpg">
 </header>
@@ -149,19 +140,18 @@ setInterval(createCupcake,650);
 <input type="text" id="name" placeholder="Votre nom complet">
 
 <label>Votre remarque</label>
-<textarea id="remark" placeholder="Ex: Gâteau anniversaire thème rose, écrit 'Happy Birthday'"></textarea>
+<textarea id="remark" placeholder="Ex: Gâteau anniversaire thème rose"></textarea>
 
-<!-- ✅ ADDED DELIVERY OPTION -->
 <label>Mode de réception</label>
 <select id="delivery">
 <option>Livraison</option>
 <option>Retrait à la maison</option>
 </select>
 
-<button onclick="send()">Envoyer sur Messenger</button>
+<button onclick="send()">Envoyer sur WhatsApp</button>
 
 <div class="success" id="success">
-Merci 💖 Nous vous contacterons sur Messenger très bientôt.
+Merci 💖 Nous vous contacterons très bientôt.
 </div>
 
 </div>
@@ -181,12 +171,12 @@ function send(){
 
 let client = document.getElementById("name").value;
 let remark = document.getElementById("remark").value;
-let delivery = document.getElementById("delivery").value; // ✅ ADDED
+let delivery = document.getElementById("delivery").value;
 
 let text =
-`Bonjour,
+`Bonjour 🌸
 
-🧁 Nouvelle commande GÂTEAUX :
+🧁 Commande World's Savoury :
 
 👤 Nom : ${client}
 🍰 Produit : ${name || "Non spécifié"}
@@ -197,11 +187,16 @@ let text =
 📝 Remarque :
 ${remark}
 
-Merci de me donner le prix et les informations.`;
+Merci de confirmer 💖`;
 
-let messengerLink = "https://www.facebook.com/share/18pco2cmJQ/?mibextid=wwXIfr";
+let encodedText = encodeURIComponent(text);
 
-window.open(messengerLink, "_blank");
+// ⚠️ TON NUMÉRO WHATSAPP ICI
+let phoneNumber = "213657936584";
+
+let url = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+window.open(url, "_blank");
 
 document.getElementById("success").style.display="block";
 
@@ -210,6 +205,7 @@ window.location.href = "merci.html";
 },2000);
 
 }
+
 </script>
 
 </body>
