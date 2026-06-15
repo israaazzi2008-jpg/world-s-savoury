@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>World's Savoury - Merci</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* 💖 SAME DESIGN */
+body{
+margin:0;
+font-family:Poppins;
+background: linear-gradient(135deg,#fff0f5,#fffaf5);
+color:#333;
+overflow:hidden;
+}
+
+/* 🧁 CUPCAKES ANIMATION */
+.cupcake{
+position:fixed;
+top:-50px;
+font-size:26px;
+opacity:0.85;
+z-index:999;
+animation:fall linear forwards;
+pointer-events:none;
+}
+
+@keyframes fall{
+0%{transform:translateY(-50px);}
+100%{transform:translateY(110vh);opacity:0;}
+}
+
+/* 💖 LOGO */
+.logo-header{
+text-align:center;
+padding:15px 0;
+}
+
+.logo-header img{
+height:75px;
+}
+
+/* 💎 BOX */
+.container{
+max-width:650px;
+margin:60px auto;
+background:rgba(255,255,255,0.9);
+border-radius:22px;
+box-shadow:0 10px 25px rgba(0,0,0,0.12);
+padding:25px;
+text-align:center;
+}
+
+/* TITLE */
+h1{
+font-family:"Playfair Display";
+margin-bottom:10px;
+}
+
+/* TEXT */
+p{
+font-size:15px;
+opacity:0.85;
+line-height:1.6;
+}
+
+/* BUTTON */
+button{
+margin-top:20px;
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+background:linear-gradient(90deg,#b76e79,#d88a9a);
+color:white;
+font-weight:bold;
+font-size:15px;
+transition:0.3s ease;
+}
+
+button:hover{
+transform:scale(1.03);
+}
+
+/* MOBILE */
+@media (max-width:768px){
+.container{width:90%;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 💖 LOGO -->
+<header class="logo-header">
+<img src="logo.jpg" alt="World's Savoury Logo">
+</header>
+
+<!-- 🧁 CUPCAKES -->
+<script>
+function createCupcake(){
+let c=document.createElement("div");
+c.className="cupcake";
+c.innerHTML="🧁";
+c.style.left=Math.random()*window.innerWidth+"px";
+c.style.animationDuration=(5+Math.random()*3)+"s";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),9000);
+}
+setInterval(createCupcake,700);
+</script>
+
+<div class="container">
+
+<h1>Merci 💖</h1>
+
+<p>
+Votre commande a bien été envoyée.<br><br>
+
+📩 Nous allons vous répondre sur Messenger / WhatsApp dès que possible avec le prix et les détails.<br><br>
+
+Merci pour votre confiance 🌸
+</p>
+
+<button onclick="goMenu()">
+🍰 Commander autre chose
+</button>
+
+</div>
+
+<script>
+function goMenu(){
+window.location.href = "menu.html";
+}
+</script>
+
+</body>
+</html>
