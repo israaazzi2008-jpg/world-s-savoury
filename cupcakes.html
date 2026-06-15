@@ -146,7 +146,7 @@ Choisissez vos saveurs et donnez les détails de votre commande.
 <option>Retrait à la maison</option>
 </select>
 
-<button onclick="send()">Envoyer sur Messenger</button>
+<button onclick="send()">Envoyer sur WhatsApp</button>
 
 <div class="success" id="success">
 Merci 💖 Nous vous contacterons très bientôt.
@@ -167,6 +167,7 @@ setTimeout(()=>c.remove(),9000);
 }
 setInterval(createCupcake,650);
 
+/* ✅ WHATSAPP SEND */
 function send(){
 
 let client = document.getElementById("name").value;
@@ -174,7 +175,7 @@ let remark = document.getElementById("remark").value;
 let delivery = document.getElementById("delivery").value;
 
 let text =
-`Bonjour,
+`Bonjour 🌸
 
 🧁 Nouvelle commande CUPCAKES :
 
@@ -185,11 +186,16 @@ ${remark}
 
 🚚 Livraison : ${delivery}
 
-Merci de me donner le prix et les informations.`;
+Merci 💖`;
 
-let messengerLink = "https://www.facebook.com/share/18pco2cmJQ/?mibextid=wwXIfr";
+let encodedText = encodeURIComponent(text);
 
-window.open(messengerLink, "_blank");
+// 🔴 PUT YOUR WHATSAPP NUMBER HERE
+let phoneNumber = "213657936584";
+
+let url = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+window.open(url, "_blank");
 
 document.getElementById("success").style.display="block";
 
